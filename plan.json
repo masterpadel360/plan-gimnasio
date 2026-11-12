@@ -34,9 +34,83 @@
     "A": {
       "nombre": "Piernas, pecho y tríceps",
       "ejercicios": [
-        { "id": "caida-cajon-clavar", "nombre": "Caída desde cajón de 30 cm a clavar", "grupo": "piernas", "series": ["3×5", "3×5", "3×5"], "nota": ["", "En la izquierda sola", "Con rebote rápido"], "descanso": 60 },
-        { "id": "sentadilla", "nombre": "Sentadilla", "nombreEtapa": ["Sentadilla goblet", "Sentadilla con barra", "Sentadilla con barra"], "grupo": "piernas", "series": ["3×10", "4×8–10", "4×6–8"], "descanso": 150 },
-        { "id": "prensa-piernas", "nombre": "Prensa de piernas", "grupo": "piernas", "series": ["3×12", "4×10–12", "3×10"], "descanso": 120 },
+        {
+          "id": "caida-cajon-clavar", "nombre": "Caída desde cajón de 30 cm a clavar", "grupo": "piernas",
+          "series": ["3×5", "3×5", "3×5"], "nota": ["Aterrizaje controlado con las dos piernas", "En la izquierda sola", "Con rebote rápido"], "descanso": 60,
+          "pasos": [
+            "Parado arriba de un cajón de 30 cm, dejate caer dando un paso al frente (no saltes).",
+            "Caé con los dos pies a la vez, en la punta y después el talón.",
+            "Frená en media sentadilla: rodillas sobre los pies, cadera atrás.",
+            "Quedate quieto 2 segundos, como una estatua, antes de volver a subir."
+          ],
+          "errores": ["Que las rodillas se vayan hacia adentro al caer.", "Caer con las piernas rígidas o con ruido fuerte.", "Caer cargado sobre la derecha."],
+          "porque": "Tu pierna izquierda frena 48% menos al aterrizar de un salto. Aprender a clavar la caída, y en la etapa 2 hacerlo solo con la izquierda, la prepara para los frenos y cambios de dirección del pádel.",
+          "video": { "url": "https://www.youtube.com/watch?v=wU9elZYOlVI", "canal": "KFD Kinesiologia y Fisioterapia Deportiva", "titulo": "drop jump bipodal desde cajón" },
+          "anim": {
+            "vista": "lado", "cerca": "I",
+            "descripcion": "Caída desde un cajón: se deja caer, aterriza con las dos piernas y queda quieto en media sentadilla.",
+            "equipo": [{ "tipo": "poligono", "puntos": [[-62, 0], [-62, 30], [-18, 30], [-18, 0]] }],
+            "trabaja": [{ "seg": "musloI", "lado": "frente" }, "gluteoI"],
+            "guias": [{ "tipo": "vertical", "desde": "puntaI", "largo": 50, "texto": "rodilla sobre el pie" }],
+            "poses": [
+              { "fase": "Dejate caer", "dur": 0.6, "pelvis": [-40, 116], "tronco": 2, "pieI": [-36, 30], "pieD": [-42, 30], "brazoI": [0, 0], "brazoD": [0, 0] },
+              { "fase": "Dejate caer", "dur": 0.35, "pelvis": [-12, 104], "tronco": 8, "pieI": [-2, 22], "pieD": [-16, 28], "brazoI": [30, 40], "brazoD": [30, 40] },
+              { "fase": "Clavá 2 s, rodillas sobre los pies", "pausa": 1.8, "dur": 0.9, "pelvis": [2, 64], "tronco": 26, "pieI": [16, 0], "pieD": [12, 0], "brazoI": [60, 70], "brazoD": [60, 70] }
+            ]
+          }
+        },
+        {
+          "id": "sentadilla", "nombre": "Sentadilla", "nombreEtapa": ["Sentadilla goblet", "Sentadilla con barra", "Sentadilla con barra"], "grupo": "piernas",
+          "series": ["3×10", "4×8–10", "4×6–8"], "descanso": 150,
+          "pasos": [
+            "Pies un poco más abiertos que la cadera, puntas apenas hacia afuera.",
+            "Goblet: la mancuerna pegada al pecho. Con barra: apoyada arriba de la espalda, no en el cuello.",
+            "Bajá en 2 o 3 segundos llevando la cadera atrás y abajo.",
+            "Rodillas siempre en la misma dirección que las puntas de los pies.",
+            "Subí empujando el piso con todo el pie."
+          ],
+          "errores": ["Rodillas que se van hacia adentro (lo que marcó tu evaluación).", "Levantar los talones.", "Redondear la espalda abajo."],
+          "porque": "Construye cuádriceps y glúteos, la base de tus piernas. En tu evaluación la rodilla se va hacia adentro en la sentadilla: por eso la ves de frente, con la guía de la rodilla sobre el pie.",
+          "video": { "url": "https://www.youtube.com/watch?v=1XZ26_VAT0w", "canal": "Squat University Español", "titulo": "Domina tu sentadilla: explicación de la técnica con barra alta y barra baja" },
+          "anim": {
+            "vista": "frente",
+            "descripcion": "Sentadilla goblet de frente: baja en 2 o 3 segundos con las rodillas alineadas con los pies.",
+            "equipo": [{ "tipo": "mancuerna", "manos": ["manos"] }],
+            "trabaja": ["musloI", "musloD"],
+            "guias": [{ "tipo": "vertical", "desde": "pieI", "largo": 52, "texto": "rodilla sobre el pie" }, { "tipo": "vertical", "desde": "pieD", "largo": 52 }],
+            "poses": [
+              { "fase": "Bajá en 2–3 s", "dur": 2.5, "pelvis": [0, 88], "pieI": [-22, 0], "pieD": [22, 0], "rodillaI": -1, "rodillaD": 1, "manoI": [-6, 118], "manoD": [6, 118], "codoI": -1, "codoD": 1 },
+              { "fase": "Subí empujando el piso", "pausa": 0.3, "dur": 1.2, "pelvis": [0, 54], "pieI": [-22, 0], "pieD": [22, 0], "rodillaI": -1, "rodillaD": 1, "manoI": [-6, 86], "manoD": [6, 86], "codoI": -1, "codoD": 1 }
+            ]
+          }
+        },
+        {
+          "id": "prensa-piernas", "nombre": "Prensa de piernas", "grupo": "piernas",
+          "series": ["3×12", "4×10–12", "3×10"], "descanso": 120,
+          "pasos": [
+            "Espalda y cola bien apoyadas en el respaldo.",
+            "Pies en el medio de la plataforma, al ancho de la cadera.",
+            "Bajá en 2 o 3 segundos hasta que las rodillas queden cerca del pecho, sin que se levante la cola.",
+            "Empujá con todo el pie, sin trabar las rodillas arriba."
+          ],
+          "errores": ["Despegar la cola del asiento al bajar (carga la zona lumbar).", "Trabar las rodillas al estirar.", "Juntar las rodillas al empujar."],
+          "porque": "Te deja meter mucho volumen de cuádriceps sin cargar la espalda, ideal con tus molestias lumbares.",
+          "video": { "url": "https://www.youtube.com/watch?v=xvCynwyNoP4", "canal": "Andres Vazquez Personal Trainer", "titulo": "CÓMO USAR LA PRENSA INCLINADA PARA CRECER TUS PIERNAS (CUÁDRICEPS Y GLÚTEOS)" },
+          "anim": {
+            "vista": "lado", "cerca": "I",
+            "descripcion": "Prensa de piernas de costado: baja la plataforma en 2 o 3 segundos y empuja sin trabar las rodillas.",
+            "equipo": [
+              { "tipo": "poligono", "puntos": [[-14, 30], [-66, 70], [-74, 60], [-22, 22]] },
+              { "tipo": "poligono", "puntos": [[-36, 0], [-24, 0], [-18, 26], [-30, 26]] },
+              { "tipo": "placa", "en": "pieI", "ang": 45, "largo": 46, "dx": 4, "dy": -4, "grosor": 7 }
+            ],
+            "trabaja": [{ "seg": "musloI", "lado": "frente" }, "gluteoI"],
+            "poses": [
+              { "fase": "Bajá en 2–3 s", "dur": 2.5, "pelvis": [-12, 40], "tronco": -55, "cabeza": 15, "pieI": [46, 98], "pieD": [44, 100], "rodillaI": "arriba", "rodillaD": "arriba", "pieAngI": 135, "pieAngD": 135, "manoI": [6, 36], "manoD": [6, 36], "codoI": -1, "codoD": -1 },
+              { "fase": "Empujá sin trabar las rodillas", "pausa": 0.2, "dur": 1.2, "pelvis": [-12, 40], "tronco": -55, "cabeza": 15, "pieI": [16, 70], "pieD": [14, 72], "rodillaI": "arriba", "rodillaD": "arriba", "pieAngI": 135, "pieAngD": 135, "manoI": [6, 36], "manoD": [6, 36], "codoI": -1, "codoD": -1 }
+            ]
+          }
+        },
         {
           "id": "sentadilla-bulgara", "nombre": "Sentadilla búlgara", "grupo": "piernas",
           "series": ["3×8", "3×10", "3×8"], "nota": ["", "", "Más peso"], "por": "por pierna", "extraIzq": true, "descanso": 90,
@@ -47,13 +121,9 @@
             "Torso apenas inclinado hacia adelante, mancuernas colgando.",
             "Subí empujando con todo el pie de adelante."
           ],
-          "errores": [
-            "Que la rodilla de adelante se vaya hacia adentro.",
-            "Pie de adelante muy cerca del banco: se levanta el talón.",
-            "Bajar rápido y rebotar abajo."
-          ],
+          "errores": ["Que la rodilla de adelante se vaya hacia adentro.", "Pie de adelante muy cerca del banco: se levanta el talón.", "Bajar rápido y rebotar abajo."],
           "porque": "Tu cuádriceps izquierdo tiene 30% menos fuerza que el derecho y la pelvis se te inclina apoyado en el izquierdo. Trabajar una pierna por vez, empezando por la izquierda y con una serie extra, iguala las dos piernas.",
-          "video": null,
+          "video": { "url": "https://www.youtube.com/watch?v=Xfa3Ql_NwmE", "canal": "ATHLEAN-X Español", "titulo": "Para de J*&ER La Sentadilla Búlgara ¡FORMA CORRECTA!" },
           "anim": {
             "vista": "lado", "cerca": "I",
             "descripcion": "Sentadilla búlgara de costado: pie de atrás en el banco, baja en 3 segundos y sube en 1.",
@@ -66,14 +136,187 @@
             ]
           }
         },
-        { "id": "extension-cuadriceps-una-pierna", "nombre": "Extensión de cuádriceps a una pierna", "grupo": "piernas", "series": ["3×12", "3×12–15", "3×12"], "extraIzq": true, "descanso": 60 },
-        { "id": "gemelos-de-pie", "nombre": "Gemelos de pie", "grupo": "piernas", "series": ["3×15", "4×10–15", "4×12"], "descanso": 60 },
-        { "id": "press-banca", "nombre": "Press de banca", "nombreEtapa": ["Press de banca con mancuernas", "Press de banca con barra", "Press de banca con barra"], "grupo": "torso", "series": ["3×10", "4×8–10", "4×6–8"], "descanso": 120 },
-        { "id": "press-inclinado-mancuernas", "nombre": "Press inclinado con mancuernas", "grupo": "torso", "series": ["3×10", "4×10", "3×8–10"], "descanso": 90 },
-        { "id": "fondos-paralelas", "nombre": "Fondos en paralelas (asistidos si hace falta)", "grupo": "torso", "series": ["3×8–10", "3×8–12", "3×10–12"], "descanso": 90 },
-        { "id": "superserie-triceps-soga-laterales", "nombre": "Superserie: tríceps en polea con soga + elevaciones laterales", "grupo": "torso", "series": ["3×12", "4×12", "3×15"], "por": "cada uno", "superserie": ["triceps-polea-soga", "elevaciones-laterales"], "descanso": 60 },
-        { "id": "plancha-lateral", "nombre": "Plancha lateral", "grupo": "core", "series": ["3×30 s", "3×40 s", "3×45 s"], "por": "por lado", "extraIzq": true, "notaExtra": "+1 apoyado sobre el izquierdo", "descanso": 30 },
-        { "id": "crunch-polea", "nombre": "Crunch en polea", "grupo": "core", "series": ["3×12–15", "3×12–15", "3×12–15"], "descanso": 45 }
+        {
+          "id": "extension-cuadriceps-una-pierna", "nombre": "Extensión de cuádriceps a una pierna", "grupo": "piernas",
+          "series": ["3×12", "3×12–15", "3×12"], "extraIzq": true, "descanso": 60,
+          "pasos": [
+            "Sentado, espalda apoyada, la almohadilla justo arriba del tobillo.",
+            "Estirá la pierna en 1 segundo y apretá el cuádriceps arriba 1 segundo.",
+            "Bajá en 3 segundos, sin dejar caer el peso.",
+            "Primero la izquierda; la izquierda hace una serie más."
+          ],
+          "errores": ["Hacer envión con la cadera.", "Bajar de golpe.", "Usar tanto peso que no llegás a estirar del todo."],
+          "porque": "Aísla el cuádriceps de cada pierna por separado: la mejor forma de achicar ese 30% de diferencia de la izquierda.",
+          "video": { "url": "https://www.youtube.com/watch?v=GMFFZnDz6wE", "canal": "Entrenador Personal - Malagaentrena", "titulo": "Cómo HACER la máquina de CUADRICEPS paso a paso en el GYM (Tutorial )" },
+          "anim": {
+            "vista": "lado", "cerca": "I",
+            "descripcion": "Extensión de cuádriceps a una pierna de costado: estira en 1 segundo, aprieta 1 y baja en 3.",
+            "equipo": [
+              { "tipo": "poligono", "puntos": [[-24, 42], [34, 42], [34, 49], [-24, 49]] },
+              { "tipo": "poligono", "puntos": [[-30, 42], [-22, 42], [-30, 112], [-38, 112]] },
+              { "tipo": "poligono", "puntos": [[-6, 0], [6, 0], [6, 42], [-6, 42]], "oscuro": true },
+              { "tipo": "placa", "en": "pieI", "ang": 90, "largo": 14, "dx": 6, "dy": 2, "grosor": 7 }
+            ],
+            "trabaja": [{ "seg": "musloI", "lado": "frente" }],
+            "poses": [
+              { "fase": "Estirá en 1 s", "dur": 1, "pelvis": [0, 52], "tronco": -8, "pieI": [42, 10], "rodillaI": "arriba", "pieD": [40, 10], "rodillaD": "arriba", "manoI": [6, 48], "manoD": [6, 48], "codoI": -1, "codoD": -1 },
+              { "fase": "Bajá en 3 s", "pausa": 1, "dur": 3, "pelvis": [0, 52], "tronco": -8, "pieI": [84, 56], "rodillaI": "arriba", "pieD": [40, 10], "rodillaD": "arriba", "manoI": [6, 48], "manoD": [6, 48], "codoI": -1, "codoD": -1 }
+            ]
+          }
+        },
+        {
+          "id": "gemelos-de-pie", "nombre": "Gemelos de pie", "grupo": "piernas",
+          "series": ["3×15", "4×10–15", "4×12"], "descanso": 60,
+          "pasos": [
+            "Parado con la punta de los pies en un escalón o en la máquina, rodillas estiradas.",
+            "Subí en 1 segundo, lo más alto que puedas.",
+            "Quedate arriba 1 segundo.",
+            "Bajá en 2 segundos hasta estirar bien el gemelo."
+          ],
+          "errores": ["Rebotar abajo.", "Doblar las rodillas para ayudarte.", "Hacer medio recorrido."],
+          "porque": "Gemelos más grandes y fuertes para los arranques, los saltos y los cambios de dirección en la cancha.",
+          "video": { "url": "https://www.youtube.com/watch?v=0guUs90hUiY", "canal": "Proet Ejercicio Terapéutico", "titulo": "769. Elevación de gemelos sobre escalón" },
+          "anim": {
+            "vista": "lado", "cerca": "I",
+            "descripcion": "Gemelos de pie de costado: sube en 1 segundo, se queda 1 arriba y baja en 2.",
+            "trabaja": [{ "seg": "piernaI", "lado": "atras" }],
+            "poses": [
+              { "fase": "Subí en 1 s", "dur": 1, "pelvis": [0, 86], "pieI": [0, 0], "pieD": [0, 0], "brazoI": [0, 0], "brazoD": [0, 0] },
+              { "fase": "Arriba 1 s · bajá en 2 s", "pausa": 1, "dur": 2, "pelvis": [0, 95], "pieI": [0, 9], "pieD": [0, 9], "pieAngI": -42, "pieAngD": -42, "brazoI": [0, 0], "brazoD": [0, 0] }
+            ]
+          }
+        },
+        {
+          "id": "press-banca", "nombre": "Press de banca", "nombreEtapa": ["Press de banca con mancuernas", "Press de banca con barra", "Press de banca con barra"], "grupo": "torso",
+          "series": ["3×10", "4×8–10", "4×6–8"], "descanso": 120,
+          "pasos": [
+            "Acostado, ojos debajo de la barra (o mancuernas a la altura del pecho), pies firmes en el piso.",
+            "Juntá los omóplatos y mantenelos así toda la serie.",
+            "Bajá en 2 segundos hasta rozar el pecho, codos a unos 45° del cuerpo.",
+            "Empujá hacia arriba sin despegar la cola del banco."
+          ],
+          "errores": ["Codos abiertos a 90° (cuida el hombro).", "Rebotar la barra en el pecho.", "Despegar la cola."],
+          "porque": "El ejercicio base para ganar pecho, hombro anterior y tríceps.",
+          "video": { "url": "https://www.youtube.com/watch?v=jlFl7WJ1TzI", "canal": "Jeremy Ethier en Español", "titulo": "Cómo hacer press de banca CORRECTAMENTE para incrementar tus músculos (5 pasos sencillos)" },
+          "anim": {
+            "vista": "lado", "cerca": "I",
+            "descripcion": "Press de banca de costado: baja en 2 segundos hasta el pecho y empuja.",
+            "equipo": [{ "tipo": "banco", "x": 0, "alto": 42, "ancho": 92 }, { "tipo": "mancuerna" }],
+            "trabaja": ["pecho", { "seg": "brazoI", "lado": "atras" }],
+            "poses": [
+              { "fase": "Bajá en 2 s", "dur": 2, "pelvis": [24, 48], "tronco": -90, "pieI": [56, 0], "pieD": [52, 0], "rodillaI": "arriba", "rodillaD": "arriba", "manoI": [-22, 100], "manoD": [-22, 100], "codoI": "abajo", "codoD": "abajo" },
+              { "fase": "Empujá", "pausa": 0.3, "dur": 1, "pelvis": [24, 48], "tronco": -90, "pieI": [56, 0], "pieD": [52, 0], "rodillaI": "arriba", "rodillaD": "arriba", "manoI": [-18, 62], "manoD": [-18, 62], "codoI": "abajo", "codoD": "abajo" }
+            ]
+          }
+        },
+        {
+          "id": "press-inclinado-mancuernas", "nombre": "Press inclinado con mancuernas", "grupo": "torso",
+          "series": ["3×10", "4×10", "3×8–10"], "descanso": 90,
+          "pasos": [
+            "Banco a 30°, más o menos. Espalda apoyada y omóplatos juntos.",
+            "Mancuernas a la altura del pecho alto, codos un poco abajo de las manos.",
+            "Empujá hacia arriba juntando apenas las mancuernas.",
+            "Bajá en 2 segundos."
+          ],
+          "errores": ["Banco muy parado (se vuelve un press de hombros).", "Arquear mucho la espalda.", "Chocar las mancuernas arriba."],
+          "porque": "Trabaja la parte alta del pecho, la que más se nota y la que menos crece con el press plano.",
+          "video": { "url": "https://www.youtube.com/watch?v=qhKStczz27Q", "canal": "Manuel Escalera", "titulo": "PRESS INCLINADO con mancuernas | Hazlo BIEN así" },
+          "anim": {
+            "vista": "lado", "cerca": "I",
+            "descripcion": "Press inclinado con mancuernas de costado: banco a 30°, baja en 2 segundos y empuja.",
+            "equipo": [
+              { "tipo": "poligono", "puntos": [[22, 42], [-24, 74], [-30, 66], [16, 36]] },
+              { "tipo": "poligono", "puntos": [[18, 42], [52, 42], [52, 36], [16, 36]] },
+              { "tipo": "poligono", "puntos": [[28, 0], [38, 0], [38, 36], [28, 36]], "oscuro": true },
+              { "tipo": "mancuerna" }
+            ],
+            "trabaja": ["pecho", { "seg": "brazoI", "lado": "atras" }],
+            "poses": [
+              { "fase": "Bajá en 2 s", "dur": 2, "pelvis": [20, 48], "tronco": -58, "pieI": [62, 0], "pieD": [58, 0], "rodillaI": "arriba", "rodillaD": "arriba", "manoI": [-18, 128], "manoD": [-18, 128], "codoI": "abajo", "codoD": "abajo" },
+              { "fase": "Empujá", "pausa": 0.3, "dur": 1, "pelvis": [20, 48], "tronco": -58, "pieI": [62, 0], "pieD": [58, 0], "rodillaI": "arriba", "rodillaD": "arriba", "manoI": [-12, 92], "manoD": [-12, 92], "codoI": "abajo", "codoD": "abajo" }
+            ]
+          }
+        },
+        {
+          "id": "fondos-paralelas", "nombre": "Fondos en paralelas (asistidos si hace falta)", "grupo": "torso",
+          "series": ["3×8–10", "3×8–12", "3×10–12"], "descanso": 90,
+          "pasos": [
+            "Agarrado de las paralelas con los brazos estirados, hombros lejos de las orejas.",
+            "Inclinate apenas hacia adelante.",
+            "Bajá en 2 segundos hasta que los codos queden a 90°.",
+            "Subí sin encoger los hombros. Si no llegás a las repeticiones, usá la máquina asistida o una banda."
+          ],
+          "errores": ["Bajar de más (molesta el hombro).", "Encoger los hombros hacia las orejas.", "Abrir mucho los codos."],
+          "porque": "Pecho bajo y tríceps con tu propio peso. Si te molesta el codo, usá más asistencia o cambialo por press cerrado.",
+          "video": { "url": "https://www.youtube.com/watch?v=DcS44T6Y5GQ", "canal": "Powerexplosive", "titulo": "FONDOS en PARALELAS || ATENTO a la TÉCNICA" },
+          "anim": {
+            "vista": "lado", "cerca": "I",
+            "descripcion": "Fondos en paralelas de costado: baja en 2 segundos hasta 90° de codo y sube.",
+            "encuadre": "-110 -215 220 225",
+            "equipo": [{ "tipo": "poligono", "puntos": [[3, 0], [9, 0], [9, 100], [3, 100]] }, { "tipo": "poligono", "puntos": [[-6, 98], [18, 98], [18, 102], [-6, 102]] }],
+            "trabaja": ["pecho", { "seg": "brazoI", "lado": "atras" }],
+            "poses": [
+              { "fase": "Bajá en 2 s", "dur": 2, "pelvis": [-2, 104], "tronco": 8, "pieI": [-30, 62], "pieD": [-26, 60], "rodillaI": 1, "rodillaD": 1, "pieAngI": 200, "pieAngD": 200, "manoI": [6, 100], "manoD": [6, 100], "codoI": -1, "codoD": -1 },
+              { "fase": "Subí sin encoger hombros", "pausa": 0.2, "dur": 1, "pelvis": [-8, 76], "tronco": 22, "pieI": [-36, 34], "pieD": [-32, 32], "rodillaI": 1, "rodillaD": 1, "pieAngI": 200, "pieAngD": 200, "manoI": [6, 100], "manoD": [6, 100], "codoI": -1, "codoD": -1 }
+            ]
+          }
+        },
+        {
+          "id": "superserie-triceps-soga-laterales", "nombre": "Superserie: tríceps en polea con soga + elevaciones laterales", "grupo": "torso",
+          "series": ["3×12", "4×12", "3×15"], "por": "cada uno", "superserie": ["triceps-polea-soga", "elevaciones-laterales"], "descanso": 60,
+          "pasos": [
+            "Hacé las repeticiones de tríceps y, sin descansar, las de elevaciones laterales.",
+            "Recién después de los dos, descansá.",
+            "Abajo de cada muñeco tenés cómo hacer cada ejercicio."
+          ],
+          "errores": ["Descansar entre los dos ejercicios.", "Perder la técnica por apurarte."],
+          "porque": "Ahorra tiempo y suma volumen de tríceps y hombro en una sesión larga."
+        },
+        {
+          "id": "plancha-lateral", "nombre": "Plancha lateral", "grupo": "core",
+          "series": ["3×30 s", "3×40 s", "3×45 s"], "por": "por lado", "extraIzq": true, "notaExtra": "+1 apoyado sobre el izquierdo", "descanso": 30,
+          "pasos": [
+            "Acostado de costado, codo justo debajo del hombro.",
+            "Subí la cadera hasta que cabeza, cadera y pies queden en línea recta.",
+            "Aguantá el tiempo sin que baje la cadera.",
+            "Hacé una serie más apoyado sobre el lado izquierdo."
+          ],
+          "errores": ["Dejar caer la cadera.", "Codo adelantado respecto del hombro.", "Girar el pecho hacia el piso."],
+          "porque": "Tu pelvis se inclina apoyado en el izquierdo. La plancha lateral, sobre todo de ese lado, fortalece el glúteo medio y los oblicuos que la mantienen derecha.",
+          "video": { "url": "https://www.youtube.com/watch?v=qPtIWsI0Fws", "canal": "Fisiovalle Fisioterapia y Osteopatía", "titulo": "Ejercicio de plancha lateral" },
+          "anim": {
+            "vista": "lado", "cerca": "I",
+            "descripcion": "Plancha lateral: sube la cadera y mantiene el cuerpo en línea recta.",
+            "trabaja": [{ "seg": "tronco" }, "gluteoI"],
+            "guias": [{ "tipo": "linea", "de": "pieI", "a": "cuello", "texto": "línea recta" }],
+            "poses": [
+              { "fase": "Subí la cadera", "dur": 1, "pelvis": [0, 13], "tronco": 74, "pieI": [-84, 3], "pieD": [-84, 5], "pieAngI": 90, "pieAngD": 90, "brazoI": [0, 90], "manoD": [4, 26], "codoD": "arriba" },
+              { "fase": "Mantené la línea recta", "pausa": 3, "dur": 1, "pelvis": [0, 19], "tronco": 74, "pieI": [-84, 3], "pieD": [-84, 5], "pieAngI": 90, "pieAngD": 90, "brazoI": [0, 90], "manoD": [4, 32], "codoD": "arriba" }
+            ]
+          }
+        },
+        {
+          "id": "crunch-polea", "nombre": "Crunch en polea", "grupo": "core",
+          "series": ["3×12–15", "3×12–15", "3×12–15"], "descanso": 45,
+          "pasos": [
+            "De rodillas frente a la polea alta, con la soga a los costados de la cabeza.",
+            "La cadera queda quieta: enrollá la columna llevando el pecho hacia las rodillas.",
+            "Apretá el abdomen abajo y volvé despacio, en 2 segundos."
+          ],
+          "errores": ["Tirar con los brazos.", "Sentarte sobre los talones (trabaja la cadera, no el abdomen).", "Arquear la zona lumbar al volver."],
+          "porque": "Abdomen fuerte para el remate y para cuidar tu zona lumbar.",
+          "video": { "url": "https://www.youtube.com/watch?v=ui3iEsYbXtI", "canal": "Galvistrainer", "titulo": "Crunches abdominales en polea - Técnica correcta - Galvistrainer" },
+          "anim": {
+            "vista": "lado", "cerca": "I",
+            "descripcion": "Crunch en polea de rodillas: enrolla el tronco hacia abajo y vuelve en 2 segundos.",
+            "equipo": [{ "tipo": "polea", "x": -26, "alto": 190, "mano": "manoI" }],
+            "trabaja": ["abdomen"],
+            "poses": [
+              { "fase": "Enrollá hacia abajo", "dur": 1.5, "pelvis": [0, 46], "tronco": 10, "cabeza": 10, "pieI": [-40, 1], "pieD": [-40, 1], "rodillaI": 1, "rodillaD": 1, "pieAngI": 180, "pieAngD": 180, "manoI": [12, 112], "manoD": [12, 112], "codoI": 1, "codoD": 1 },
+              { "fase": "Volvé en 2 s", "pausa": 0.5, "dur": 2, "pelvis": [0, 46], "tronco": 68, "cabeza": 20, "pieI": [-40, 1], "pieD": [-40, 1], "rodillaI": 1, "rodillaD": 1, "pieAngI": 180, "pieAngD": 180, "manoI": [44, 76], "manoD": [44, 76], "codoI": 1, "codoD": 1 }
+            ]
+          }
+        }
       ]
     },
     "B": {
@@ -149,7 +392,7 @@
             "Usar tanto peso que no podés bajar lento."
           ],
           "porque": "Hombros más anchos y fuertes para el remate y la bandeja. En tu evaluación el hombro derecho sube menos: mirá que los dos brazos lleguen a la misma altura y no compenses con el cuerpo.",
-          "video": null,
+          "video": { "url": "https://www.youtube.com/watch?v=HldK_19NDEI", "canal": "Fit Generation", "titulo": "Cómo desarrollar HOMBROS más ANCHOS Y REDONDOS (Elevaciones Laterales)" },
           "anim": {
             "vista": "frente",
             "descripcion": "Elevaciones laterales de frente: sube los brazos en 1 segundo hasta la altura de los hombros y baja en 2 o 3.",
@@ -172,6 +415,30 @@
       ]
     }
   },
+
+  "extras": [
+    {
+      "id": "triceps-polea-soga", "nombre": "Tríceps en polea con soga", "grupo": "torso",
+      "pasos": [
+        "Parado frente a la polea alta, codos pegados al cuerpo.",
+        "Estirá los brazos hacia abajo en 1 segundo, abriendo la soga al final.",
+        "Apretá abajo medio segundo y volvé en 2 segundos sin mover los codos."
+      ],
+      "errores": ["Mover los codos hacia adelante y atrás.", "Inclinarte para empujar con el cuerpo.", "Subir las manos más arriba del pecho."],
+      "porque": "Tríceps más grandes: son casi dos tercios del brazo.",
+      "video": { "url": "https://www.youtube.com/watch?v=HAS8uy73HqM", "canal": "Galvistrainer", "titulo": "Extensión de Tríceps en Polea - Técnica Perfecta- Galvistrainer" },
+      "anim": {
+        "vista": "lado", "cerca": "I",
+        "descripcion": "Tríceps en polea con soga: estira los brazos en 1 segundo y vuelve en 2 con los codos quietos.",
+        "equipo": [{ "tipo": "polea", "x": 56, "alto": 188, "mano": "manoI" }],
+        "trabaja": [{ "seg": "brazoI", "lado": "atras" }],
+        "poses": [
+          { "fase": "Estirá en 1 s", "dur": 1, "pelvis": [0, 88], "tronco": 10, "pieI": [4, 0], "pieD": [-2, 0], "brazoI": [6, 125], "brazoD": [6, 125] },
+          { "fase": "Volvé en 2 s", "pausa": 0.5, "dur": 2, "pelvis": [0, 88], "tronco": 10, "pieI": [4, 0], "pieD": [-2, 0], "brazoI": [6, 4], "brazoD": [6, 4] }
+        ]
+      }
+    }
+  ],
 
   "cincoDias": {
     "activo": false,

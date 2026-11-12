@@ -61,7 +61,12 @@ export function esqueleto(pose, vista) {
     }
     // Pierna: por pie [x,y] (IK) con rodilla ±1
     const pie = pose['pie' + lado] || [cadera[0] + (frente ? sg * 3 : 0), 0];
-    const rodilla = ik(cadera, pie, L.muslo, L.pierna, pose['rodilla' + lado] ?? 1);
+    // De frente, la flexión de rodilla va "hacia la cámara": la rodilla queda arriba del pie (no se abre al costado).
+    let rodilla;
+    if (frente) {
+      const t = Math.min(1, Math.hypot(cadera[0] - pie[0], cadera[1] - pie[1]) / (L.muslo + L.pierna));
+      rodilla = [pie[0] + (cadera[0] - pie[0]) * 0.5 * t * t, pie[1] + (cadera[1] - pie[1]) * 0.5];
+    } else rodilla = ik(cadera, pie, L.muslo, L.pierna, pose['rodilla' + lado] ?? 1);
     const pa = pose['pieAng' + lado] ?? 0; // 0 = apoyado plano hacia adelante
     const punta = frente ? [pie[0] + sg * 4, pie[1]] : [pie[0] + L.pie * Math.cos(rad(pa)), pie[1] + L.pie * Math.sin(rad(pa))];
     Object.assign(J, { ['hombro' + lado]: hombro, ['codo' + lado]: codo, ['mano' + lado]: mano, ['cadera' + lado]: cadera, ['rodilla' + lado]: rodilla, ['pie' + lado]: pie, ['punta' + lado]: punta });
@@ -86,7 +91,7 @@ function linea(g, a, b, cls, w) { const [x1, y1] = P(a), [x2, y2] = P(b); g.appe
 
 function dibujarEquipo(g, eq, J, vista, delante) {
   for (const e of eq || []) {
-    const adelante = e.delante ?? ['mancuerna', 'barra'].includes(e.tipo);
+    const adelante = e.delante ?? ['mancuerna', 'barra', 'placa', 'pelota'].includes(e.tipo);
     if (adelante !== delante) continue;
     if (e.tipo === 'banco' || e.tipo === 'cajon' || e.tipo === 'maquina') {
       const h = e.alto ?? 42, w = e.ancho ?? 40, x = e.x ?? -60;
@@ -105,6 +110,17 @@ function dibujarEquipo(g, eq, J, vista, delante) {
       if (vista === 'frente') { g.appendChild(el('line', { x1: x - 70, y1: y, x2: x + 70, y2: y, class: 'eq-barra-l' })); for (const s of [-1, 1]) g.appendChild(el('rect', { x: x + s * 62 - 4, y: y - 18, width: 8, height: 36, rx: 2, class: 'eq-peso' })); }
       else { g.appendChild(el('circle', { cx: x, cy: y, r: 17, class: 'eq-disco' })); g.appendChild(el('circle', { cx: x, cy: y, r: 3, class: 'eq-centro' })); }
     }
+    if (e.tipo === 'poligono') { // forma fija: banco inclinado, máquina, cajón, escalón, paralela…
+      const pts = (e.puntos || []).map((p) => P(p).join(',')).join(' ');
+      g.appendChild(el('polygon', { points: pts, class: 'eq' + (e.oscuro ? ' eq-oscuro' : '') }));
+    }
+    if (e.tipo === 'placa') { // pieza que sigue una articulación: plataforma de prensa, almohadilla, manija
+      const c = J[e.en]; if (!c) continue;
+      const a = rad(e.ang ?? 0), l = (e.largo ?? 30) / 2, dx = e.dx ?? 0, dy = e.dy ?? 0;
+      const p1 = [c[0] + dx - l * Math.sin(a), c[1] + dy + l * Math.cos(a)], p2 = [c[0] + dx + l * Math.sin(a), c[1] + dy - l * Math.cos(a)];
+      linea(g, p1, p2, 'eq-placa', e.grosor ?? 6);
+    }
+    if (e.tipo === 'pelota') { const c = J[e.en || 'manos']; const [x, y] = P([c[0] + (e.dx ?? 0), c[1] + (e.dy ?? 0)]); g.appendChild(el('circle', { cx: x, cy: y, r: e.r ?? 10, class: 'eq-pelota' })); }
     if (e.tipo === 'polea') {
       const top = [e.x ?? 70, e.alto ?? 190];
       g.appendChild(el('rect', { x: top[0] - 4, y: -top[1], width: 8, height: top[1], class: 'eq eq-maquina' }));
@@ -140,6 +156,14 @@ function dibujarMusculos(g, trabaja, J) {
     if (s.seg === 'gluteo' || s.seg === 'gluteoI' || s.seg === 'gluteoD') {
       const c = J[s.seg === 'gluteoD' ? 'caderaD' : 'caderaI'] || J.pelvis;
       const [x, y] = P([c[0] - 5, c[1] - 2]); g.appendChild(el('circle', { cx: x, cy: y, r: 8, class: 'musculo' })); continue;
+    }
+    if (s.seg === 'pecho' || s.seg === 'espalda' || s.seg === 'abdomen') {
+      // Sobre el tronco, del lado que corresponde: el "frente" sale girando el tronco 90° hacia donde mira el muñeco.
+      const t = [J.cuello[0] - J.pelvis[0], J.cuello[1] - J.pelvis[1]], n = Math.hypot(t[0], t[1]) || 1;
+      const fr = [t[1] / n, -t[0] / n], k = s.seg === 'espalda' ? -6 : 6, u = s.seg === 'abdomen' ? 0.35 : s.seg === 'pecho' ? 0.75 : 0.6;
+      const a = [J.pelvis[0] + t[0] * (u - 0.17) + fr[0] * k, J.pelvis[1] + t[1] * (u - 0.17) + fr[1] * k];
+      const b = [J.pelvis[0] + t[0] * (u + 0.17) + fr[0] * k, J.pelvis[1] + t[1] * (u + 0.17) + fr[1] * k];
+      linea(g, a, b, 'musculo-l', 7); continue;
     }
     if (s.seg === 'hombroI' || s.seg === 'hombroD') { const [x, y] = P(J[s.seg]); g.appendChild(el('circle', { cx: x, cy: y, r: 7, class: 'musculo' })); continue; }
     const seg = SEG[s.seg]; if (!seg) continue;

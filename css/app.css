@@ -76,6 +76,9 @@ button { cursor: pointer; }
 .muneco .eq-barra-l { stroke: var(--peso); stroke-width: 3; }
 .muneco .eq-centro { fill: var(--equipo); }
 .muneco .eq-cable { stroke: var(--faint); stroke-width: 1.2; }
+.muneco .eq-placa { stroke: var(--peso); stroke-linecap: round; opacity: .75; }
+.muneco .eq-pelota { fill: var(--acento); opacity: .85; }
+.muneco .eq-oscuro { fill: var(--faint); opacity: .5; }
 .muneco .musculo-l { stroke: var(--acento); stroke-linecap: round; opacity: .92; }
 .muneco .musculo { fill: var(--acento); opacity: .92; }
 .muneco .guia { stroke: var(--guia); stroke-dasharray: 4 3; }
@@ -144,3 +147,37 @@ details.info p { margin: 0; }
 .toast { position: fixed; left: 50%; bottom: calc(env(safe-area-inset-bottom) + 96px); transform: translateX(-50%); background: #1A2620; color: #fff; border-radius: 14px; padding: 12px 16px; font-weight: 600; z-index: 60; max-width: calc(100% - 32px); }
 
 @media (prefers-reduced-motion: reduce) { .crono { transition: none; } }
+
+/* ---------- Hoy ---------- */
+.chips-claro .chip { border-color: var(--line); background: var(--card-2); color: var(--ink); }
+.chips-claro .chip[aria-pressed="true"] { background: var(--verde); color: var(--verde-ink); border-color: var(--verde); }
+.chips-claro { margin-left: -16px; margin-right: -16px; padding: 0 16px; }
+.lista { display: grid; gap: 2px; }
+.lista-item { display: grid; grid-template-columns: 26px 1fr auto; gap: 10px; align-items: center; padding: 10px 0; border-top: 1px solid var(--line); font-size: 15px; }
+.lista .ej-n + .lista-item { border-top: 0; }
+.lista .lista-item .num:first-child { color: var(--muted); font-weight: 700; }
+.lista-item b { font-size: 15px; }
+.lista-item .izq { color: var(--acento); font-weight: 700; }
+.lista-item.saltado { opacity: .35; text-decoration: line-through; }
+.fila-torneo { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.fila-torneo input { width: 28px; height: 28px; accent-color: var(--verde-2); }
+.fila-torneo small { color: var(--muted); }
+.nav .in.uno { grid-template-columns: 1fr; }
+.btn.grande { min-height: 64px; font-size: 19px; }
+.ej-tit { margin: 2px 0 0; font-size: 24px; line-height: 1.1; letter-spacing: -.01em; }
+
+/* ---------- Entrada en calor ---------- */
+.serie.calor { display: flex; justify-content: space-between; align-items: center; text-align: left; border: 0; width: 100%; padding: 12px 12px 12px 16px; font: inherit; color: inherit; }
+.calor-txt b { display: block; font-size: 17px; }
+.calor-txt small { color: var(--muted); font-size: 14px; }
+
+/* ---------- Superserie y video ---------- */
+.doble { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.doble .demo { padding: 6px 4px 8px; }
+.doble .fase { font-size: 14px; min-height: 20px; }
+.doble .leyenda { font-size: 10px; gap: 8px; }
+.demo-tit { font-size: 13px; font-weight: 700; text-align: center; padding: 4px 4px 0; }
+.sin-anim { aspect-ratio: 1 / 1; max-height: 260px; display: grid; place-items: center; color: var(--faint); font-weight: 600; }
+.btn.video { width: 100%; margin: 0 0 10px; flex-direction: column; gap: 0; }
+.btn.video small { font-size: 12px; font-weight: 500; color: var(--muted); }
+.lista-item.texto { grid-template-columns: 1fr; border-top: 0; color: var(--muted); }
