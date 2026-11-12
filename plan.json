@@ -1,0 +1,191 @@
+{
+  "version": "2026-11-12a",
+  "nombre": "Plan Gabriel · Masa muscular + pádel",
+  "semanas": 12,
+  "diasPorSemana": 3,
+  "diasSugeridos": ["lunes", "miércoles", "viernes"],
+  "duracion": "1 h 45 a 2 h",
+  "etapas": [
+    { "id": 1, "nombre": "Adaptación", "semanas": [1, 4], "tanque": "Que te queden 3 repeticiones en el tanque", "saltos": "Solo aterrizajes controlados" },
+    { "id": 2, "nombre": "Volumen", "semanas": [5, 8], "tanque": "Que te queden 2 en el tanque", "saltos": "Saltos clavando la caída" },
+    { "id": 3, "nombre": "Fuerza, músculo y potencia", "semanas": [9, 12], "tanque": "Que te queden 1 o 2 en el tanque", "saltos": "Saltos reactivos" }
+  ],
+  "descarga": { "semanas": [4, 8, 12], "regla": "Una serie menos en cada ejercicio (mínimo 2)" },
+  "notas": [
+    "«+1 izq.» = una serie extra con la pierna izquierda.",
+    "Siempre empezá con la izquierda."
+  ],
+  "progresion": { "piernas": [2.5, 5], "torso": [1, 2], "torsoPor": "mancuerna" },
+
+  "calentamiento": {
+    "minutos": 12,
+    "items": [
+      { "id": "cal-bici", "nombre": "Bici o elíptico", "dosis": "5 min" },
+      { "id": "cal-rotaciones-columna", "nombre": "Rotaciones de columna en cuatro patas", "dosis": "8 por lado" },
+      { "id": "cal-wall-slides", "nombre": "Deslizamientos en la pared (wall slides)", "dosis": "10" },
+      { "id": "cal-cadera-9090", "nombre": "Cadera 90/90", "dosis": "6 cambios por lado" },
+      { "id": "cal-caminata-banda", "nombre": "Caminata lateral con banda", "dosis": "2×10 pasos por lado" },
+      { "id": "cal-puente-gluteo", "nombre": "Puente de glúteo", "dosis": "2×10" },
+      { "id": "cal-dead-bug", "nombre": "Dead bug", "dosis": "2×8 por lado" }
+    ]
+  },
+
+  "dias": {
+    "A": {
+      "nombre": "Piernas, pecho y tríceps",
+      "ejercicios": [
+        { "id": "caida-cajon-clavar", "nombre": "Caída desde cajón de 30 cm a clavar", "grupo": "piernas", "series": ["3×5", "3×5", "3×5"], "nota": ["", "En la izquierda sola", "Con rebote rápido"], "descanso": 60 },
+        { "id": "sentadilla", "nombre": "Sentadilla", "nombreEtapa": ["Sentadilla goblet", "Sentadilla con barra", "Sentadilla con barra"], "grupo": "piernas", "series": ["3×10", "4×8–10", "4×6–8"], "descanso": 150 },
+        { "id": "prensa-piernas", "nombre": "Prensa de piernas", "grupo": "piernas", "series": ["3×12", "4×10–12", "3×10"], "descanso": 120 },
+        {
+          "id": "sentadilla-bulgara", "nombre": "Sentadilla búlgara", "grupo": "piernas",
+          "series": ["3×8", "3×10", "3×8"], "nota": ["", "", "Más peso"], "por": "por pierna", "extraIzq": true, "descanso": 90,
+          "pasos": [
+            "Pie de atrás apoyado en el banco, empeine para abajo.",
+            "Pie de adelante a un paso largo: al bajar, la rodilla queda sobre el pie.",
+            "Bajá en 3 segundos hasta que la rodilla de atrás casi toque el piso.",
+            "Torso apenas inclinado hacia adelante, mancuernas colgando.",
+            "Subí empujando con todo el pie de adelante."
+          ],
+          "errores": [
+            "Que la rodilla de adelante se vaya hacia adentro.",
+            "Pie de adelante muy cerca del banco: se levanta el talón.",
+            "Bajar rápido y rebotar abajo."
+          ],
+          "porque": "Tu cuádriceps izquierdo tiene 30% menos fuerza que el derecho y la pelvis se te inclina apoyado en el izquierdo. Trabajar una pierna por vez, empezando por la izquierda y con una serie extra, iguala las dos piernas.",
+          "video": null,
+          "anim": {
+            "vista": "lado", "cerca": "I",
+            "descripcion": "Sentadilla búlgara de costado: pie de atrás en el banco, baja en 3 segundos y sube en 1.",
+            "equipo": [{ "tipo": "banco", "x": -64, "alto": 42, "ancho": 36 }, { "tipo": "mancuerna" }],
+            "trabaja": [{ "seg": "musloI", "lado": "frente" }, "gluteoI"],
+            "guias": [{ "tipo": "vertical", "desde": "puntaI", "largo": 58, "texto": "rodilla sobre el pie" }],
+            "poses": [
+              { "fase": "Bajá en 3 s", "dur": 3, "pelvis": [-4, 82], "tronco": 8, "pieI": [24, 0], "rodillaI": 1, "pieD": [-60, 44], "rodillaD": "abajo", "pieAngD": 180, "brazoI": [2, 2], "brazoD": [2, 2] },
+              { "fase": "Subí fuerte", "pausa": 0.4, "dur": 1, "pelvis": [-10, 50], "tronco": 15, "pieI": [24, 0], "rodillaI": 1, "pieD": [-60, 44], "rodillaD": "abajo", "pieAngD": 180, "brazoI": [4, 4], "brazoD": [4, 4] }
+            ]
+          }
+        },
+        { "id": "extension-cuadriceps-una-pierna", "nombre": "Extensión de cuádriceps a una pierna", "grupo": "piernas", "series": ["3×12", "3×12–15", "3×12"], "extraIzq": true, "descanso": 60 },
+        { "id": "gemelos-de-pie", "nombre": "Gemelos de pie", "grupo": "piernas", "series": ["3×15", "4×10–15", "4×12"], "descanso": 60 },
+        { "id": "press-banca", "nombre": "Press de banca", "nombreEtapa": ["Press de banca con mancuernas", "Press de banca con barra", "Press de banca con barra"], "grupo": "torso", "series": ["3×10", "4×8–10", "4×6–8"], "descanso": 120 },
+        { "id": "press-inclinado-mancuernas", "nombre": "Press inclinado con mancuernas", "grupo": "torso", "series": ["3×10", "4×10", "3×8–10"], "descanso": 90 },
+        { "id": "fondos-paralelas", "nombre": "Fondos en paralelas (asistidos si hace falta)", "grupo": "torso", "series": ["3×8–10", "3×8–12", "3×10–12"], "descanso": 90 },
+        { "id": "superserie-triceps-soga-laterales", "nombre": "Superserie: tríceps en polea con soga + elevaciones laterales", "grupo": "torso", "series": ["3×12", "4×12", "3×15"], "por": "cada uno", "superserie": ["triceps-polea-soga", "elevaciones-laterales"], "descanso": 60 },
+        { "id": "plancha-lateral", "nombre": "Plancha lateral", "grupo": "core", "series": ["3×30 s", "3×40 s", "3×45 s"], "por": "por lado", "extraIzq": true, "notaExtra": "+1 apoyado sobre el izquierdo", "descanso": 30 },
+        { "id": "crunch-polea", "nombre": "Crunch en polea", "grupo": "core", "series": ["3×12–15", "3×12–15", "3×12–15"], "descanso": 45 }
+      ]
+    },
+    "B": {
+      "nombre": "Espalda, bíceps, isquios, glúteo y gemelos",
+      "ejercicios": [
+        { "id": "salto-lateral-skater", "nombre": "Salto lateral (skater) a clavar", "grupo": "piernas", "series": ["3×5", "3×6", "3×6"], "nota": ["", "Más lejos", "Sin pausa"], "por": "por lado", "descanso": 60 },
+        {
+          "id": "peso-muerto-rumano", "nombre": "Peso muerto rumano con barra", "grupo": "piernas",
+          "series": ["3×10", "4×8–10", "4×6–8"], "descanso": 150,
+          "pasos": [
+            "Parado con la barra pegada a los muslos, pies al ancho de la cadera.",
+            "Rodillas apenas flexionadas y fijas durante todo el movimiento.",
+            "Mandá la cadera para atrás y bajá la barra pegada a las piernas, en 3 segundos.",
+            "Bajá hasta sentir que tiran los isquios (más o menos a mitad de la tibia).",
+            "Subí empujando la cadera hacia adelante y apretando los glúteos."
+          ],
+          "errores": [
+            "Redondear la espalda para bajar más.",
+            "Separar la barra de las piernas.",
+            "Doblar las rodillas como en una sentadilla."
+          ],
+          "porque": "Tus isquios están débiles comparados con el cuádriceps (relación 0,34 en la izquierda y 0,22 en la derecha; lo ideal es 0,5–0,6). Fortalecerlos protege la rodilla en los frenos y cambios de dirección del pádel. Si molesta la zona lumbar, bajá el peso y cortá el recorrido.",
+          "video": null,
+          "anim": {
+            "vista": "lado", "cerca": "I",
+            "descripcion": "Peso muerto rumano de costado: cadera atrás, espalda recta, baja en 3 segundos.",
+            "equipo": [{ "tipo": "barra" }],
+            "trabaja": [{ "seg": "musloI", "lado": "atras" }, "gluteoI"],
+            "guias": [{ "tipo": "segmento", "seg": "tronco", "texto": "espalda recta" }],
+            "poses": [
+              { "fase": "Bajá en 3 s, cadera atrás", "dur": 3, "pelvis": [0, 86], "tronco": 2, "pieI": [6, 0], "pieD": [6, 0], "rodillaI": 1, "rodillaD": 1, "manoI": [9, 80], "manoD": [9, 80], "codoI": -1, "codoD": -1 },
+              { "fase": "Subí apretando glúteos", "pausa": 0.5, "dur": 1.5, "pelvis": [-22, 80], "tronco": 70, "pieI": [6, 0], "pieD": [6, 0], "rodillaI": 1, "rodillaD": 1, "manoI": [13, 44], "manoD": [13, 44], "codoI": -1, "codoD": -1 }
+            ]
+          }
+        },
+        { "id": "hip-thrust", "nombre": "Hip thrust", "grupo": "piernas", "series": ["3×10", "4×8–10", "3×10"], "descanso": 90 },
+        { "id": "curl-femoral-maquina", "nombre": "Curl femoral en máquina", "grupo": "piernas", "series": ["3×12", "4×10–12", "3×12"], "descanso": 60 },
+        { "id": "nordico-asistido", "nombre": "Nórdico asistido", "grupo": "piernas", "series": ["3×4–6", "3×5–6", "3×6"], "desdeSemana": 3, "descanso": 90 },
+        { "id": "gemelos-sentado", "nombre": "Gemelos sentado", "grupo": "piernas", "series": ["3×15", "4×12–15", "3×15"], "descanso": 60 },
+        { "id": "dominadas-o-jalon", "nombre": "Dominadas asistidas o jalón al pecho", "grupo": "torso", "series": ["4×8–10", "4×8–10", "4×6–8"], "descanso": 120 },
+        { "id": "remo-barra", "nombre": "Remo con barra", "grupo": "torso", "series": ["3×10", "4×8–10", "4×8"], "descanso": 120 },
+        { "id": "remo-mancuerna-un-brazo", "nombre": "Remo con mancuerna a un brazo", "grupo": "torso", "series": ["3×10", "3×10", "3×12"], "por": "por lado", "descanso": 60 },
+        { "id": "face-pull", "nombre": "Face pull", "grupo": "torso", "series": ["3×15", "3×15", "3×15"], "descanso": 45 },
+        { "id": "curl-biceps-barra", "nombre": "Curl de bíceps con barra", "grupo": "torso", "series": ["3×10", "4×8–10", "3×10"], "descanso": 75 },
+        { "id": "curl-martillo", "nombre": "Curl martillo", "grupo": "torso", "series": ["3×12", "3×12", "3×12–15"], "descanso": 60 },
+        { "id": "extension-muneca-excentrica", "nombre": "Extensión de muñeca excéntrica", "grupo": "torso", "series": ["3×15", "3×15", "3×15"], "notaExtra": "Para el codo: bajada de 4 s", "descanso": 45 },
+        { "id": "elevacion-rodillas-colgado", "nombre": "Elevación de rodillas colgado", "grupo": "core", "series": ["3×10", "3×12", "3×15"], "descanso": 60 }
+      ]
+    },
+    "C": {
+      "nombre": "Hombros, torso, brazos, una pierna y potencia",
+      "aviso": "Antes de un torneo, salteá del 1 al 5.",
+      "saltearAntesTorneo": [1, 2, 3, 4, 5],
+      "ejercicios": [
+        { "id": "salto-cajon", "nombre": "Salto al cajón", "nombreEtapa": ["Subida explosiva al cajón", "Salto al cajón", "Salto al cajón"], "grupo": "piernas", "series": ["3×5", "3×5", "4×5"], "descanso": 90 },
+        { "id": "step-up-cajon-alto", "nombre": "Subida al cajón alto (step-up)", "grupo": "piernas", "series": ["3×8", "3×10", "3×8"], "nota": ["", "", "Más peso"], "por": "por pierna", "extraIzq": true, "descanso": 90 },
+        { "id": "sentadilla-una-pierna-banco", "nombre": "Sentadilla a una pierna hasta un banco", "grupo": "piernas", "series": ["3×6–8", "3×8", "3×8"], "nota": ["", "", "Con peso"], "por": "por pierna", "descanso": 90 },
+        { "id": "plancha-copenhagen", "nombre": "Plancha Copenhagen", "grupo": "core", "series": ["3×20 s", "3×30 s", "3×30 s"], "nota": ["", "", "Pierna estirada"], "por": "por lado", "descanso": 45 },
+        { "id": "gemelos-prensa", "nombre": "Gemelos en prensa", "grupo": "piernas", "series": ["3×15", "3×12–15", "3×15"], "descanso": 60 },
+        { "id": "press-hombros-mancuernas", "nombre": "Press de hombros sentado con mancuernas", "grupo": "torso", "series": ["3×10", "4×8–10", "4×6–8"], "descanso": 120 },
+        {
+          "id": "elevaciones-laterales", "nombre": "Elevaciones laterales", "grupo": "torso",
+          "series": ["3×15", "4×12–15", "4×15"], "descanso": 60,
+          "pasos": [
+            "Parado, mancuernas al costado, codos apenas flexionados.",
+            "Subí los brazos hacia los costados en 1 segundo, como si abrieras las alas.",
+            "Pará a la altura de los hombros, con los codos un poco más altos que las manos.",
+            "Bajá despacio, en 2 o 3 segundos."
+          ],
+          "errores": [
+            "Hacer envión con el cuerpo.",
+            "Subir más arriba de los hombros o encoger el cuello.",
+            "Usar tanto peso que no podés bajar lento."
+          ],
+          "porque": "Hombros más anchos y fuertes para el remate y la bandeja. En tu evaluación el hombro derecho sube menos: mirá que los dos brazos lleguen a la misma altura y no compenses con el cuerpo.",
+          "video": null,
+          "anim": {
+            "vista": "frente",
+            "descripcion": "Elevaciones laterales de frente: sube los brazos en 1 segundo hasta la altura de los hombros y baja en 2 o 3.",
+            "equipo": [{ "tipo": "mancuerna" }],
+            "trabaja": ["hombroI", "hombroD"],
+            "guias": [{ "tipo": "horizontal", "en": "cuello", "largo": 82, "texto": "altura del hombro" }],
+            "poses": [
+              { "fase": "Subí en 1 s", "dur": 1, "pelvis": [0, 88], "pieI": [-12, 0], "pieD": [12, 0], "brazoI": [-12, -8], "brazoD": [12, 8] },
+              { "fase": "Bajá en 2–3 s", "pausa": 0.5, "dur": 2.5, "pelvis": [0, 88], "pieI": [-12, 0], "pieD": [12, 0], "brazoI": [-86, -76], "brazoD": [86, 76] }
+            ]
+          }
+        },
+        { "id": "press-inclinado-maquina-barra", "nombre": "Press inclinado en máquina o con barra", "grupo": "torso", "series": ["3×10", "4×8–10", "3×8"], "descanso": 120 },
+        { "id": "remo-polea-baja", "nombre": "Remo en polea baja", "grupo": "torso", "series": ["3×10", "4×10", "3×10–12"], "descanso": 90 },
+        { "id": "jalon-agarre-cerrado", "nombre": "Jalón con agarre cerrado", "grupo": "torso", "series": ["3×10–12", "3×10–12", "3×12"], "descanso": 75 },
+        { "id": "superserie-curl-inclinado-triceps-cabeza", "nombre": "Superserie: curl inclinado + tríceps sobre la cabeza en polea", "grupo": "torso", "series": ["3×12", "4×10–12", "3×12"], "por": "cada uno", "superserie": ["curl-inclinado", "triceps-sobre-cabeza-polea"], "descanso": 75 },
+        { "id": "equilibrio-pierna-izquierda", "nombre": "Equilibrio en la pierna izquierda", "grupo": "piernas", "series": ["3×30 s", "3×30 s", "3×30 s"], "nota": ["", "En colchoneta", "Pasándote una pelota"], "descanso": 30 },
+        { "id": "lanzamiento-rotacional-medicinal", "nombre": "Lanzamiento rotacional de pelota medicinal", "grupo": "core", "series": ["–", "3×6", "3×8"], "por": "por lado", "desdeSemana": 5, "descanso": 60 },
+        { "id": "pallof-press", "nombre": "Pallof press", "grupo": "core", "series": ["3×10", "3×10", "3×12"], "por": "por lado", "descanso": 45 }
+      ]
+    }
+  },
+
+  "cincoDias": {
+    "activo": false,
+    "nota": "Preparado para más adelante. Por ahora se usa el plan de 3 días.",
+    "dias": [
+      { "dia": "lunes", "foco": "Pecho, hombros y tríceps" },
+      { "dia": "martes", "foco": "Cuádriceps y gemelos" },
+      { "dia": "miércoles", "foco": "Espalda y bíceps" },
+      { "dia": "jueves", "foco": "Isquios, glúteo, gemelos y saltos" },
+      { "dia": "viernes", "foco": "Hombros, brazos y core" }
+    ]
+  },
+
+  "comida": { "proteinaDia": 170, "comidas": 4, "botones": [20, 30, 40] },
+  "pesoCorporal": { "inicial": 85, "subidaSemanal": [0.25, 0.5], "aviso": "Estás subiendo más de 0,5 kg por semana: puede ser grasa. Revisá la comida." },
+  "molestias": ["codo", "zona lumbar", "rodilla", "otro"]
+}

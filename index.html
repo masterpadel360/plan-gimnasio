@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Gimnasio</title>
+<meta name="theme-color" content="#1F3D30">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Gimnasio">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+<div id="app"></div>
+<div class="crono" id="crono" role="timer" aria-live="polite">
+  <div class="in">
+    <div class="lbl" id="cronoLbl">Descanso</div>
+    <div class="t" id="cronoT">0:00</div>
+    <div class="sig" id="cronoSig"></div>
+    <div class="acc"><button data-act="mas15">+15 s</button><button data-act="saltar">Saltar</button></div>
+  </div>
+</div>
+<script type="module" src="js/app.js"></script>
+</body>
+</html>
