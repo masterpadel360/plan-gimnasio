@@ -1,14 +1,16 @@
 // Plan de gimnasio — Hoy, entrada en calor y sesión completa del día.
 // El plan se lee de plan.json (siempre la última versión). Los registros se guardan por id de ejercicio.
-import { animar } from './muneco.js?v=202611121256';
+import { animar } from './muneco.js?v=202611121301';
+import { iniciarNube, entrar, salir, conectado, mailActual, marcarCambio, estado as nube } from './nube.js?v=202611121301';
 
 const $ = (s, r = document) => r.querySelector(s);
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const hoyISO = () => { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`; };
 const leer = (k, d) => { try { return JSON.parse(localStorage.getItem(k)) ?? d; } catch { return d; } };
-const guardar = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch { /* sin espacio */ } };
+// Todo lo que guardo (menos la copia del plan) también se sube a la nube.
+const guardar = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch { /* sin espacio */ } if (k !== 'gym.plan') marcarCambio(); };
 const TILDE = '<svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
-const DIAS = ['A', 'B', 'C'];
+let DIAS = ['A', 'B', 'C']; // se toma del plan (plan.orden o las claves de plan.dias): así un plan de 5 días funciona igual
 
 let plan = null;
 const st = {
@@ -106,7 +108,7 @@ function renderHoy() {
       ${lista.map((e, k) => { const rc = receta(e, sem); const salta = st.torneo && (D.saltearAntesTorneo || []).includes(k + 1); return `<div class="lista-item ${salta ? 'saltado' : ''}"><span class="num">${k + 1}</span><span>${esc(rc.nombre)}${e.extraIzq ? ' <small class="izq">+1 izq.</small>' : ''}</span><b class="num">${rc.n}×${esc(rc.reps)}</b></div>`; }).join('')}
     </section>
   </main>
-  <nav class="nav"><div class="in uno"><button class="btn prim grande" data-act="empezar" data-d="${dia}">Empezar Día ${dia}</button></div></nav>`;
+  <nav class="nav con-tabs"><div class="in uno"><button class="btn prim grande" data-act="empezar" data-d="${dia}">Empezar Día ${dia}</button></div></nav>${tabs()}`;
 }
 function hoyFecha() { return new Date().toLocaleDateString('es-AR', { weekday: 'long', day: 'numeric', month: 'long' }); }
 
@@ -199,8 +201,119 @@ function renderEj() {
   });
 }
 
+// ---------------- Barra inferior (fuera de la sesión) ----------------
+const TABS = [['hoy', 'Hoy'], ['progreso', 'Progreso'], ['comida', 'Comida'], ['cuenta', 'Cuenta']];
+function tabs() { return `<nav class="tabs">${TABS.map(([v, n]) => `<button data-tab="${v}" aria-current="${st.vista === v ? 'page' : 'false'}">${n}</button>`).join('')}</nav>`; }
+
+// ---------------- Gráfico de una serie (SVG, un solo eje) ----------------
+function grafico(puntos, { unidad = 'kg', meta = null } = {}) {
+  if (puntos.length < 2) return `<p class="vacio">${puntos.length ? `Por ahora 1 registro: <b>${puntos[0].v} ${unidad}</b>. Con dos o más aparece el gráfico.` : 'Todavía no hay registros.'}</p>`;
+  const W = 340, H = 170, pl = 34, pr = 14, pt = 14, pb = 26;
+  const vs = puntos.map((p) => p.v); let min = Math.min(...vs), max = Math.max(...vs);
+  if (meta != null) { min = Math.min(min, meta); max = Math.max(max, meta); }
+  if (max - min < 1) { max += 1; min -= 1; }
+  const pad = (max - min) * 0.12; min -= pad; max += pad;
+  const x = (i) => pl + (i * (W - pl - pr)) / (puntos.length - 1);
+  const y = (v) => pt + ((max - v) * (H - pt - pb)) / (max - min);
+  const ticks = [min + pad, (min + max) / 2, max - pad].map((v) => Math.round(v * 10) / 10);
+  const linea = puntos.map((p, i) => `${i ? 'L' : 'M'}${x(i).toFixed(1)},${y(p.v).toFixed(1)}`).join(' ');
+  const ult = puntos[puntos.length - 1];
+  return `<svg class="graf" viewBox="0 0 ${W} ${H}" role="img" aria-label="Evolución: de ${puntos[0].v} a ${ult.v} ${unidad}">
+    ${ticks.map((t) => `<line x1="${pl}" x2="${W - pr}" y1="${y(t)}" y2="${y(t)}" class="g-grid"/><text x="${pl - 6}" y="${y(t) + 4}" class="g-eje" text-anchor="end">${t}</text>`).join('')}
+    ${meta != null ? `<line x1="${pl}" x2="${W - pr}" y1="${y(meta)}" y2="${y(meta)}" class="g-meta"/>` : ''}
+    <path d="${linea}" class="g-linea"/>
+    ${puntos.map((p, i) => `<g class="g-pt" tabindex="0"><circle cx="${x(i)}" cy="${y(p.v)}" r="14" class="g-hit"/><circle cx="${x(i)}" cy="${y(p.v)}" r="${i === puntos.length - 1 ? 5 : 4}" class="g-punto"/><title>${esc(p.f)}: ${p.v} ${unidad}</title></g>`).join('')}
+    <text x="${pl}" y="${H - 6}" class="g-eje">${esc(fechaCorta(puntos[0].f))}</text><text x="${W - pr}" y="${H - 6}" class="g-eje" text-anchor="end">${esc(fechaCorta(ult.f))}</text>
+  </svg>`;
+}
+const fechaCorta = (iso) => { const [, m, d] = String(iso).split('-'); return `${+d}/${+m}`; };
+
+// ---------------- PROGRESO ----------------
+function pesosSemana() { return leer('gym.peso', []); } // [{ fecha, kg }]
+function avisoPeso() {
+  const p = pesosSemana(); if (p.length < 2) return '';
+  const a = p[p.length - 2], b = p[p.length - 1];
+  const dias = Math.max(1, (new Date(b.fecha) - new Date(a.fecha)) / 864e5);
+  const porSemana = ((b.kg - a.kg) / dias) * 7;
+  const [lo, hi] = plan.pesoCorporal.subidaSemanal;
+  if (porSemana > hi) return `<div class="aviso">${esc(plan.pesoCorporal.aviso)} (+${porSemana.toFixed(2)} kg por semana)</div>`;
+  if (porSemana < lo) return `<p class="nota">Vas ${porSemana >= 0 ? '+' : ''}${porSemana.toFixed(2)} kg por semana. La meta es subir entre ${lo} y ${hi} kg: si no sube, sumá comida.</p>`;
+  return `<p class="nota ok">Vas +${porSemana.toFixed(2)} kg por semana: justo en la meta (${lo}–${hi}).</p>`;
+}
+function renderProgreso() {
+  pararMunecos();
+  const s = sesiones(), r = racha(), reg = registros();
+  const ids = todos().filter((e) => (reg[e.id] || []).length).map((e) => e.id);
+  if (!st.ejProg || !ids.includes(st.ejProg)) st.ejProg = ids[0] || null;
+  const serie = st.ejProg ? (reg[st.ejProg] || []).map((x) => ({ f: x.fecha, v: Math.max(0, ...x.series.filter((y) => y.hecha).map((y) => +y.kg || 0)) })).filter((p) => p.v > 0) : [];
+  const pesos = pesosSemana().map((p) => ({ f: p.fecha, v: p.kg }));
+  const mol = leer('gym.molestias', []);
+  $('#app').innerHTML = `
+  <header class="top"><span class="eyebrow">Progreso</span><h1>Cómo venís</h1></header>
+  <main class="wrap">
+    <div class="tiles"><div class="card tile"><b class="num">${s.length}</b><span>entrenamientos</span></div><div class="card tile"><b class="num">${r}</b><span>semanas seguidas</span></div><div class="card tile"><b class="num">${st.semana}</b><span>semana del plan</span></div></div>
+    <section class="card">
+      <div class="ej-n">PESO CORPORAL</div>
+      <form class="peso-form" data-form="peso"><input id="pesoKg" inputmode="decimal" placeholder="${esc(String((pesos[pesos.length - 1] || {}).v ?? plan.pesoCorporal.inicial))}" aria-label="Peso de hoy en kilos"><button class="btn prim" type="submit">Anotar kg</button></form>
+      ${grafico(pesos, { unidad: 'kg' })}
+      ${avisoPeso()}
+      <p class="nota">Pesate una vez por semana, el mismo día, en ayunas.</p>
+    </section>
+    <section class="card">
+      <div class="ej-n">PESO POR EJERCICIO (MÁXIMO DE CADA SESIÓN)</div>
+      ${ids.length ? `<select id="ejProg" class="sel" aria-label="Ejercicio">${ids.map((id) => `<option value="${esc(id)}" ${id === st.ejProg ? 'selected' : ''}>${esc(ejercicio(id).nombre)}</option>`).join('')}</select>${grafico(serie, { unidad: 'kg' })}` : '<p class="vacio">Cuando anotes kilos en tus series, acá vas a ver cómo suben.</p>'}
+    </section>
+    <section class="card">
+      <div class="ej-n">MOLESTIAS ANOTADAS</div>
+      ${mol.length ? `<ul class="mol">${mol.slice().reverse().map((m) => `<li><b>${esc(m.zona)}</b> · ${esc(m.ejercicio)} <span>${esc(fechaCorta(m.fecha))}</span></li>`).join('')}</ul><p class="nota">Consultalas con tu kinesióloga antes de volver a esos ejercicios.</p>` : '<p class="vacio">Sin molestias anotadas. 💪</p>'}
+    </section>
+  </main>${tabs()}`;
+}
+
+// ---------------- COMIDA ----------------
+function renderComida() {
+  pararMunecos();
+  const c = plan.comida, hoy = hoyISO(), reg = leer('gym.proteina', {});
+  const lista = reg[hoy] || [], total = lista.reduce((a, b) => a + b, 0), pct = Math.min(100, Math.round((total / c.proteinaDia) * 100));
+  const porComida = Math.round(c.proteinaDia / c.comidas);
+  $('#app').innerHTML = `
+  <header class="top"><span class="eyebrow">Comida · ${esc(hoyFecha())}</span><h1>Proteína de hoy</h1><div class="sub">Meta: ${c.proteinaDia} g en ${c.comidas} comidas (unos ${porComida} g cada una)</div></header>
+  <main class="wrap">
+    <section class="card prot">
+      <div class="prot-num"><b class="num">${total}</b><span>de ${c.proteinaDia} g</span></div>
+      <div class="prot-barra" role="progressbar" aria-valuemin="0" aria-valuemax="${c.proteinaDia}" aria-valuenow="${total}"><i style="width:${pct}%"></i></div>
+      <p class="nota">${total >= c.proteinaDia ? '¡Meta cumplida! 🎯' : `Te faltan ${c.proteinaDia - total} g.`}</p>
+    </section>
+    <div class="prot-btns">${c.botones.map((g) => `<button class="btn prim grande" data-act="prot" data-g="${g}">+${g} g</button>`).join('')}</div>
+    <button class="btn" style="width:100%;margin-top:8px" data-act="protDeshacer" ${lista.length ? '' : 'disabled'}>Deshacer el último</button>
+    <section class="card" style="margin-top:12px"><div class="ej-n">REFERENCIA RÁPIDA</div>
+      <ul class="ref"><li>3 huevos ≈ 20 g</li><li>150 g de pollo o carne ≈ 40 g</li><li>1 scoop de proteína ≈ 25 g</li><li>200 g de yogur griego o queso untable descremado ≈ 20 g</li><li>1 lata de atún ≈ 25 g</li></ul>
+    </section>
+  </main>${tabs()}`;
+}
+
+// ---------------- CUENTA ----------------
+function renderCuenta() {
+  pararMunecos();
+  const cinco = plan.cincoDias;
+  $('#app').innerHTML = `
+  <header class="top"><span class="eyebrow">Cuenta</span><h1>Tus datos</h1><div class="sub">${esc(nube.txt)}</div></header>
+  <main class="wrap">
+    <section class="card">
+      ${conectado() ? `<p style="margin:0 0 10px">Conectado como <b>${esc(mailActual())}</b>. Todo lo que anotás se guarda en tu Firebase: si cambiás de celu, entrá con la misma cuenta y aparece todo.</p><button class="btn" style="width:100%" data-act="salirCuenta">Cerrar sesión</button>`
+        : `<p style="margin:0 0 10px">Entrá con tu cuenta (la misma de la app de clases) para guardar todo en la nube.</p>
+        <form data-form="login" class="login"><label for="lMail">Mail</label><input id="lMail" type="email" autocomplete="username" value="gabohuppi22@gmail.com"><label for="lClave">Contraseña</label><input id="lClave" type="password" autocomplete="current-password"><button class="btn prim grande" type="submit">Entrar</button></form>`}
+    </section>
+    <section class="card"><div class="ej-n">PLAN</div><p style="margin:6px 0 0">${esc(plan.nombre)} · ${plan.semanas} semanas · ${plan.diasPorSemana} días (${esc(plan.diasSugeridos.join(', '))}) · versión ${esc(plan.version)}</p>
+      ${cinco ? `<p class="nota">Plan de 5 días: ${cinco.activo ? 'activo' : 'preparado para más adelante'} (${cinco.dias.map((d) => esc(d.dia + ': ' + d.foco)).join(' · ')}).</p>` : ''}</section>
+  </main>${tabs()}`;
+}
+
 function render() {
   if (st.vista === 'hoy') return renderHoy();
+  if (st.vista === 'progreso') return renderProgreso();
+  if (st.vista === 'comida') return renderComida();
+  if (st.vista === 'cuenta') return renderCuenta();
   const p = st.pasos[st.i];
   if (p.tipo === 'calor') return renderCalor();
   return renderEj();
@@ -273,9 +386,33 @@ document.addEventListener('input', (e) => {
   const f = e.target.dataset.f; if (!f) return;
   const id = st.pasos[st.i].id; st.sesion[id].series[+e.target.dataset.k][f] = e.target.value.replace(',', '.');
 });
-document.addEventListener('change', (e) => { if (e.target.id === 'torneo') { st.torneo = e.target.checked; render(); } });
+document.addEventListener('change', (e) => {
+  if (e.target.id === 'torneo') { st.torneo = e.target.checked; render(); }
+  if (e.target.id === 'ejProg') { st.ejProg = e.target.value; render(); }
+});
+document.addEventListener('submit', async (e) => {
+  const f = e.target.dataset.form; if (!f) return;
+  e.preventDefault();
+  if (f === 'peso') {
+    const kg = parseFloat(($('#pesoKg').value || '').replace(',', '.'));
+    if (!(kg > 30 && kg < 250)) { toast('Poné tu peso en kilos, por ejemplo 85,4'); return; }
+    const p = pesosSemana(); const hoy = hoyISO();
+    if (p.length && p[p.length - 1].fecha === hoy) p[p.length - 1].kg = kg; else p.push({ fecha: hoy, kg });
+    guardar('gym.peso', p); render(); toast('Peso anotado');
+  }
+  if (f === 'login') {
+    const btn = e.target.querySelector('button'); btn.disabled = true; btn.textContent = 'Entrando…';
+    try { await entrar($('#lMail').value, $('#lClave').value); toast('¡Listo! Ya guarda en la nube'); }
+    catch (err) { toast(err && err.code === 'auth/invalid-credential' ? 'Mail o contraseña incorrectos' : 'No se pudo entrar. Revisá la conexión.'); btn.disabled = false; btn.textContent = 'Entrar'; }
+  }
+});
 document.addEventListener('click', (e) => {
+  const t = e.target.closest('[data-tab]');
+  if (t) { st.vista = t.dataset.tab; render(); scrollTo(0, 0); return; }
   const b = e.target.closest('[data-act],[data-sem],[data-dia]'); if (!b) return;
+  if (b.dataset.act === 'prot') { const r = leer('gym.proteina', {}); (r[hoyISO()] ||= []).push(+b.dataset.g); guardar('gym.proteina', r); render(); return; }
+  if (b.dataset.act === 'protDeshacer') { const r = leer('gym.proteina', {}); (r[hoyISO()] || []).pop(); guardar('gym.proteina', r); render(); return; }
+  if (b.dataset.act === 'salirCuenta') { salir().then(render); return; }
   if (b.dataset.sem) { st.semana = +b.dataset.sem; guardar('gym.semana', st.semana); render(); return; }
   if (b.dataset.dia) { st.dia = b.dataset.dia; render(); return; }
   const a = b.dataset.act;
@@ -304,5 +441,8 @@ document.addEventListener('click', (e) => {
   plan = await cargarPlan();
   if (!plan) { $('#app').innerHTML = '<main class="wrap"><div class="card">No se pudo cargar el plan. Revisá la conexión.</div></main>'; return; }
   guardar('gym.plan', plan);
+  DIAS = plan.orden || Object.keys(plan.dias);
   render();
+  // Nube: al conectar o bajar datos, se redibuja (salvo en plena sesión, para no perder lo que estás anotando).
+  iniciarNube((bajo) => { if (st.vista === 'cuenta' || (bajo && st.vista !== 'sesion')) { if (bajo) st.semana = leer('gym.semana', st.semana); render(); } });
 })();
