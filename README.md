@@ -47,6 +47,11 @@ App para entrenar desde el iPhone: https://masterpadel360.github.io/plan-gimnasi
   "desdeSemana": 3,                        // opcional
   "descanso": 90,                          // segundos
   "superserie": ["id-1", "id-2"],          // opcional: muestra los dos muñecos (los ids van en "dias" o en "extras")
+  "equipo": {                              // bloque «Con qué lo hago». Cada campo puede ser un texto o una lista de 3 (una por etapa)
+    "elemento": "Mancuernas", "peso": "Una en cada mano.", "progresar": "1 o 2 kg más.",
+    "anotar": "por-mancuerna",             // total | por-mancuerna | mancuerna | placa | discos | agregado | asistencia | pelota | ninguno (sin campo de kg)
+    "opciones": [ { "id": "maquina", "nombre": "Máquina", "peso": "…", "anotar": "placa" } ]  // opcional: el alumno elige y se recuerda (gym.modos)
+  },
   "pasos": ["…"], "errores": ["…"], "porque": "…",
   "video": { "url": "https://www.youtube.com/watch?v=…", "canal": "…", "titulo": "…" },  // null = abre la búsqueda de YouTube
   "anim": { … }                            // el muñeco (abajo)
