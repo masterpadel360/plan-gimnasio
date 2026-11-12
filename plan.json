@@ -322,7 +322,30 @@
     "B": {
       "nombre": "Espalda, bíceps, isquios, glúteo y gemelos",
       "ejercicios": [
-        { "id": "salto-lateral-skater", "nombre": "Salto lateral (skater) a clavar", "grupo": "piernas", "series": ["3×5", "3×6", "3×6"], "nota": ["", "Más lejos", "Sin pausa"], "por": "por lado", "descanso": 60 },
+        {
+          "id": "salto-lateral-skater", "nombre": "Salto lateral (skater) a clavar", "grupo": "piernas",
+          "series": ["3×5", "3×6", "3×6"], "nota": ["Clavá cada caída 2 s", "Más lejos", "Sin pausa, rebotando"], "por": "por lado", "descanso": 60,
+          "pasos": [
+            "Parado en una pierna, saltá de costado hacia la otra.",
+            "Caé en la pierna de afuera, en la punta y después el talón.",
+            "Clavá la caída: rodilla sobre el pie, cadera atrás, sin que la rodilla se vaya hacia adentro.",
+            "Empezá cayendo sobre la izquierda."
+          ],
+          "errores": ["Que la rodilla se vaya hacia adentro al caer.", "Caer con la pierna rígida.", "Que se incline la cadera hacia un costado."],
+          "porque": "Es el desplazamiento lateral del pádel. Tu pierna izquierda frena 48% menos al aterrizar y la pelvis se te inclina apoyado en el izquierdo: este salto entrena justo eso.",
+          "video": { "url": "https://www.youtube.com/watch?v=lC_L9FWQokA", "canal": "Lic. Estanislao Vera Santos", "titulo": "Skater jump exercise o desplazamiento lateral con aterrizaje y salto monopodal #sportmedicine" },
+          "anim": {
+            "vista": "frente",
+            "descripcion": "Salto lateral de frente: salta de una pierna a la otra y clava la caída.",
+            "trabaja": ["musloI"],
+            "guias": [{ "tipo": "vertical", "desde": "pieI", "largo": 50, "texto": "rodilla sobre el pie" }],
+            "poses": [
+              { "fase": "Saltá de costado", "dur": 0.5, "pelvis": [40, 76], "pieD": [44, 0], "pieI": [26, 16], "brazoI": [30, 20], "brazoD": [-40, -30] },
+              { "fase": "Saltá de costado", "dur": 0.4, "pelvis": [0, 104], "pieD": [10, 26], "pieI": [-10, 24], "brazoI": [-20, -20], "brazoD": [20, 20] },
+              { "fase": "Clavá 2 s en la izquierda", "pausa": 1.6, "dur": 0.9, "pelvis": [-40, 74], "pieI": [-44, 0], "pieD": [-26, 16], "brazoI": [-30, -20], "brazoD": [40, 30] }
+            ]
+          }
+        },
         {
           "id": "peso-muerto-rumano", "nombre": "Peso muerto rumano con barra", "grupo": "piernas",
           "series": ["3×10", "4×8–10", "4×6–8"], "descanso": 150,
@@ -333,13 +356,9 @@
             "Bajá hasta sentir que tiran los isquios (más o menos a mitad de la tibia).",
             "Subí empujando la cadera hacia adelante y apretando los glúteos."
           ],
-          "errores": [
-            "Redondear la espalda para bajar más.",
-            "Separar la barra de las piernas.",
-            "Doblar las rodillas como en una sentadilla."
-          ],
+          "errores": ["Redondear la espalda para bajar más.", "Separar la barra de las piernas.", "Doblar las rodillas como en una sentadilla."],
           "porque": "Tus isquios están débiles comparados con el cuádriceps (relación 0,34 en la izquierda y 0,22 en la derecha; lo ideal es 0,5–0,6). Fortalecerlos protege la rodilla en los frenos y cambios de dirección del pádel. Si molesta la zona lumbar, bajá el peso y cortá el recorrido.",
-          "video": null,
+          "video": { "url": "https://www.youtube.com/watch?v=rjvlSfZ-PQw", "canal": "Fit Generation", "titulo": "Cómo Hacer PESO MUERTO RUMANO Perfecto (paso a paso)" },
           "anim": {
             "vista": "lado", "cerca": "I",
             "descripcion": "Peso muerto rumano de costado: cadera atrás, espalda recta, baja en 3 segundos.",
@@ -352,18 +371,297 @@
             ]
           }
         },
-        { "id": "hip-thrust", "nombre": "Hip thrust", "grupo": "piernas", "series": ["3×10", "4×8–10", "3×10"], "descanso": 90 },
-        { "id": "curl-femoral-maquina", "nombre": "Curl femoral en máquina", "grupo": "piernas", "series": ["3×12", "4×10–12", "3×12"], "descanso": 60 },
-        { "id": "nordico-asistido", "nombre": "Nórdico asistido", "grupo": "piernas", "series": ["3×4–6", "3×5–6", "3×6"], "desdeSemana": 3, "descanso": 90 },
-        { "id": "gemelos-sentado", "nombre": "Gemelos sentado", "grupo": "piernas", "series": ["3×15", "4×12–15", "3×15"], "descanso": 60 },
-        { "id": "dominadas-o-jalon", "nombre": "Dominadas asistidas o jalón al pecho", "grupo": "torso", "series": ["4×8–10", "4×8–10", "4×6–8"], "descanso": 120 },
-        { "id": "remo-barra", "nombre": "Remo con barra", "grupo": "torso", "series": ["3×10", "4×8–10", "4×8"], "descanso": 120 },
-        { "id": "remo-mancuerna-un-brazo", "nombre": "Remo con mancuerna a un brazo", "grupo": "torso", "series": ["3×10", "3×10", "3×12"], "por": "por lado", "descanso": 60 },
-        { "id": "face-pull", "nombre": "Face pull", "grupo": "torso", "series": ["3×15", "3×15", "3×15"], "descanso": 45 },
-        { "id": "curl-biceps-barra", "nombre": "Curl de bíceps con barra", "grupo": "torso", "series": ["3×10", "4×8–10", "3×10"], "descanso": 75 },
-        { "id": "curl-martillo", "nombre": "Curl martillo", "grupo": "torso", "series": ["3×12", "3×12", "3×12–15"], "descanso": 60 },
-        { "id": "extension-muneca-excentrica", "nombre": "Extensión de muñeca excéntrica", "grupo": "torso", "series": ["3×15", "3×15", "3×15"], "notaExtra": "Para el codo: bajada de 4 s", "descanso": 45 },
-        { "id": "elevacion-rodillas-colgado", "nombre": "Elevación de rodillas colgado", "grupo": "core", "series": ["3×10", "3×12", "3×15"], "descanso": 60 }
+        {
+          "id": "hip-thrust", "nombre": "Hip thrust", "grupo": "piernas",
+          "series": ["3×10", "4×8–10", "3×10"], "descanso": 90,
+          "pasos": [
+            "Espalda alta apoyada en el borde del banco, barra sobre la cadera (con almohadilla).",
+            "Pies al ancho de la cadera; arriba, la tibia queda vertical.",
+            "Subí la cadera en 1 segundo apretando los glúteos, mentón hacia el pecho.",
+            "Aguantá arriba 1 segundo y bajá en 2."
+          ],
+          "errores": ["Arquear la zona lumbar arriba en vez de apretar glúteos.", "Pies muy lejos (trabajan los isquios) o muy cerca (los cuádriceps).", "Empujar con las puntas."],
+          "porque": "Glúteos fuertes estabilizan la pelvis (que se te inclina apoyado en el izquierdo) y te dan potencia para arrancar y frenar.",
+          "video": { "url": "https://www.youtube.com/watch?v=aMntMBkmv0g", "canal": "Galvistrainer", "titulo": "Hip thrust -Técnica correcta Galvistrainer" },
+          "anim": {
+            "vista": "lado", "cerca": "I",
+            "descripcion": "Hip thrust de costado: espalda en el banco, sube la cadera en 1 segundo y baja en 2.",
+            "equipo": [{ "tipo": "banco", "x": -58, "alto": 42, "ancho": 34 }, { "tipo": "barra" }],
+            "trabaja": ["gluteoI", { "seg": "musloI", "lado": "atras" }],
+            "poses": [
+              { "fase": "Subí y apretá glúteos", "dur": 1, "pelvis": [6, 28], "tronco": -68, "cabeza": 20, "pieI": [36, 0], "pieD": [32, 0], "rodillaI": "arriba", "rodillaD": "arriba", "manoI": [8, 34], "manoD": [8, 34], "codoI": "arriba", "codoD": "arriba" },
+              { "fase": "Arriba 1 s · bajá en 2 s", "pausa": 1, "dur": 2, "pelvis": [8, 50], "tronco": -95, "cabeza": 30, "pieI": [36, 0], "pieD": [32, 0], "rodillaI": "arriba", "rodillaD": "arriba", "manoI": [10, 56], "manoD": [10, 56], "codoI": "arriba", "codoD": "arriba" }
+            ]
+          }
+        },
+        {
+          "id": "curl-femoral-maquina", "nombre": "Curl femoral en máquina", "grupo": "piernas",
+          "series": ["3×12", "4×10–12", "3×12"], "descanso": 60,
+          "pasos": [
+            "Acostado boca abajo, rodillas justo pasando el borde del banco y la almohadilla arriba de los talones.",
+            "Doblá las rodillas en 1 segundo llevando los talones hacia la cola.",
+            "Apretá medio segundo arriba.",
+            "Bajá en 3 segundos sin despegar la cadera del banco."
+          ],
+          "errores": ["Levantar la cadera para ayudarte.", "Bajar de golpe.", "Hacer medio recorrido."],
+          "porque": "Ataca directo los isquios, tu punto más débil (relación con el cuádriceps 0,34 y 0,22; lo ideal es 0,5–0,6).",
+          "video": { "url": "https://www.youtube.com/watch?v=9xbBr5Ytl8c", "canal": "Vitar Club", "titulo": "Cómo Hacer Curl Femoral Tumbado en Máquina | Técnica Correcta" },
+          "anim": {
+            "vista": "lado", "cerca": "I",
+            "descripcion": "Curl femoral acostado de costado: dobla las rodillas en 1 segundo y baja en 3.",
+            "equipo": [
+              { "tipo": "poligono", "puntos": [[-60, 44], [52, 44], [52, 50], [-60, 50]] },
+              { "tipo": "poligono", "puntos": [[-8, 0], [6, 0], [6, 44], [-8, 44]], "oscuro": true },
+              { "tipo": "placa", "en": "pieI", "ang": 0, "largo": 12, "dx": -4, "dy": 2, "grosor": 7 }
+            ],
+            "trabaja": [{ "seg": "musloI", "lado": "atras" }],
+            "poses": [
+              { "fase": "Doblá en 1 s", "dur": 1, "pelvis": [-10, 54], "tronco": 90, "cabeza": -10, "pieI": [-96, 55], "pieD": [-96, 57], "rodillaI": "abajo", "rodillaD": "abajo", "pieAngI": 270, "pieAngD": 270, "manoI": [46, 46], "manoD": [46, 46], "codoI": "abajo", "codoD": "abajo" },
+              { "fase": "Bajá en 3 s", "pausa": 0.5, "dur": 3, "pelvis": [-10, 54], "tronco": 90, "cabeza": -10, "pieI": [-34, 90], "pieD": [-34, 92], "rodillaI": "abajo", "rodillaD": "abajo", "pieAngI": 0, "pieAngD": 0, "manoI": [46, 46], "manoD": [46, 46], "codoI": "abajo", "codoD": "abajo" }
+            ]
+          }
+        },
+        {
+          "id": "nordico-asistido", "nombre": "Nórdico asistido", "grupo": "piernas",
+          "series": ["3×4–6", "3×5–6", "3×6"], "desdeSemana": 3, "descanso": 90,
+          "pasos": [
+            "De rodillas sobre una colchoneta, con los tobillos sujetos (un compañero o una barra).",
+            "Cuerpo en línea recta de rodillas a cabeza.",
+            "Dejate caer hacia adelante lo más lento que puedas, frenando con los isquios (3 segundos o más).",
+            "Cuando no puedas frenar más, poné las manos y empujate para volver."
+          ],
+          "errores": ["Doblarte en la cadera (la cola sale para atrás).", "Caer rápido sin frenar.", "Empezar con demasiado recorrido: usá una banda de asistencia si hace falta."],
+          "porque": "Es el ejercicio con más evidencia para prevenir desgarros de isquios y achicar la diferencia con el cuádriceps. Arranca en la semana 3 para darle tiempo a adaptarse.",
+          "video": { "url": "https://www.youtube.com/watch?v=txO5zibJBuk", "canal": "Therapeutic International", "titulo": "CURL NÓRDICO ASISTIDO. El mejor ejercicio para ISQUIOTIBIALES!" },
+          "anim": {
+            "vista": "lado", "cerca": "I",
+            "descripcion": "Nórdico asistido de costado: se deja caer hacia adelante frenando 3 segundos y vuelve ayudado con las manos.",
+            "equipo": [{ "tipo": "placa", "en": "pieI", "ang": 0, "largo": 12, "dx": -2, "dy": 6, "grosor": 7 }],
+            "trabaja": [{ "seg": "musloI", "lado": "atras" }],
+            "guias": [{ "tipo": "linea", "de": "rodillaI", "a": "cuello", "texto": "línea recta" }],
+            "poses": [
+              { "fase": "Frená la caída 3 s", "dur": 3, "pelvis": [0, 46], "tronco": 2, "pieI": [-42, 1], "pieD": [-42, 2], "rodillaI": 1, "rodillaD": 1, "pieAngI": 180, "pieAngD": 180, "brazoI": [20, 60], "brazoD": [20, 60] },
+              { "fase": "Manos al piso y empujá para volver", "pausa": 0.3, "dur": 1.4, "pelvis": [36, 25], "tronco": 58, "pieI": [-42, 1], "pieD": [-42, 2], "rodillaI": 1, "rodillaD": 1, "pieAngI": 180, "pieAngD": 180, "brazoI": [80, 90], "brazoD": [80, 90] }
+            ]
+          }
+        },
+        {
+          "id": "gemelos-sentado", "nombre": "Gemelos sentado", "grupo": "piernas",
+          "series": ["3×15", "4×12–15", "3×15"], "descanso": 60,
+          "pasos": [
+            "Sentado en la máquina, almohadilla sobre los muslos cerca de las rodillas.",
+            "Punta de los pies en la plataforma, talones colgando.",
+            "Subí en 1 segundo, aguantá 1 arriba y bajá en 2 hasta estirar."
+          ],
+          "errores": ["Rebotar abajo.", "Hacer medio recorrido.", "Usar envión con el cuerpo."],
+          "porque": "Con la rodilla doblada trabaja el sóleo, el músculo de la pantorrilla que más aguanta los saltos y los arranques.",
+          "video": { "url": "https://www.youtube.com/watch?v=rfkYC-mbQus", "canal": "Vitar Club", "titulo": "Cómo Hacer Gemelos Sentado en Máquina | Técnica Correcta (entrenamiento piernas)" },
+          "anim": {
+            "vista": "lado", "cerca": "I",
+            "descripcion": "Gemelos sentado de costado: sube los talones en 1 segundo y baja en 2.",
+            "equipo": [
+              { "tipo": "poligono", "puntos": [[-24, 44], [24, 44], [24, 50], [-24, 50]] },
+              { "tipo": "poligono", "puntos": [[-6, 0], [6, 0], [6, 44], [-6, 44]], "oscuro": true },
+              { "tipo": "poligono", "puntos": [[40, 0], [62, 0], [62, 8], [40, 8]] },
+              { "tipo": "placa", "en": "rodillaI", "ang": 90, "largo": 20, "dx": -4, "dy": 6, "grosor": 7 }
+            ],
+            "trabaja": [{ "seg": "piernaI", "lado": "atras" }],
+            "poses": [
+              { "fase": "Subí en 1 s", "dur": 1, "pelvis": [0, 52], "tronco": 4, "pieI": [42, 6], "pieD": [40, 6], "rodillaI": "arriba", "rodillaD": "arriba", "pieAngI": 10, "pieAngD": 10, "manoI": [36, 58], "manoD": [36, 58], "codoI": -1, "codoD": -1 },
+              { "fase": "Arriba 1 s · bajá en 2 s", "pausa": 1, "dur": 2, "pelvis": [0, 52], "tronco": 4, "pieI": [42, 16], "pieD": [40, 16], "rodillaI": "arriba", "rodillaD": "arriba", "pieAngI": -40, "pieAngD": -40, "manoI": [36, 66], "manoD": [36, 66], "codoI": -1, "codoD": -1 }
+            ]
+          }
+        },
+        {
+          "id": "dominadas-o-jalon", "nombre": "Dominadas asistidas o jalón al pecho", "grupo": "torso",
+          "series": ["4×8–10", "4×8–10", "4×6–8"], "descanso": 120,
+          "pasos": [
+            "Agarre un poco más ancho que los hombros.",
+            "Sacá pecho e inclinate apenas hacia atrás.",
+            "Tirá llevando los codos hacia abajo y atrás, hasta que la barra llegue al pecho alto.",
+            "Subí en 2 segundos hasta estirar bien los brazos."
+          ],
+          "errores": ["Tirar detrás de la nuca.", "Hacer envión balanceando el cuerpo.", "Quedarte a mitad de camino arriba."],
+          "porque": "Espalda ancha y fuerte para el remate y para equilibrar todo el trabajo de pecho.",
+          "video": { "url": "https://www.youtube.com/watch?v=72q0tKij5uU", "canal": "ATHLEAN-X Español", "titulo": "Cómo Hacer Jalón Para Dorsales ¡EVITA ERRORES!" },
+          "anim": {
+            "vista": "lado", "cerca": "I",
+            "descripcion": "Jalón al pecho de costado: tira la barra al pecho y sube en 2 segundos.",
+            "encuadre": "-110 -215 220 225",
+            "equipo": [
+              { "tipo": "poligono", "puntos": [[-20, 44], [22, 44], [22, 50], [-20, 50]] },
+              { "tipo": "poligono", "puntos": [[-6, 0], [6, 0], [6, 44], [-6, 44]], "oscuro": true },
+              { "tipo": "polea", "x": 8, "alto": 205, "mano": "manos", "desde": [8, 205] },
+              { "tipo": "placa", "en": "manos", "ang": 90, "largo": 18, "grosor": 5 }
+            ],
+            "trabaja": ["espalda", { "seg": "brazoI", "lado": "frente" }],
+            "poses": [
+              { "fase": "Tirá hacia el pecho", "dur": 1, "pelvis": [0, 52], "tronco": -12, "pieI": [42, 0], "pieD": [40, 0], "rodillaI": "arriba", "rodillaD": "arriba", "manoI": [4, 162], "manoD": [4, 162], "codoI": -1, "codoD": -1 },
+              { "fase": "Subí en 2 s", "pausa": 0.5, "dur": 2, "pelvis": [0, 52], "tronco": -18, "pieI": [42, 0], "pieD": [40, 0], "rodillaI": "arriba", "rodillaD": "arriba", "manoI": [-2, 108], "manoD": [-2, 108], "codoI": -1, "codoD": -1 }
+            ]
+          }
+        },
+        {
+          "id": "remo-barra", "nombre": "Remo con barra", "grupo": "torso",
+          "series": ["3×10", "4×8–10", "4×8"], "descanso": 120,
+          "pasos": [
+            "Inclinado unos 45°, cadera atrás, rodillas apenas flexionadas, espalda recta.",
+            "Agarre un poco más ancho que los hombros.",
+            "Tirá la barra hacia el ombligo llevando los codos atrás.",
+            "Apretá la espalda medio segundo y bajá en 2."
+          ],
+          "errores": ["Redondear la espalda (cuida tu zona lumbar).", "Pararte cada vez más para hacer envión.", "Tirar con los brazos en vez de con la espalda."],
+          "porque": "Espalda gruesa y fuerte. Si molesta la zona lumbar, cambialo por remo en máquina con apoyo de pecho.",
+          "video": { "url": "https://www.youtube.com/watch?v=OXH-ecu-Obw", "canal": "Andres Vazquez Personal Trainer", "titulo": "Cómo Hacer Remo con Barra para una Espalda Ancha y Densa" },
+          "anim": {
+            "vista": "lado", "cerca": "I",
+            "descripcion": "Remo con barra de costado: inclinado a 45°, tira la barra al ombligo y baja en 2 segundos.",
+            "equipo": [{ "tipo": "barra" }],
+            "trabaja": ["espalda", { "seg": "brazoI", "lado": "frente" }],
+            "guias": [{ "tipo": "segmento", "seg": "tronco", "texto": "espalda recta" }],
+            "poses": [
+              { "fase": "Tirá hacia el ombligo", "dur": 1, "pelvis": [-16, 82], "tronco": 55, "pieI": [6, 0], "pieD": [6, 0], "rodillaI": 1, "rodillaD": 1, "manoI": [26, 58], "manoD": [26, 58], "codoI": -1, "codoD": -1 },
+              { "fase": "Bajá en 2 s", "pausa": 0.5, "dur": 2, "pelvis": [-16, 82], "tronco": 55, "pieI": [6, 0], "pieD": [6, 0], "rodillaI": 1, "rodillaD": 1, "manoI": [12, 84], "manoD": [12, 84], "codoI": -1, "codoD": -1 }
+            ]
+          }
+        },
+        {
+          "id": "remo-mancuerna-un-brazo", "nombre": "Remo con mancuerna a un brazo", "grupo": "torso",
+          "series": ["3×10", "3×10", "3×12"], "por": "por lado", "descanso": 60,
+          "pasos": [
+            "Una rodilla y la mano del mismo lado apoyadas en el banco; la otra pierna en el piso.",
+            "Espalda recta, paralela al piso.",
+            "Tirá la mancuerna hacia la cadera llevando el codo atrás y pegado al cuerpo.",
+            "Bajá en 2 segundos hasta estirar el brazo."
+          ],
+          "errores": ["Girar el torso para subir más.", "Tirar hacia el hombro en vez de hacia la cadera.", "Redondear la espalda."],
+          "porque": "Trabaja cada lado de la espalda por separado y corrige diferencias entre izquierda y derecha.",
+          "video": { "url": "https://www.youtube.com/watch?v=Pkr1WW3p05A", "canal": "ATHLEAN-X Español", "titulo": "PARA de J*DER el Remo con Mancuerna ¡ESTA ES LA FORMA APROPIADA!" },
+          "anim": {
+            "vista": "lado", "cerca": "D",
+            "descripcion": "Remo con mancuerna a un brazo de costado: apoyado en el banco, tira el codo atrás y baja en 2 segundos.",
+            "equipo": [{ "tipo": "banco", "x": -26, "alto": 44, "ancho": 88 }, { "tipo": "mancuerna", "manos": ["manoD"] }],
+            "trabaja": ["espalda", { "seg": "brazoD", "lado": "frente" }],
+            "poses": [
+              { "fase": "Tirá el codo hacia atrás", "dur": 1, "pelvis": [-18, 88], "tronco": 82, "cabeza": 10, "pieI": [-56, 46], "rodillaI": 1, "pieAngI": 180, "pieD": [-30, 0], "rodillaD": 1, "manoI": [14, 46], "codoI": -1, "brazoD": [0, 0] },
+              { "fase": "Bajá en 2 s", "pausa": 0.5, "dur": 2, "pelvis": [-18, 88], "tronco": 82, "cabeza": 10, "pieI": [-56, 46], "rodillaI": 1, "pieAngI": 180, "pieD": [-30, 0], "rodillaD": 1, "manoI": [14, 46], "codoI": -1, "manoD": [12, 86], "codoD": -1 }
+            ]
+          }
+        },
+        {
+          "id": "face-pull", "nombre": "Face pull", "grupo": "torso",
+          "series": ["3×15", "3×15", "3×15"], "descanso": 45,
+          "pasos": [
+            "Polea a la altura de la cara, con la soga.",
+            "Tirá hacia la cara separando las manos, codos altos.",
+            "Al final, rotá los brazos hacia atrás como mostrando bíceps.",
+            "Aguantá 1 segundo y volvé en 2."
+          ],
+          "errores": ["Codos bajos (se vuelve un remo).", "Inclinarte hacia atrás para tirar.", "Usar mucho peso."],
+          "porque": "Hombro posterior y manguito rotador: cuida el hombro de tantos remates y bandejas, y ayuda a tu hombro derecho, que sube menos.",
+          "video": { "url": "https://www.youtube.com/watch?v=X-xCQ1gh-kA", "canal": "HSNstore.com", "titulo": "Cómo Hacer 龜 Pull Correctamente ¡Evita lesiones! con Powerexplosive" },
+          "anim": {
+            "vista": "lado", "cerca": "I",
+            "descripcion": "Face pull de costado: tira la soga hacia la cara con los codos altos y vuelve en 2 segundos.",
+            "equipo": [{ "tipo": "polea", "x": 70, "alto": 145, "mano": "manoI" }],
+            "trabaja": ["hombroI", "espalda"],
+            "poses": [
+              { "fase": "Tirá hacia la cara, codos altos", "dur": 1, "pelvis": [0, 88], "tronco": -4, "pieI": [6, 0], "pieD": [-4, 0], "manoI": [50, 140], "manoD": [50, 140], "codoI": -1, "codoD": -1 },
+              { "fase": "Aguantá 1 s · volvé en 2 s", "pausa": 1, "dur": 2, "pelvis": [0, 88], "tronco": -4, "pieI": [6, 0], "pieD": [-4, 0], "manoI": [8, 150], "manoD": [8, 150], "codoI": "arriba", "codoD": "arriba" }
+            ]
+          }
+        },
+        {
+          "id": "curl-biceps-barra", "nombre": "Curl de bíceps con barra", "grupo": "torso",
+          "series": ["3×10", "4×8–10", "3×10"], "descanso": 75,
+          "pasos": [
+            "Parado, barra con agarre al ancho de los hombros.",
+            "Codos pegados al cuerpo y quietos.",
+            "Subí en 1 segundo hasta arriba, apretá medio segundo.",
+            "Bajá en 3 segundos hasta estirar los brazos."
+          ],
+          "errores": ["Balancear el cuerpo.", "Adelantar los codos.", "Bajar a medias."],
+          "porque": "Bíceps más grandes. Si te molesta el codo, usá barra Z o bajá el peso.",
+          "video": { "url": "https://www.youtube.com/watch?v=oHO6dV7aQbE", "canal": "Powerexplosive", "titulo": "CURL DE BICEPS: TÉCNICA PARA EL MÁXIMO DESARROLLO DEL BÍCEPS (EJECUCIÓN, TRUCOS, CONSEJOS, ERRORES…)" },
+          "anim": {
+            "vista": "lado", "cerca": "I",
+            "descripcion": "Curl de bíceps con barra de costado: sube en 1 segundo y baja en 3 con los codos quietos.",
+            "equipo": [{ "tipo": "barra" }],
+            "trabaja": [{ "seg": "brazoI", "lado": "frente" }],
+            "poses": [
+              { "fase": "Subí en 1 s", "dur": 1, "pelvis": [0, 88], "pieI": [4, 0], "pieD": [-2, 0], "brazoI": [4, 8], "brazoD": [4, 8] },
+              { "fase": "Bajá en 3 s", "pausa": 0.5, "dur": 3, "pelvis": [0, 88], "pieI": [4, 0], "pieD": [-2, 0], "brazoI": [8, 150], "brazoD": [8, 150] }
+            ]
+          }
+        },
+        {
+          "id": "curl-martillo", "nombre": "Curl martillo", "grupo": "torso",
+          "series": ["3×12", "3×12", "3×12–15"], "descanso": 60,
+          "pasos": [
+            "Mancuernas con las palmas mirándose (como si sostuvieras un martillo).",
+            "Codos pegados al cuerpo.",
+            "Subí en 1 segundo y bajá en 2."
+          ],
+          "errores": ["Balancear el cuerpo.", "Girar las muñecas.", "Subir los codos."],
+          "porque": "Trabaja el braquial y el antebrazo: más brazo y un agarre más firme de la paleta.",
+          "video": { "url": "https://www.youtube.com/watch?v=znTSJ_2zJN0", "canal": "Sergio Tejeda", "titulo": "Curl martillo con mancuernas: la técnica PERFECTA" },
+          "anim": {
+            "vista": "lado", "cerca": "I",
+            "descripcion": "Curl martillo de costado: sube en 1 segundo y baja en 2.",
+            "equipo": [{ "tipo": "mancuerna" }],
+            "trabaja": [{ "seg": "brazoI", "lado": "frente" }, { "seg": "antebrazoI" }],
+            "poses": [
+              { "fase": "Subí en 1 s", "dur": 1, "pelvis": [0, 88], "pieI": [4, 0], "pieD": [-2, 0], "brazoI": [2, 4], "brazoD": [2, 4] },
+              { "fase": "Bajá en 2 s", "pausa": 0.3, "dur": 2, "pelvis": [0, 88], "pieI": [4, 0], "pieD": [-2, 0], "brazoI": [6, 140], "brazoD": [6, 140] }
+            ]
+          }
+        },
+        {
+          "id": "extension-muneca-excentrica", "nombre": "Extensión de muñeca excéntrica", "grupo": "torso",
+          "series": ["3×15", "3×15", "3×15"], "notaExtra": "Para el codo: bajada de 4 s", "descanso": 45,
+          "pasos": [
+            "Sentado, antebrazo apoyado en el muslo, la mano afuera de la rodilla, palma hacia abajo.",
+            "Con la ayuda de la otra mano, llevá la mancuerna arriba (muñeca hacia arriba).",
+            "Soltá la ayuda y bajala solo con la muñeca, en 4 segundos.",
+            "Peso liviano: una molestia leve está bien, dolor fuerte no."
+          ],
+          "errores": ["Bajar rápido.", "Usar mucho peso.", "Mover el antebrazo en vez de la muñeca."],
+          "porque": "Es el ejercicio indicado para las molestias de codo (epicondilitis): fortalece el tendón de a poco. Si duele más de lo normal, avisale a tu kinesióloga.",
+          "video": { "url": "https://www.youtube.com/watch?v=qZ91noRkkWM", "canal": "Fisiolution", "titulo": "EJERCICIOS EXCENTRICOS para EPICONDILITIS y EPITROCLEITIS (DOLOR CODO) | Fisiolution" },
+          "anim": {
+            "vista": "lado", "cerca": "I",
+            "descripcion": "Extensión de muñeca excéntrica: antebrazo en el muslo, baja la mancuerna solo con la muñeca en 4 segundos.",
+            "equipo": [{ "tipo": "banco", "x": -4, "alto": 46, "ancho": 40 }, { "tipo": "mancuerna", "manos": ["punoI"] }],
+            "trabaja": [{ "seg": "antebrazoI", "lado": "frente" }],
+            "poses": [
+              { "fase": "Bajá solo con la muñeca en 4 s", "dur": 4, "pelvis": [0, 52], "tronco": 40, "pieI": [44, 0], "pieD": [40, 0], "rodillaI": "arriba", "rodillaD": "arriba", "manoI": [50, 60], "codoI": "abajo", "munecaI": 130, "manoD": [42, 66], "codoD": "abajo" },
+              { "fase": "Subila con ayuda de la otra mano", "pausa": 0.2, "dur": 1, "pelvis": [0, 52], "tronco": 40, "pieI": [44, 0], "pieD": [40, 0], "rodillaI": "arriba", "rodillaD": "arriba", "manoI": [50, 60], "codoI": "abajo", "munecaI": 40, "manoD": [42, 66], "codoD": "abajo" }
+            ]
+          }
+        },
+        {
+          "id": "elevacion-rodillas-colgado", "nombre": "Elevación de rodillas colgado", "grupo": "core",
+          "series": ["3×10", "3×12", "3×15"], "descanso": 60,
+          "pasos": [
+            "Colgado de la barra, hombros activos (no colgado flojo).",
+            "Subí las rodillas hacia el pecho en 1 segundo, enrollando la pelvis.",
+            "Bajá en 2 segundos, sin balancearte."
+          ],
+          "errores": ["Balancearte para subir.", "Subir solo hasta la altura de la cadera sin enrollar la pelvis.", "Dejar caer las piernas."],
+          "porque": "Abdomen bajo y agarre fuerte. Ayuda a cuidar la zona lumbar.",
+          "video": { "url": "https://www.youtube.com/watch?v=naR7Qldgxrg", "canal": "Sergio Tejeda", "titulo": "Elevación de rodillas colgado: así SÍ trabaja el abdomen" },
+          "anim": {
+            "vista": "lado", "cerca": "I",
+            "descripcion": "Elevación de rodillas colgado de costado: sube las rodillas al pecho en 1 segundo y baja en 2.",
+            "encuadre": "-110 -215 220 225",
+            "equipo": [{ "tipo": "poligono", "puntos": [[-24, 198], [24, 198], [24, 203], [-24, 203]] }],
+            "trabaja": ["abdomen"],
+            "poses": [
+              { "fase": "Subí las rodillas en 1 s", "dur": 1, "pelvis": [0, 96], "tronco": 0, "pieI": [2, 12], "pieD": [-2, 12], "rodillaI": 1, "rodillaD": 1, "pieAngI": -60, "pieAngD": -60, "manoI": [0, 200], "manoD": [0, 200], "codoI": -1, "codoD": -1 },
+              { "fase": "Bajá en 2 s", "pausa": 0.5, "dur": 2, "pelvis": [4, 98], "tronco": -8, "pieI": [32, 62], "pieD": [28, 60], "rodillaI": 1, "rodillaD": 1, "pieAngI": -60, "pieAngD": -60, "manoI": [0, 200], "manoD": [0, 200], "codoI": -1, "codoD": -1 }
+            ]
+          }
+        }
       ]
     },
     "C": {

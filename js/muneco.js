@@ -69,6 +69,9 @@ export function esqueleto(pose, vista) {
     } else rodilla = ik(cadera, pie, L.muslo, L.pierna, pose['rodilla' + lado] ?? 1);
     const pa = pose['pieAng' + lado] ?? 0; // 0 = apoyado plano hacia adelante
     const punta = frente ? [pie[0] + sg * 4, pie[1]] : [pie[0] + L.pie * Math.cos(rad(pa)), pie[1] + L.pie * Math.sin(rad(pa))];
+    // Muñeca (opcional): la mano como un segmento corto con su propio ángulo (desde abajo, + hacia +x).
+    const mu = pose['muneca' + lado];
+    J['puno' + lado] = mu == null ? mano : desde(mano, mu, 9);
     Object.assign(J, { ['hombro' + lado]: hombro, ['codo' + lado]: codo, ['mano' + lado]: mano, ['cadera' + lado]: cadera, ['rodilla' + lado]: rodilla, ['pie' + lado]: pie, ['punta' + lado]: punta });
   }
   J.manos = [(J.manoI[0] + J.manoD[0]) / 2, (J.manoI[1] + J.manoD[1]) / 2];
@@ -185,6 +188,7 @@ function dibujarCuerpo(g, J, vista, cerca) {
   const parte = (lado, cls) => {
     for (const s of ['brazo', 'antebrazo', 'muslo', 'pierna']) linea(g, J[SEG[s + lado][0]], J[SEG[s + lado][1]], cls, s === 'muslo' ? 11 : s === 'pierna' ? 9 : s === 'brazo' ? 8.5 : 7.5);
     linea(g, J['pie' + lado], J['punta' + lado], cls, 6);
+    if (J['puno' + lado] !== J['mano' + lado]) linea(g, J['mano' + lado], J['puno' + lado], cls, 6);
   };
   if (vista !== 'frente') parte(lejos, 'hueso lejos');
   linea(g, J.pelvis, J.cuello, 'hueso', 15);
