@@ -225,3 +225,17 @@ body:has(.tabs) { padding-bottom: calc(env(safe-area-inset-bottom) + 170px); }
 .login { display: grid; gap: 6px; }
 .login label { font-size: 13px; font-weight: 700; color: var(--muted); margin-top: 4px; }
 .login .btn { margin-top: 10px; }
+.muneco .eq-banda { stroke: var(--guia); stroke-linecap: round; opacity: .7; }
+
+/* ---------- Con qué lo hago ---------- */
+.equipo .eq-dl { display: grid; grid-template-columns: auto 1fr; gap: 6px 12px; margin: 8px 0 0; font-size: 15px; }
+.equipo dt { color: var(--muted); font-weight: 600; font-size: 13px; padding-top: 2px; }
+.equipo dd { margin: 0; }
+.seg-op { display: flex; gap: 6px; margin-top: 10px; background: var(--card-2); padding: 4px; border-radius: 14px; }
+.seg-op button { flex: 1; border: 0; background: none; min-height: 44px; border-radius: 11px; font-weight: 700; color: var(--muted); }
+.seg-op button[aria-pressed="true"] { background: var(--verde); color: var(--verde-ink); }
+.serie.campos-0 { grid-template-columns: 34px 1fr 64px; }
+.serie.campos-2 { grid-template-columns: 30px 1fr 1fr 1fr 56px; gap: 6px; }
+.serie.campos-2 .check { width: 56px; }
+.campo label { white-space: normal; font-size: 10.5px; line-height: 1.15; min-height: 26px; display: flex; flex-direction: column; justify-content: flex-end; padding-bottom: 3px; }
+.campo label b { color: var(--ink); font-size: 11px; }

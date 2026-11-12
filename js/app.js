@@ -1,7 +1,7 @@
 // Plan de gimnasio — Hoy, entrada en calor y sesión completa del día.
 // El plan se lee de plan.json (siempre la última versión). Los registros se guardan por id de ejercicio.
-import { animar } from './muneco.js?v=202611121301';
-import { iniciarNube, entrar, salir, conectado, mailActual, marcarCambio, estado as nube } from './nube.js?v=202611121301';
+import { animar } from './muneco.js?v=202611121324';
+import { iniciarNube, entrar, salir, conectado, mailActual, marcarCambio, estado as nube } from './nube.js?v=202611121324';
 
 const $ = (s, r = document) => r.querySelector(s);
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -63,14 +63,20 @@ const descTxt = (s) => (s >= 60 ? (s % 60 ? mmss(s) : `${s / 60} min`) : `${s} s
 // Registros por id de ejercicio
 const registros = () => leer('gym.registros', {});
 function ultima(id) { const r = (registros()[id] || []).filter((x) => x.fecha !== hoyISO()); return r.length ? r[r.length - 1] : null; }
-function sugerir(ej, ult, rec) {
-  if (!ult || !ult.series.length || rec.seg) return '';
+function sugerir(ej, ult, rec, anotar = 'total') {
+  if (!ult || !ult.series.length || rec.seg || anotar === 'ninguno') return '';
+  const m = modoDe(ej); if (m && ult.modo && ult.modo !== m.id) return ''; // cambiaste de equipo: no se compara
   const completas = ult.series.every((s) => s.hecha && (rec.tope == null || +s.reps >= rec.tope));
   if (!completas) return '';
+  const ok = 'Completaste todo la última vez: ';
+  if (anotar === 'placa') return ok + 'subí un número de placa.';
+  if (anotar === 'asistencia') return ok + 'bajá unos 5 kg de asistencia.';
+  if (anotar === 'pelota') return ok + 'cuando lo sientas fácil, pasá a una pelota más pesada.';
   const pg = plan.progresion; const piernas = ej.grupo === 'piernas';
   const [a, b] = piernas ? pg.piernas : pg.torso;
   const kg = Math.max(...ult.series.map((s) => +s.kg || 0)); if (!kg) return '';
-  return `Completaste todo la última vez: subí ${a}–${b} kg${piernas ? '' : ' por ' + pg.torsoPor} (de ${kg} a ${kg + a}–${kg + b} kg).`;
+  const cual = anotar === 'por-mancuerna' ? ' por mancuerna' : anotar === 'total' ? ' en total' : '';
+  return `${ok}subí ${a}–${b} kg${cual} (de ${kg} a ${kg + a}–${kg + b} kg).`;
 }
 function videoUrl(ej) {
   if (ej.video && ej.video.url) return ej.video.url;
@@ -130,7 +136,7 @@ function renderCalor() {
   $('#app').innerHTML = `
   <header class="top"><div class="fila"><span class="eyebrow">Día ${st.dia} · Semana ${st.semana}</span><button class="chip" data-act="salir">Salir</button></div><h1>Entrada en calor</h1><div class="sub">${plan.calentamiento.minutos} minutos · tocá cada uno al terminarlo</div></header>
   <main class="wrap">${barraSesion()}
-    <section class="series">${items.map((c) => `<button class="serie calor ${st.cal[c.id] ? 'hecha' : ''}" data-act="calor" data-id="${c.id}"><span class="calor-txt"><b>${esc(c.nombre)}</b><small>${esc(c.dosis)}</small></span><span class="check">${TILDE}</span></button>`).join('')}</section>
+    <section class="series">${items.map((c) => `<button class="serie calor ${st.cal[c.id] ? 'hecha' : ''}" data-act="calor" data-id="${c.id}"><span class="calor-txt"><b>${esc(c.nombre)}</b><small>${esc(c.dosis)}${c.equipo ? ' · ' + esc(c.equipo) : ''}</small></span><span class="check">${TILDE}</span></button>`).join('')}</section>
   </main>
   <nav class="nav"><div class="in"><button class="btn" data-act="salir">← Hoy</button><button class="btn prim" data-act="sig">Empezar ejercicios →</button></div></nav>`;
 }
@@ -145,6 +151,42 @@ function bloqueDemo(ej, etiqueta) {
       : '<div class="sin-anim">Animación en preparación</div>'}
   </section>`;
 }
+// ---------------- Con qué lo hago ----------------
+// Qué se anota en "kg" (siempre igual, para poder comparar).
+const ANOTAR = { 'por-mancuerna': 'kg por mancuerna', mancuerna: 'kg de la mancuerna', total: 'kg totales', discos: 'kg en discos', placa: 'placa de la máquina', asistencia: 'kg asistencia (−)', agregado: 'kg agregados', pelota: 'kg de la pelota', ninguno: '' };
+const ANOTAR_LARGO = {
+  'por-mancuerna': 'Los kg de UNA mancuerna (no la suma de las dos).',
+  mancuerna: 'Los kg de la mancuerna.',
+  total: 'Los kg totales: la barra incluida más todos los discos.',
+  discos: 'Los kg de todos los discos que cargaste en la máquina.',
+  placa: 'El número de placa que marca la máquina.',
+  asistencia: 'La asistencia en negativo (ej. −20). Si sumás peso con cinturón, en positivo.',
+  agregado: 'Solo los kg que agregás (0 si es tu peso).',
+  pelota: 'Los kg de la pelota.',
+  ninguno: 'Nada de kilos: solo repeticiones o segundos.',
+};
+const porEtapa = (v, sem) => (Array.isArray(v) ? v[etapa(sem).id - 1] : v);
+function modoDe(ej) {
+  const o = ej.equipo && ej.equipo.opciones; if (!o) return null;
+  const m = leer('gym.modos', {})[ej.id]; return o.find((x) => x.id === m) || o[0];
+}
+function equipoDe(ej, sem) {
+  const e = ej.equipo || {}, m = modoDe(ej);
+  return { elemento: porEtapa(e.elemento, sem), peso: m ? m.peso : porEtapa(e.peso, sem), progresar: porEtapa(e.progresar, sem), anotar: (m ? m.anotar : porEtapa(e.anotar, sem)) || 'total', opciones: e.opciones, modo: m ? m.id : null };
+}
+function bloqueEquipo(ej, sem, titulo) {
+  if (!ej.equipo) return '';
+  const q = equipoDe(ej, sem);
+  return `<section class="card equipo"><div class="ej-n">CON QUÉ LO HAGO${titulo ? ' · ' + esc(titulo.toUpperCase()) : ''}</div>
+    ${q.opciones ? `<div class="seg-op" role="group" aria-label="Con qué lo hacés">${q.opciones.map((o) => `<button data-act="modo" data-id="${esc(ej.id)}" data-v="${esc(o.id)}" aria-pressed="${o.id === q.modo}">${esc(o.nombre)}</button>`).join('')}</div>` : ''}
+    <dl class="eq-dl">
+      <dt>Elemento</dt><dd>${esc(q.elemento || '')}</dd>
+      ${q.peso ? `<dt>Dónde va el peso</dt><dd>${esc(q.peso)}</dd>` : ''}
+      ${q.progresar ? `<dt>Cuando te queda fácil</dt><dd>${esc(q.progresar)}</dd>` : ''}
+      <dt>Qué anoto</dt><dd><b>${esc(ANOTAR_LARGO[q.anotar] || '')}</b></dd>
+    </dl></section>`;
+}
+
 function bloqueInfo(ej, titulo) {
   const t = titulo ? ` · ${esc(titulo)}` : '';
   return `
@@ -161,10 +203,13 @@ function renderEj() {
   const ses = st.sesion[ej.id] || (st.sesion[ej.id] = { series: [] });
   const total = rec.n + (ej.extraIzq ? 1 : 0);
   const ult = ultima(ej.id);
-  for (let k = 0; k < total; k++) if (!ses.series[k]) ses.series[k] = { kg: ult && ult.series[k] ? ult.series[k].kg : '', reps: '', hecha: false };
+  for (let k = 0; k < total; k++) if (!ses.series[k]) ses.series[k] = { kg: ult && ult.series[k] ? ult.series[k].kg : '', kg2: ult && ult.series[k] ? (ult.series[k].kg2 ?? '') : '', reps: '', hecha: false };
   ses.series.length = total;
   const nEj = st.pasos.filter((p) => p.tipo === 'ej').length, idx = st.pasos.slice(0, st.i + 1).filter((p) => p.tipo === 'ej').length;
-  const sug = sugerir(ej, ult, rec);
+  // Campos de kg: uno por ejercicio (dos en las superseries), con la etiqueta de qué se anota. Sin campo si es peso corporal.
+  const campos = (comps.length ? comps : [ej]).map((c, n) => ({ f: n ? 'kg2' : 'kg', anotar: equipoDe(c, sem).anotar, corto: comps.length ? c.nombre.split(' ')[0] : '' })).filter((c) => c.anotar !== 'ninguno');
+  const unidad = (a) => (a === 'placa' ? 'placa' : 'kg');
+  const sug = campos.length && !comps.length ? sugerir(ej, ult, rec, campos[0].anotar) : '';
   $('#app').innerHTML = `
   <header class="top"><div class="fila"><span class="eyebrow">Día ${st.dia} · Semana ${sem} · ${esc(etapa(sem).nombre)}</span><button class="chip" data-act="salir">Salir</button></div>
     <div class="sub" style="margin-top:6px">${esc(etapa(sem).tanque)}${esDescarga(sem) ? ' · descarga' : ''}</div></header>
@@ -180,13 +225,14 @@ function renderEj() {
       ${rec.nota ? `<div class="tanque">${esc(rec.nota)}</div>` : ''}
       ${ej.notaExtra ? `<div class="tanque">${esc(ej.notaExtra)}</div>` : ''}
       ${ej.extraIzq ? '<span class="extra">+1 serie extra con la izquierda · empezá por la izquierda</span>' : ''}
-      ${ult ? `<p class="ultima">La última vez (${esc(ult.fecha)}): <b>${ult.series.filter((s) => s.hecha).map((s) => `${s.kg || '–'} kg × ${s.reps || '–'}`).join(' · ') || 'sin series marcadas'}</b></p>` : `<p class="ultima">Primera vez: anotá ${rec.seg ? 'el tiempo' : 'los kilos y las repeticiones'} de cada serie.</p>`}
+      ${ult ? `<p class="ultima">La última vez (${esc(ult.fecha)}): <b>${ult.series.filter((s) => s.hecha).map((s) => [campos[0] ? `${s.kg || '–'} ${unidad(campos[0].anotar)}` : '', campos[1] ? `+ ${s.kg2 || '–'} ${unidad(campos[1].anotar)}` : '', `× ${s.reps || '–'}`].filter(Boolean).join(' ')).join(' · ') || 'sin series marcadas'}</b>${ult.modo && ult.modo !== (modoDe(ej) || {}).id ? ' <small>(con otra opción de equipo)</small>' : ''}</p>` : `<p class="ultima">Primera vez: anotá ${campos.length ? 'lo que dice al lado de cada campo' : (rec.seg ? 'el tiempo' : 'las repeticiones')} en cada serie.</p>`}
       ${sug ? `<div class="sugerencia">↑ ${esc(sug)}</div>` : ''}
     </section>
+    ${comps.length ? comps.map((c) => bloqueEquipo(c, sem, c.nombre)).join('') : bloqueEquipo(ej, sem)}
     <section class="series">${ses.series.map((s, k) => `
-      <div class="serie ${s.hecha ? 'hecha' : ''}">
+      <div class="serie ${s.hecha ? 'hecha' : ''} campos-${campos.length}">
         <div class="n num">${k + 1}${ej.extraIzq && k === total - 1 ? '<small>IZQ.</small>' : ''}</div>
-        <div class="campo"><label for="kg${k}">Kilos</label><input id="kg${k}" inputmode="decimal" data-f="kg" data-k="${k}" value="${esc(s.kg)}" placeholder="0"></div>
+        ${campos.map((c) => `<div class="campo"><label for="${c.f}${k}">${c.corto ? '<b>' + esc(c.corto) + '</b>' : ''}${esc(ANOTAR[c.anotar])}</label><input id="${c.f}${k}" inputmode="decimal" data-f="${c.f}" data-k="${k}" value="${esc(s[c.f] ?? '')}" placeholder="0"></div>`).join('')}
         <div class="campo"><label for="rp${k}">${rec.seg ? 'Seg.' : 'Reps'}</label><input id="rp${k}" inputmode="numeric" data-f="reps" data-k="${k}" value="${esc(s.reps)}" placeholder="${esc(String(rec.tope ?? ''))}"></div>
         <button class="check" data-act="serie" data-k="${k}" aria-label="Marcar serie ${k + 1} hecha" aria-pressed="${s.hecha}">${TILDE}</button>
       </div>`).join('')}
@@ -353,7 +399,8 @@ function cerrarCrono() { clearInterval(crono.timer); $('#crono').classList.remov
 function guardarEj(id) {
   const ses = st.sesion[id]; if (!ses || !ses.series.some((s) => s.hecha)) return;
   const r = registros(); const lista = r[id] || (r[id] = []);
-  const reg = { fecha: hoyISO(), semana: st.semana, dia: st.dia, series: ses.series.map((s) => ({ kg: s.kg, reps: s.reps, hecha: s.hecha })) };
+  const m = modoDe(ejercicio(id));
+  const reg = { fecha: hoyISO(), semana: st.semana, dia: st.dia, ...(m ? { modo: m.id } : {}), series: ses.series.map((s) => ({ kg: s.kg, ...(s.kg2 !== undefined && s.kg2 !== '' ? { kg2: s.kg2 } : {}), reps: s.reps, hecha: s.hecha })) };
   if (lista.length && lista[lista.length - 1].fecha === reg.fecha) lista[lista.length - 1] = reg; else lista.push(reg);
   guardar('gym.registros', r);
 }
@@ -413,6 +460,7 @@ document.addEventListener('click', (e) => {
   if (b.dataset.act === 'prot') { const r = leer('gym.proteina', {}); (r[hoyISO()] ||= []).push(+b.dataset.g); guardar('gym.proteina', r); render(); return; }
   if (b.dataset.act === 'protDeshacer') { const r = leer('gym.proteina', {}); (r[hoyISO()] || []).pop(); guardar('gym.proteina', r); render(); return; }
   if (b.dataset.act === 'salirCuenta') { salir().then(render); return; }
+  if (b.dataset.act === 'modo') { const m = leer('gym.modos', {}); m[b.dataset.id] = b.dataset.v; guardar('gym.modos', m); render(); return; }
   if (b.dataset.sem) { st.semana = +b.dataset.sem; guardar('gym.semana', st.semana); render(); return; }
   if (b.dataset.dia) { st.dia = b.dataset.dia; render(); return; }
   const a = b.dataset.act;

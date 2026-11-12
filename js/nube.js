@@ -2,7 +2,7 @@
 // Documentos: gestion/gimnasio (sesiones, semana, peso, comida, molestias) y gestion/gimnasio-registros (pesos por id de ejercicio).
 // Si cambiás de celu: entrás con tu mail y contraseña y se baja todo.
 
-const CLAVES_DATOS = ['gym.semana', 'gym.sesiones', 'gym.molestias', 'gym.peso', 'gym.proteina'];
+const CLAVES_DATOS = ['gym.semana', 'gym.sesiones', 'gym.molestias', 'gym.peso', 'gym.proteina', 'gym.modos'];
 const leer = (k, d) => { try { return JSON.parse(localStorage.getItem(k)) ?? d; } catch { return d; } };
 const escribir = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch { /* sin espacio */ } };
 

@@ -20,13 +20,13 @@
   "calentamiento": {
     "minutos": 12,
     "items": [
-      { "id": "cal-bici", "nombre": "Bici o elíptico", "dosis": "5 min" },
-      { "id": "cal-rotaciones-columna", "nombre": "Rotaciones de columna en cuatro patas", "dosis": "8 por lado" },
-      { "id": "cal-wall-slides", "nombre": "Deslizamientos en la pared (wall slides)", "dosis": "10" },
-      { "id": "cal-cadera-9090", "nombre": "Cadera 90/90", "dosis": "6 cambios por lado" },
-      { "id": "cal-caminata-banda", "nombre": "Caminata lateral con banda", "dosis": "2×10 pasos por lado" },
-      { "id": "cal-puente-gluteo", "nombre": "Puente de glúteo", "dosis": "2×10" },
-      { "id": "cal-dead-bug", "nombre": "Dead bug", "dosis": "2×8 por lado" }
+      { "id": "cal-bici", "nombre": "Bici o elíptico", "dosis": "5 min", "equipo": "Bici o elíptico, nivel suave" },
+      { "id": "cal-rotaciones-columna", "nombre": "Rotaciones de columna en cuatro patas", "dosis": "8 por lado", "equipo": "Peso corporal" },
+      { "id": "cal-wall-slides", "nombre": "Deslizamientos en la pared (wall slides)", "dosis": "10", "equipo": "Peso corporal" },
+      { "id": "cal-cadera-9090", "nombre": "Cadera 90/90", "dosis": "6 cambios por lado", "equipo": "Peso corporal" },
+      { "id": "cal-caminata-banda", "nombre": "Caminata lateral con banda", "dosis": "2×10 pasos por lado", "equipo": "Banda elástica liviana" },
+      { "id": "cal-puente-gluteo", "nombre": "Puente de glúteo", "dosis": "2×10", "equipo": "Peso corporal" },
+      { "id": "cal-dead-bug", "nombre": "Dead bug", "dosis": "2×8 por lado", "equipo": "Peso corporal" }
     ]
   },
 
@@ -37,6 +37,7 @@
         {
           "id": "caida-cajon-clavar", "nombre": "Caída desde cajón de 30 cm a clavar", "grupo": "piernas",
           "series": ["3×5", "3×5", "3×5"], "nota": ["Aterrizaje controlado con las dos piernas", "En la izquierda sola", "Con rebote rápido"], "descanso": 60,
+          "equipo": { "elemento": "Cajón de 30 cm · peso corporal", "peso": "Sin peso: solo tu cuerpo.", "progresar": "Más altura (de 30 a 40 cm) o caer en una pierna.", "anotar": "ninguno" },
           "pasos": [
             "Parado arriba de un cajón de 30 cm, dejate caer dando un paso al frente (no saltes).",
             "Caé con los dos pies a la vez, en la punta y después el talón.",
@@ -62,6 +63,7 @@
         {
           "id": "sentadilla", "nombre": "Sentadilla", "nombreEtapa": ["Sentadilla goblet", "Sentadilla con barra", "Sentadilla con barra"], "grupo": "piernas",
           "series": ["3×10", "4×8–10", "4×6–8"], "descanso": 150,
+          "equipo": { "elemento": ["Mancuerna (goblet)", "Barra", "Barra"], "peso": ["Una mancuerna agarrada vertical con las dos manos, pegada al pecho.", "Barra apoyada en la espalda alta (arriba de los omóplatos, no en el cuello).", "Barra apoyada en la espalda alta (arriba de los omóplatos, no en el cuello)."], "progresar": ["Mancuerna más pesada.", "Sumá discos: 2,5 a 5 kg en total.", "Sumá discos: 2,5 a 5 kg en total."], "anotar": ["mancuerna", "total", "total"] },
           "pasos": [
             "Pies un poco más abiertos que la cadera, puntas apenas hacia afuera.",
             "Goblet: la mancuerna pegada al pecho. Con barra: apoyada arriba de la espalda, no en el cuello.",
@@ -87,6 +89,7 @@
         {
           "id": "prensa-piernas", "nombre": "Prensa de piernas", "grupo": "piernas",
           "series": ["3×12", "4×10–12", "3×10"], "descanso": 120,
+          "equipo": { "elemento": "Máquina de prensa", "peso": "Discos cargados en la máquina.", "progresar": "Sumá discos: 5 a 10 kg en total.", "anotar": "discos" },
           "pasos": [
             "Espalda y cola bien apoyadas en el respaldo.",
             "Pies en el medio de la plataforma, al ancho de la cadera.",
@@ -114,6 +117,7 @@
         {
           "id": "sentadilla-bulgara", "nombre": "Sentadilla búlgara", "grupo": "piernas",
           "series": ["3×8", "3×10", "3×8"], "nota": ["", "", "Más peso"], "por": "por pierna", "extraIzq": true, "descanso": 90,
+          "equipo": { "elemento": "Mancuernas", "peso": "Una mancuerna en cada mano, brazos colgando.", "progresar": "Mancuernas más pesadas. Si ya pesan mucho para las manos: barra en la espalda o en la máquina Smith.", "anotar": "por-mancuerna" },
           "pasos": [
             "Pie de atrás apoyado en el banco, empeine para abajo.",
             "Pie de adelante a un paso largo: al bajar, la rodilla queda sobre el pie.",
@@ -139,6 +143,7 @@
         {
           "id": "extension-cuadriceps-una-pierna", "nombre": "Extensión de cuádriceps a una pierna", "grupo": "piernas",
           "series": ["3×12", "3×12–15", "3×12"], "extraIzq": true, "descanso": 60,
+          "equipo": { "elemento": "Máquina de extensión de cuádriceps", "peso": "La placa de la máquina (almohadilla arriba del tobillo).", "progresar": "Bajá un número la clavija.", "anotar": "placa" },
           "pasos": [
             "Sentado, espalda apoyada, la almohadilla justo arriba del tobillo.",
             "Estirá la pierna en 1 segundo y apretá el cuádriceps arriba 1 segundo.",
@@ -167,6 +172,7 @@
         {
           "id": "gemelos-de-pie", "nombre": "Gemelos de pie", "grupo": "piernas",
           "series": ["3×15", "4×10–15", "4×12"], "descanso": 60,
+          "equipo": { "elemento": "Máquina de gemelos o mancuerna", "progresar": "Más placa o una mancuerna más pesada.", "opciones": [ { "id": "maquina", "nombre": "Máquina", "peso": "Máquina de gemelos: el peso apoyado en los hombros.", "anotar": "placa" }, { "id": "mancuerna", "nombre": "Mancuerna", "peso": "Una mancuerna en una mano, parado en un pie, la otra mano apoyada.", "anotar": "mancuerna" } ] },
           "pasos": [
             "Parado con la punta de los pies en un escalón o en la máquina, rodillas estiradas.",
             "Subí en 1 segundo, lo más alto que puedas.",
@@ -179,6 +185,7 @@
           "anim": {
             "vista": "lado", "cerca": "I",
             "descripcion": "Gemelos de pie de costado: sube en 1 segundo, se queda 1 arriba y baja en 2.",
+            "equipo": [{ "tipo": "poligono", "puntos": [[-30, 0], [-22, 0], [-22, 160], [-30, 160]], "oscuro": true }, { "tipo": "placa", "en": "cuello", "ang": 90, "largo": 24, "dx": 2, "dy": -2, "grosor": 8 }],
             "trabaja": [{ "seg": "piernaI", "lado": "atras" }],
             "poses": [
               { "fase": "Subí en 1 s", "dur": 1, "pelvis": [0, 86], "pieI": [0, 0], "pieD": [0, 0], "brazoI": [0, 0], "brazoD": [0, 0] },
@@ -189,6 +196,7 @@
         {
           "id": "press-banca", "nombre": "Press de banca", "nombreEtapa": ["Press de banca con mancuernas", "Press de banca con barra", "Press de banca con barra"], "grupo": "torso",
           "series": ["3×10", "4×8–10", "4×6–8"], "descanso": 120,
+          "equipo": { "elemento": ["Mancuernas y banco plano", "Barra y banco plano", "Barra y banco plano"], "peso": ["Una mancuerna en cada mano.", "Barra con discos.", "Barra con discos."], "progresar": ["Mancuernas 1 o 2 kg más pesadas cada una.", "Sumá 2,5 kg en total.", "Sumá 2,5 kg en total."], "anotar": ["por-mancuerna", "total", "total"] },
           "pasos": [
             "Acostado, ojos debajo de la barra (o mancuernas a la altura del pecho), pies firmes en el piso.",
             "Juntá los omóplatos y mantenelos así toda la serie.",
@@ -212,6 +220,7 @@
         {
           "id": "press-inclinado-mancuernas", "nombre": "Press inclinado con mancuernas", "grupo": "torso",
           "series": ["3×10", "4×10", "3×8–10"], "descanso": 90,
+          "equipo": { "elemento": "Mancuernas y banco inclinado (30°)", "peso": "Una mancuerna en cada mano.", "progresar": "Mancuernas 1 o 2 kg más pesadas cada una.", "anotar": "por-mancuerna" },
           "pasos": [
             "Banco a 30°, más o menos. Espalda apoyada y omóplatos juntos.",
             "Mancuernas a la altura del pecho alto, codos un poco abajo de las manos.",
@@ -240,6 +249,7 @@
         {
           "id": "fondos-paralelas", "nombre": "Fondos en paralelas (asistidos si hace falta)", "grupo": "torso",
           "series": ["3×8–10", "3×8–12", "3×10–12"], "descanso": 90,
+          "equipo": { "elemento": "Paralelas · peso corporal", "progresar": "Si cuesta: máquina asistida o banda. Para sumar: cinturón con disco o una mancuerna entre los pies.", "opciones": [ { "id": "asistido", "nombre": "Con asistencia", "peso": "Máquina asistida o banda: anotá la asistencia en negativo (ej. −20).", "anotar": "asistencia" }, { "id": "lastre", "nombre": "Con peso extra", "peso": "Cinturón con disco o mancuerna entre los pies: anotá solo los kg que agregás (0 si es tu peso).", "anotar": "agregado" } ] },
           "pasos": [
             "Agarrado de las paralelas con los brazos estirados, hombros lejos de las orejas.",
             "Inclinate apenas hacia adelante.",
@@ -275,6 +285,7 @@
         {
           "id": "plancha-lateral", "nombre": "Plancha lateral", "grupo": "core",
           "series": ["3×30 s", "3×40 s", "3×45 s"], "por": "por lado", "extraIzq": true, "notaExtra": "+1 apoyado sobre el izquierdo", "descanso": 30,
+          "equipo": { "elemento": "Peso corporal", "peso": "Sin peso: solo tu cuerpo.", "progresar": "Más segundos o un disco apoyado en la cadera.", "anotar": "ninguno" },
           "pasos": [
             "Acostado de costado, codo justo debajo del hombro.",
             "Subí la cadera hasta que cabeza, cadera y pies queden en línea recta.",
@@ -298,6 +309,7 @@
         {
           "id": "crunch-polea", "nombre": "Crunch en polea", "grupo": "core",
           "series": ["3×12–15", "3×12–15", "3×12–15"], "descanso": 45,
+          "equipo": { "elemento": "Polea alta con soga", "peso": "La placa de la polea, de rodillas con la soga a los costados de la cabeza.", "progresar": "Un número más de placa.", "anotar": "placa" },
           "pasos": [
             "De rodillas frente a la polea alta, con la soga a los costados de la cabeza.",
             "La cadera queda quieta: enrollá la columna llevando el pecho hacia las rodillas.",
@@ -325,6 +337,7 @@
         {
           "id": "salto-lateral-skater", "nombre": "Salto lateral (skater) a clavar", "grupo": "piernas",
           "series": ["3×5", "3×6", "3×6"], "nota": ["Clavá cada caída 2 s", "Más lejos", "Sin pausa, rebotando"], "por": "por lado", "descanso": 60,
+          "equipo": { "elemento": "Peso corporal", "peso": "Sin peso: solo tu cuerpo.", "progresar": "Saltá más lejos.", "anotar": "ninguno" },
           "pasos": [
             "Parado en una pierna, saltá de costado hacia la otra.",
             "Caé en la pierna de afuera, en la punta y después el talón.",
@@ -349,6 +362,7 @@
         {
           "id": "peso-muerto-rumano", "nombre": "Peso muerto rumano con barra", "grupo": "piernas",
           "series": ["3×10", "4×8–10", "4×6–8"], "descanso": 150,
+          "equipo": { "elemento": "Barra con discos", "peso": "Barra con discos, agarre por fuera de las piernas.", "progresar": "Sumá 2,5 a 5 kg en total.", "anotar": "total" },
           "pasos": [
             "Parado con la barra pegada a los muslos, pies al ancho de la cadera.",
             "Rodillas apenas flexionadas y fijas durante todo el movimiento.",
@@ -374,6 +388,7 @@
         {
           "id": "hip-thrust", "nombre": "Hip thrust", "grupo": "piernas",
           "series": ["3×10", "4×8–10", "3×10"], "descanso": 90,
+          "equipo": { "elemento": "Barra o máquina de hip thrust", "progresar": "Sumá 5 kg en total o un número más de placa.", "opciones": [ { "id": "barra", "nombre": "Barra", "peso": "Barra con discos sobre la cadera, con almohadilla.", "anotar": "total" }, { "id": "maquina", "nombre": "Máquina", "peso": "Máquina de hip thrust.", "anotar": "placa" } ] },
           "pasos": [
             "Espalda alta apoyada en el borde del banco, barra sobre la cadera (con almohadilla).",
             "Pies al ancho de la cadera; arriba, la tibia queda vertical.",
@@ -397,6 +412,7 @@
         {
           "id": "curl-femoral-maquina", "nombre": "Curl femoral en máquina", "grupo": "piernas",
           "series": ["3×12", "4×10–12", "3×12"], "descanso": 60,
+          "equipo": { "elemento": "Máquina de curl femoral", "peso": "La placa de la máquina (almohadilla arriba de los talones).", "progresar": "Un número más de placa.", "anotar": "placa" },
           "pasos": [
             "Acostado boca abajo, rodillas justo pasando el borde del banco y la almohadilla arriba de los talones.",
             "Doblá las rodillas en 1 segundo llevando los talones hacia la cola.",
@@ -424,6 +440,7 @@
         {
           "id": "nordico-asistido", "nombre": "Nórdico asistido", "grupo": "piernas",
           "series": ["3×4–6", "3×5–6", "3×6"], "desdeSemana": 3, "descanso": 90,
+          "equipo": { "elemento": "Peso corporal + banda elástica", "peso": "Banda elástica atada atrás y pasada por el pecho, para ayudarte.", "progresar": "Banda más fina, hasta hacerlo sin banda.", "anotar": "ninguno" },
           "pasos": [
             "De rodillas sobre una colchoneta, con los tobillos sujetos (un compañero o una barra).",
             "Cuerpo en línea recta de rodillas a cabeza.",
@@ -436,7 +453,7 @@
           "anim": {
             "vista": "lado", "cerca": "I",
             "descripcion": "Nórdico asistido de costado: se deja caer hacia adelante frenando 3 segundos y vuelve ayudado con las manos.",
-            "equipo": [{ "tipo": "placa", "en": "pieI", "ang": 0, "largo": 12, "dx": -2, "dy": 6, "grosor": 7 }],
+            "equipo": [{ "tipo": "banda", "desde": [-74, 64], "a": "cuello" }, { "tipo": "placa", "en": "pieI", "ang": 0, "largo": 12, "dx": -2, "dy": 6, "grosor": 7 }],
             "trabaja": [{ "seg": "musloI", "lado": "atras" }],
             "guias": [{ "tipo": "linea", "de": "rodillaI", "a": "cuello", "texto": "línea recta" }],
             "poses": [
@@ -448,6 +465,7 @@
         {
           "id": "gemelos-sentado", "nombre": "Gemelos sentado", "grupo": "piernas",
           "series": ["3×15", "4×12–15", "3×15"], "descanso": 60,
+          "equipo": { "elemento": "Máquina de gemelos sentado o discos", "progresar": "Más placa o más discos.", "opciones": [ { "id": "maquina", "nombre": "Máquina", "peso": "Máquina de gemelos sentado.", "anotar": "placa" }, { "id": "discos", "nombre": "Discos", "peso": "Sentado en un banco, discos apoyados sobre las rodillas.", "anotar": "discos" } ] },
           "pasos": [
             "Sentado en la máquina, almohadilla sobre los muslos cerca de las rodillas.",
             "Punta de los pies en la plataforma, talones colgando.",
@@ -475,6 +493,7 @@
         {
           "id": "dominadas-o-jalon", "nombre": "Dominadas asistidas o jalón al pecho", "grupo": "torso",
           "series": ["4×8–10", "4×8–10", "4×6–8"], "descanso": 120,
+          "equipo": { "elemento": "Máquina de jalón o dominadas", "progresar": "Más placa en el jalón, menos asistencia en las dominadas; sin asistencia, cinturón con disco.", "opciones": [ { "id": "jalon", "nombre": "Jalón", "peso": "Máquina de jalón al pecho.", "anotar": "placa" }, { "id": "dominadas", "nombre": "Dominadas", "peso": "Dominadas asistidas: anotá la asistencia en negativo (ej. −25). Con cinturón y disco: los kg agregados.", "anotar": "asistencia" } ] },
           "pasos": [
             "Agarre un poco más ancho que los hombros.",
             "Sacá pecho e inclinate apenas hacia atrás.",
@@ -504,6 +523,7 @@
         {
           "id": "remo-barra", "nombre": "Remo con barra", "grupo": "torso",
           "series": ["3×10", "4×8–10", "4×8"], "descanso": 120,
+          "equipo": { "elemento": "Barra con discos", "peso": "Barra con discos, agarre un poco más ancho que los hombros.", "progresar": "Sumá 2,5 a 5 kg en total.", "anotar": "total" },
           "pasos": [
             "Inclinado unos 45°, cadera atrás, rodillas apenas flexionadas, espalda recta.",
             "Agarre un poco más ancho que los hombros.",
@@ -528,6 +548,7 @@
         {
           "id": "remo-mancuerna-un-brazo", "nombre": "Remo con mancuerna a un brazo", "grupo": "torso",
           "series": ["3×10", "3×10", "3×12"], "por": "por lado", "descanso": 60,
+          "equipo": { "elemento": "Mancuerna y banco plano", "peso": "Una mancuerna en una mano; la otra mano y la rodilla en el banco.", "progresar": "Mancuerna 2 kg más pesada.", "anotar": "mancuerna" },
           "pasos": [
             "Una rodilla y la mano del mismo lado apoyadas en el banco; la otra pierna en el piso.",
             "Espalda recta, paralela al piso.",
@@ -551,6 +572,7 @@
         {
           "id": "face-pull", "nombre": "Face pull", "grupo": "torso",
           "series": ["3×15", "3×15", "3×15"], "descanso": 45,
+          "equipo": { "elemento": "Polea alta con soga", "peso": "La placa de la polea, a la altura de la cara.", "progresar": "Un número más de placa.", "anotar": "placa" },
           "pasos": [
             "Polea a la altura de la cara, con la soga.",
             "Tirá hacia la cara separando las manos, codos altos.",
@@ -574,6 +596,7 @@
         {
           "id": "curl-biceps-barra", "nombre": "Curl de bíceps con barra", "grupo": "torso",
           "series": ["3×10", "4×8–10", "3×10"], "descanso": 75,
+          "equipo": { "elemento": "Barra recta o barra Z", "peso": "Barra con discos.", "progresar": "Sumá 1 a 2 kg en total.", "anotar": "total" },
           "pasos": [
             "Parado, barra con agarre al ancho de los hombros.",
             "Codos pegados al cuerpo y quietos.",
@@ -597,6 +620,7 @@
         {
           "id": "curl-martillo", "nombre": "Curl martillo", "grupo": "torso",
           "series": ["3×12", "3×12", "3×12–15"], "descanso": 60,
+          "equipo": { "elemento": "Mancuernas", "peso": "Una mancuerna en cada mano.", "progresar": "Mancuernas 1 o 2 kg más pesadas.", "anotar": "por-mancuerna" },
           "pasos": [
             "Mancuernas con las palmas mirándose (como si sostuvieras un martillo).",
             "Codos pegados al cuerpo.",
@@ -619,6 +643,7 @@
         {
           "id": "extension-muneca-excentrica", "nombre": "Extensión de muñeca excéntrica", "grupo": "torso",
           "series": ["3×15", "3×15", "3×15"], "notaExtra": "Para el codo: bajada de 4 s", "descanso": 45,
+          "equipo": { "elemento": "Mancuerna liviana (2 a 4 kg)", "peso": "Una mancuerna liviana en la mano, antebrazo apoyado en el muslo.", "progresar": "Subí de a 1 kg, solo si no duele.", "anotar": "mancuerna" },
           "pasos": [
             "Sentado, antebrazo apoyado en el muslo, la mano afuera de la rodilla, palma hacia abajo.",
             "Con la ayuda de la otra mano, llevá la mancuerna arriba (muñeca hacia arriba).",
@@ -642,6 +667,7 @@
         {
           "id": "elevacion-rodillas-colgado", "nombre": "Elevación de rodillas colgado", "grupo": "core",
           "series": ["3×10", "3×12", "3×15"], "descanso": 60,
+          "equipo": { "elemento": "Barra de dominadas o silla de paralelas · peso corporal", "peso": "Colgado de la barra o apoyado en la silla de paralelas.", "progresar": "Piernas estiradas o una mancuerna entre los pies.", "anotar": "agregado" },
           "pasos": [
             "Colgado de la barra, hombros activos (no colgado flojo).",
             "Subí las rodillas hacia el pecho en 1 segundo, enrollando la pelvis.",
@@ -672,6 +698,7 @@
         {
           "id": "salto-cajon", "nombre": "Salto al cajón", "nombreEtapa": ["Subida explosiva al cajón", "Salto al cajón", "Salto al cajón"], "grupo": "piernas",
           "series": ["3×5", "3×5", "4×5"], "descanso": 90,
+          "equipo": { "elemento": "Cajón · peso corporal", "peso": "Sin peso: solo tu cuerpo.", "progresar": "Cajón más alto.", "anotar": "ninguno" },
           "pasos": [
             "Parado frente al cajón, a un paso de distancia.",
             "Etapa 1: subí al cajón con un paso explosivo. Desde la semana 5: saltá con las dos piernas.",
@@ -697,6 +724,7 @@
         {
           "id": "step-up-cajon-alto", "nombre": "Subida al cajón alto (step-up)", "grupo": "piernas",
           "series": ["3×8", "3×10", "3×8"], "nota": ["", "", "Más peso"], "por": "por pierna", "extraIzq": true, "descanso": 90,
+          "equipo": { "elemento": "Mancuernas y cajón alto", "peso": "Una mancuerna en cada mano.", "progresar": "Mancuernas 1 o 2 kg más pesadas.", "anotar": "por-mancuerna" },
           "pasos": [
             "Pie entero arriba del cajón (que la rodilla quede a la altura de la cadera o un poco más abajo).",
             "Subí empujando con la pierna de arriba, sin impulsarte con la de abajo.",
@@ -721,6 +749,7 @@
         {
           "id": "sentadilla-una-pierna-banco", "nombre": "Sentadilla a una pierna hasta un banco", "grupo": "piernas",
           "series": ["3×6–8", "3×8", "3×8"], "nota": ["", "", "Con peso"], "por": "por pierna", "descanso": 90,
+          "equipo": { "elemento": "Banco · peso corporal, después mancuerna", "peso": "Primero sin peso; después, una mancuerna agarrada contra el pecho.", "progresar": "Banco más bajo o más peso.", "anotar": "mancuerna" },
           "pasos": [
             "Parado delante de un banco, en una pierna, la otra estirada hacia adelante.",
             "Bajá en 3 segundos llevando la cola atrás hasta tocar el banco, sin sentarte del todo.",
@@ -745,6 +774,7 @@
         {
           "id": "plancha-copenhagen", "nombre": "Plancha Copenhagen", "grupo": "core",
           "series": ["3×20 s", "3×30 s", "3×30 s"], "nota": ["Rodilla de arriba apoyada en el banco", "", "Pierna estirada"], "por": "por lado", "descanso": 45,
+          "equipo": { "elemento": "Banco · peso corporal", "peso": "Sin peso: solo tu cuerpo.", "progresar": "Pasar de la rodilla al pie apoyado y sumar segundos.", "anotar": "ninguno" },
           "pasos": [
             "De costado, codo debajo del hombro. La pierna de arriba apoyada en un banco (rodilla en las etapas 1 y 2, el pie con la pierna estirada en la 3).",
             "Subí la cadera hasta que el cuerpo quede en línea recta.",
@@ -769,6 +799,7 @@
         {
           "id": "gemelos-prensa", "nombre": "Gemelos en prensa", "grupo": "piernas",
           "series": ["3×15", "3×12–15", "3×15"], "descanso": 60,
+          "equipo": { "elemento": "Máquina de prensa", "peso": "Discos cargados en la prensa.", "progresar": "Sumá discos: 5 a 10 kg en total.", "anotar": "discos" },
           "pasos": [
             "En la prensa, piernas estiradas (sin trabar) y solo la punta de los pies en el borde de la plataforma.",
             "Empujá con la punta de los pies en 1 segundo.",
@@ -796,6 +827,7 @@
         {
           "id": "press-hombros-mancuernas", "nombre": "Press de hombros sentado con mancuernas", "grupo": "torso",
           "series": ["3×10", "4×8–10", "4×6–8"], "descanso": 120,
+          "equipo": { "elemento": "Mancuernas y banco con respaldo", "peso": "Una mancuerna en cada mano, sentado.", "progresar": "Mancuernas 1 o 2 kg más pesadas.", "anotar": "por-mancuerna" },
           "pasos": [
             "Sentado con la espalda apoyada, mancuernas a la altura de los hombros.",
             "Empujá hacia arriba en 1 segundo, sin trabar los codos.",
@@ -822,6 +854,7 @@
         {
           "id": "elevaciones-laterales", "nombre": "Elevaciones laterales", "grupo": "torso",
           "series": ["3×15", "4×12–15", "4×15"], "descanso": 60,
+          "equipo": { "elemento": "Mancuernas o polea baja", "progresar": "Mancuerna 1 kg más pesada o un número más de placa.", "opciones": [ { "id": "mancuernas", "nombre": "Mancuernas", "peso": "Una mancuerna en cada mano.", "anotar": "por-mancuerna" }, { "id": "polea", "nombre": "Polea baja", "peso": "Polea baja, de a un brazo.", "anotar": "placa" } ] },
           "pasos": [
             "Parado, mancuernas al costado, codos apenas flexionados.",
             "Subí los brazos hacia los costados en 1 segundo, como si abrieras las alas.",
@@ -846,6 +879,7 @@
         {
           "id": "press-inclinado-maquina-barra", "nombre": "Press inclinado en máquina o con barra", "grupo": "torso",
           "series": ["3×10", "4×8–10", "3×8"], "descanso": 120,
+          "equipo": { "elemento": "Máquina o barra", "progresar": "Un número más de placa o 2,5 kg más en la barra.", "opciones": [ { "id": "maquina", "nombre": "Máquina", "peso": "Máquina de press inclinado.", "anotar": "placa" }, { "id": "barra", "nombre": "Barra", "peso": "Barra con discos en banco inclinado.", "anotar": "total" } ] },
           "pasos": [
             "Banco a 30°, espalda apoyada y omóplatos juntos.",
             "Con barra: bajala al pecho alto, codos a unos 45°. En máquina: asiento a la altura que la manija quede en el pecho alto.",
@@ -873,6 +907,7 @@
         {
           "id": "remo-polea-baja", "nombre": "Remo en polea baja", "grupo": "torso",
           "series": ["3×10", "4×10", "3×10–12"], "descanso": 90,
+          "equipo": { "elemento": "Polea baja con agarre en V", "peso": "La placa de la polea.", "progresar": "Un número más de placa.", "anotar": "placa" },
           "pasos": [
             "Sentado, pies en la plataforma, rodillas apenas flexionadas, espalda recta.",
             "Tirá hacia el ombligo llevando los codos atrás y juntando los omóplatos.",
@@ -900,6 +935,7 @@
         {
           "id": "jalon-agarre-cerrado", "nombre": "Jalón con agarre cerrado", "grupo": "torso",
           "series": ["3×10–12", "3×10–12", "3×12"], "descanso": 75,
+          "equipo": { "elemento": "Polea alta con agarre en V", "peso": "La placa de la polea.", "progresar": "Un número más de placa.", "anotar": "placa" },
           "pasos": [
             "Manija de agarre cerrado (palmas enfrentadas).",
             "Sacá pecho e inclinate apenas hacia atrás.",
@@ -939,6 +975,7 @@
         {
           "id": "equilibrio-pierna-izquierda", "nombre": "Equilibrio en la pierna izquierda", "grupo": "piernas",
           "series": ["3×30 s", "3×30 s", "3×30 s"], "nota": ["En el piso", "En colchoneta", "Pasándote una pelota"], "descanso": 30,
+          "equipo": { "elemento": "Peso corporal", "peso": "Sin peso. Etapa 2: arriba de una colchoneta. Etapa 3: pasándote una pelota.", "progresar": "Colchoneta, después pelota, después ojos cerrados.", "anotar": "ninguno" },
           "pasos": [
             "Parado en la pierna izquierda, rodilla apenas flexionada.",
             "Cadera nivelada: que no baje el lado derecho.",
@@ -961,6 +998,7 @@
         {
           "id": "lanzamiento-rotacional-medicinal", "nombre": "Lanzamiento rotacional de pelota medicinal", "grupo": "core",
           "series": ["–", "3×6", "3×8"], "por": "por lado", "desdeSemana": 5, "descanso": 60,
+          "equipo": { "elemento": "Pelota medicinal (3 a 4 kg)", "peso": "La pelota con las dos manos.", "progresar": "Pelota de 5 a 6 kg.", "anotar": "pelota" },
           "pasos": [
             "De costado a una pared, pelota a la altura de la cadera del lado de atrás.",
             "Girá desde los pies y la cadera, no solo con los brazos.",
@@ -984,6 +1022,7 @@
         {
           "id": "pallof-press", "nombre": "Pallof press", "grupo": "core",
           "series": ["3×10", "3×10", "3×12"], "por": "por lado", "descanso": 45,
+          "equipo": { "elemento": "Polea a la altura del pecho, manija simple", "peso": "La placa de la polea.", "progresar": "Un número más de placa o alejarte un paso.", "anotar": "placa" },
           "pasos": [
             "De costado a la polea (a la altura del pecho), manija con las dos manos contra el pecho.",
             "Empujá las manos hacia adelante sin dejar que te gire.",
@@ -1010,6 +1049,7 @@
   "extras": [
     {
       "id": "triceps-polea-soga", "nombre": "Tríceps en polea con soga", "grupo": "torso",
+      "equipo": { "elemento": "Polea alta con soga", "peso": "La placa de la polea.", "progresar": "Un número más de placa.", "anotar": "placa" },
       "pasos": [
         "Parado frente a la polea alta, codos pegados al cuerpo.",
         "Estirá los brazos hacia abajo en 1 segundo, abriendo la soga al final.",
@@ -1031,6 +1071,7 @@
     },
     {
       "id": "curl-inclinado", "nombre": "Curl inclinado con mancuernas", "grupo": "torso",
+      "equipo": { "elemento": "Mancuernas y banco inclinado", "peso": "Una mancuerna en cada mano.", "progresar": "Mancuernas 1 o 2 kg más pesadas.", "anotar": "por-mancuerna" },
       "pasos": [
         "Banco a unos 60°, espalda apoyada, brazos colgando atrás del cuerpo.",
         "Subí en 1 segundo sin adelantar los codos.",
@@ -1056,6 +1097,7 @@
     },
     {
       "id": "triceps-sobre-cabeza-polea", "nombre": "Tríceps sobre la cabeza en polea", "grupo": "torso",
+      "equipo": { "elemento": "Polea con soga", "peso": "La placa de la polea.", "progresar": "Un número más de placa.", "anotar": "placa" },
       "pasos": [
         "De espaldas a la polea, la soga detrás de la cabeza, un pie adelante.",
         "Codos apuntando arriba, al lado de la cabeza.",

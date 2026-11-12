@@ -123,6 +123,11 @@ function dibujarEquipo(g, eq, J, vista, delante) {
       const p1 = [c[0] + dx - l * Math.sin(a), c[1] + dy + l * Math.cos(a)], p2 = [c[0] + dx + l * Math.sin(a), c[1] + dy - l * Math.cos(a)];
       linea(g, p1, p2, 'eq-placa', e.grosor ?? 6);
     }
+    if (e.tipo === 'banda') { // banda elástica: de un punto fijo a una articulación
+      const a = e.desde || [-70, 60], b = J[e.a || 'cuello']; if (!b) continue;
+      linea(g, a, b, 'eq-banda', 3);
+      const [x, y] = P(a); g.appendChild(el('circle', { cx: x, cy: y, r: 3.5, class: 'eq-peso' }));
+    }
     if (e.tipo === 'pelota') { const c = J[e.en || 'manos']; const [x, y] = P([c[0] + (e.dx ?? 0), c[1] + (e.dy ?? 0)]); g.appendChild(el('circle', { cx: x, cy: y, r: e.r ?? 10, class: 'eq-pelota' })); }
     if (e.tipo === 'polea') {
       const top = [e.x ?? 70, e.alto ?? 190];
