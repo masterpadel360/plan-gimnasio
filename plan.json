@@ -669,12 +669,156 @@
       "aviso": "Antes de un torneo, salteá del 1 al 5.",
       "saltearAntesTorneo": [1, 2, 3, 4, 5],
       "ejercicios": [
-        { "id": "salto-cajon", "nombre": "Salto al cajón", "nombreEtapa": ["Subida explosiva al cajón", "Salto al cajón", "Salto al cajón"], "grupo": "piernas", "series": ["3×5", "3×5", "4×5"], "descanso": 90 },
-        { "id": "step-up-cajon-alto", "nombre": "Subida al cajón alto (step-up)", "grupo": "piernas", "series": ["3×8", "3×10", "3×8"], "nota": ["", "", "Más peso"], "por": "por pierna", "extraIzq": true, "descanso": 90 },
-        { "id": "sentadilla-una-pierna-banco", "nombre": "Sentadilla a una pierna hasta un banco", "grupo": "piernas", "series": ["3×6–8", "3×8", "3×8"], "nota": ["", "", "Con peso"], "por": "por pierna", "descanso": 90 },
-        { "id": "plancha-copenhagen", "nombre": "Plancha Copenhagen", "grupo": "core", "series": ["3×20 s", "3×30 s", "3×30 s"], "nota": ["", "", "Pierna estirada"], "por": "por lado", "descanso": 45 },
-        { "id": "gemelos-prensa", "nombre": "Gemelos en prensa", "grupo": "piernas", "series": ["3×15", "3×12–15", "3×15"], "descanso": 60 },
-        { "id": "press-hombros-mancuernas", "nombre": "Press de hombros sentado con mancuernas", "grupo": "torso", "series": ["3×10", "4×8–10", "4×6–8"], "descanso": 120 },
+        {
+          "id": "salto-cajon", "nombre": "Salto al cajón", "nombreEtapa": ["Subida explosiva al cajón", "Salto al cajón", "Salto al cajón"], "grupo": "piernas",
+          "series": ["3×5", "3×5", "4×5"], "descanso": 90,
+          "pasos": [
+            "Parado frente al cajón, a un paso de distancia.",
+            "Etapa 1: subí al cajón con un paso explosivo. Desde la semana 5: saltá con las dos piernas.",
+            "Cargá llevando los brazos atrás y saltá llevándolos arriba.",
+            "Caé suave arriba, en media sentadilla, rodillas sobre los pies. Bajá caminando, no saltando."
+          ],
+          "errores": ["Usar un cajón tan alto que caés en sentadilla profunda.", "Rodillas hacia adentro al caer.", "Bajar saltando hacia atrás."],
+          "porque": "Tus saltos son poco reactivos. El salto al cajón entrena la potencia de piernas con poco impacto, porque caés arriba.",
+          "video": { "url": "https://www.youtube.com/watch?v=O8rLG7bw59c", "canal": "FATE", "titulo": "Saltos al cajón (acentuando aterrizaje)." },
+          "anim": {
+            "vista": "lado", "cerca": "I",
+            "descripcion": "Salto al cajón de costado: carga con los brazos atrás, salta y cae suave arriba del cajón.",
+            "encuadre": "-110 -215 220 225",
+            "equipo": [{ "tipo": "poligono", "puntos": [[24, 0], [24, 50], [66, 50], [66, 0]] }],
+            "trabaja": [{ "seg": "musloI", "lado": "frente" }, "gluteoI"],
+            "poses": [
+              { "fase": "Cargá y saltá", "dur": 0.5, "pelvis": [-14, 66], "tronco": 32, "pieI": [-6, 0], "pieD": [-10, 0], "brazoI": [-40, -30], "brazoD": [-40, -30] },
+              { "fase": "Cargá y saltá", "dur": 0.4, "pelvis": [18, 112], "tronco": 12, "pieI": [24, 56], "pieD": [20, 58], "brazoI": [150, 165], "brazoD": [150, 165] },
+              { "fase": "Caé suave arriba", "pausa": 1, "dur": 1.2, "pelvis": [38, 104], "tronco": 26, "pieI": [46, 50], "pieD": [42, 50], "brazoI": [70, 80], "brazoD": [70, 80] }
+            ]
+          }
+        },
+        {
+          "id": "step-up-cajon-alto", "nombre": "Subida al cajón alto (step-up)", "grupo": "piernas",
+          "series": ["3×8", "3×10", "3×8"], "nota": ["", "", "Más peso"], "por": "por pierna", "extraIzq": true, "descanso": 90,
+          "pasos": [
+            "Pie entero arriba del cajón (que la rodilla quede a la altura de la cadera o un poco más abajo).",
+            "Subí empujando con la pierna de arriba, sin impulsarte con la de abajo.",
+            "Arriba, pará derecho con la cadera nivelada.",
+            "Bajá en 2 o 3 segundos. Empezá con la izquierda y hacé una serie más con ella."
+          ],
+          "errores": ["Impulsarte con la pierna de abajo.", "Que la rodilla de arriba se vaya hacia adentro.", "Que la cadera se incline al subir."],
+          "porque": "Fuerza de una pierna por vez, como en los desplazamientos de la cancha. Ayuda a igualar la izquierda, que tiene 30% menos fuerza.",
+          "video": { "url": "https://www.youtube.com/watch?v=CpKJ1B4iNwc", "canal": "Galvistrainer", "titulo": "STEP UPS - TÉCNICA CORRECTA EXPLI쫚- Galvistrainer" },
+          "anim": {
+            "vista": "lado", "cerca": "I",
+            "descripcion": "Subida al cajón alto de costado: sube empujando con la pierna de arriba y baja en 2 o 3 segundos.",
+            "encuadre": "-110 -225 220 235",
+            "equipo": [{ "tipo": "poligono", "puntos": [[8, 0], [8, 50], [52, 50], [52, 0]] }, { "tipo": "mancuerna" }],
+            "trabaja": [{ "seg": "musloI", "lado": "frente" }, "gluteoI"],
+            "poses": [
+              { "fase": "Subí con la de arriba", "dur": 1, "pelvis": [-6, 84], "tronco": 12, "pieI": [28, 50], "rodillaI": 1, "pieD": [-14, 0], "rodillaD": 1, "brazoI": [2, 2], "brazoD": [2, 2] },
+              { "fase": "Bajá en 2–3 s", "pausa": 0.4, "dur": 2.5, "pelvis": [24, 134], "tronco": 2, "pieI": [28, 50], "rodillaI": 1, "pieD": [24, 76], "rodillaD": 1, "brazoI": [0, 0], "brazoD": [0, 0] }
+            ]
+          }
+        },
+        {
+          "id": "sentadilla-una-pierna-banco", "nombre": "Sentadilla a una pierna hasta un banco", "grupo": "piernas",
+          "series": ["3×6–8", "3×8", "3×8"], "nota": ["", "", "Con peso"], "por": "por pierna", "descanso": 90,
+          "pasos": [
+            "Parado delante de un banco, en una pierna, la otra estirada hacia adelante.",
+            "Bajá en 3 segundos llevando la cola atrás hasta tocar el banco, sin sentarte del todo.",
+            "Brazos adelante para equilibrarte.",
+            "Subí sin impulso, con la rodilla sobre el pie."
+          ],
+          "errores": ["Dejarte caer sobre el banco.", "Rodilla hacia adentro.", "Levantar el talón."],
+          "porque": "Control de rodilla y fuerza de una pierna. Clave para que tu izquierda frene igual que la derecha.",
+          "video": { "url": "https://www.youtube.com/watch?v=34aPW7Oo_gc", "canal": "Pere Posa' m en Forma", "titulo": "Sentadilla a una pierna desde banco" },
+          "anim": {
+            "vista": "lado", "cerca": "I",
+            "descripcion": "Sentadilla a una pierna hasta un banco de costado: baja en 3 segundos hasta tocar el banco y sube sin impulso.",
+            "equipo": [{ "tipo": "banco", "x": -44, "alto": 42, "ancho": 36 }],
+            "trabaja": [{ "seg": "musloI", "lado": "frente" }, "gluteoI"],
+            "guias": [{ "tipo": "vertical", "desde": "puntaI", "largo": 52, "texto": "rodilla sobre el pie" }],
+            "poses": [
+              { "fase": "Bajá en 3 s hasta el banco", "dur": 3, "pelvis": [0, 86], "tronco": 4, "pieI": [6, 0], "rodillaI": 1, "pieD": [44, 34], "rodillaD": 1, "brazoI": [70, 80], "brazoD": [70, 80] },
+              { "fase": "Subí sin impulso", "pausa": 0.3, "dur": 1.2, "pelvis": [-28, 48], "tronco": 34, "pieI": [6, 0], "rodillaI": 1, "pieD": [46, 20], "rodillaD": 1, "brazoI": [85, 90], "brazoD": [85, 90] }
+            ]
+          }
+        },
+        {
+          "id": "plancha-copenhagen", "nombre": "Plancha Copenhagen", "grupo": "core",
+          "series": ["3×20 s", "3×30 s", "3×30 s"], "nota": ["Rodilla de arriba apoyada en el banco", "", "Pierna estirada"], "por": "por lado", "descanso": 45,
+          "pasos": [
+            "De costado, codo debajo del hombro. La pierna de arriba apoyada en un banco (rodilla en las etapas 1 y 2, el pie con la pierna estirada en la 3).",
+            "Subí la cadera hasta que el cuerpo quede en línea recta.",
+            "La pierna de abajo queda colgando o apenas apoyada.",
+            "Aguantá el tiempo sin que baje la cadera."
+          ],
+          "errores": ["Dejar caer la cadera.", "Girar el pecho hacia el piso.", "Arrancar directo con la pierna estirada."],
+          "porque": "Fortalece los aductores (la cara interna del muslo), que trabajan muchísimo en los desplazamientos laterales del pádel y se lesionan seguido.",
+          "video": { "url": "https://www.youtube.com/watch?v=mv8u-RDoADM", "canal": "Sergio Tejeda", "titulo": "Plancha Copenhague: el ejercicio de aductor INFRAVALORADO" },
+          "anim": {
+            "vista": "lado", "cerca": "I",
+            "descripcion": "Plancha Copenhagen: pierna de arriba en el banco, cadera arriba y cuerpo en línea recta.",
+            "equipo": [{ "tipo": "banco", "x": -82, "alto": 40, "ancho": 28 }],
+            "trabaja": ["musloI", "abdomen"],
+            "guias": [{ "tipo": "linea", "de": "pieI", "a": "cuello", "texto": "línea recta" }],
+            "poses": [
+              { "fase": "Subí la cadera", "dur": 1, "pelvis": [0, 24], "tronco": 98, "pieI": [-82, 44], "rodillaI": 1, "pieD": [-42, 2], "rodillaD": 1, "pieAngD": 180, "brazoI": [0, 90], "manoD": [4, 30], "codoD": "arriba" },
+              { "fase": "Mantené la línea recta", "pausa": 3, "dur": 1, "pelvis": [0, 33], "tronco": 94, "pieI": [-82, 44], "rodillaI": 1, "pieD": [-40, 8], "rodillaD": 1, "pieAngD": 180, "brazoI": [0, 90], "manoD": [4, 40], "codoD": "arriba" }
+            ]
+          }
+        },
+        {
+          "id": "gemelos-prensa", "nombre": "Gemelos en prensa", "grupo": "piernas",
+          "series": ["3×15", "3×12–15", "3×15"], "descanso": 60,
+          "pasos": [
+            "En la prensa, piernas estiradas (sin trabar) y solo la punta de los pies en el borde de la plataforma.",
+            "Empujá con la punta de los pies en 1 segundo.",
+            "Aguantá 1 segundo y bajá en 2 hasta estirar el gemelo.",
+            "Dejá puesto el seguro de la prensa."
+          ],
+          "errores": ["Doblar las rodillas.", "Rebotar abajo.", "Que se resbalen los pies de la plataforma."],
+          "porque": "Más volumen de gemelo con la rodilla estirada, sin cargar la espalda.",
+          "video": { "url": "https://www.youtube.com/watch?v=EptZC_AY6fE", "canal": "Zonapablo", "titulo": "Gemelo En Prensa con TIPS CLAVES - Extensiones de GEMELOS" },
+          "anim": {
+            "vista": "lado", "cerca": "I",
+            "descripcion": "Gemelos en prensa de costado: piernas estiradas, empuja con la punta de los pies y baja en 2 segundos.",
+            "equipo": [
+              { "tipo": "poligono", "puntos": [[-14, 30], [-66, 70], [-74, 60], [-22, 22]] },
+              { "tipo": "poligono", "puntos": [[-36, 0], [-24, 0], [-18, 26], [-30, 26]] },
+              { "tipo": "placa", "en": "puntaI", "ang": 45, "largo": 46, "dx": 2, "dy": -2, "grosor": 7 }
+            ],
+            "trabaja": [{ "seg": "piernaI", "lado": "atras" }],
+            "poses": [
+              { "fase": "Empujá con la punta en 1 s", "dur": 1, "pelvis": [-12, 40], "tronco": -55, "cabeza": 15, "pieI": [44, 96], "pieD": [42, 98], "rodillaI": "arriba", "rodillaD": "arriba", "pieAngI": 150, "pieAngD": 150, "manoI": [6, 36], "manoD": [6, 36], "codoI": -1, "codoD": -1 },
+              { "fase": "Aguantá 1 s · bajá en 2 s", "pausa": 1, "dur": 2, "pelvis": [-12, 40], "tronco": -55, "cabeza": 15, "pieI": [44, 96], "pieD": [42, 98], "rodillaI": "arriba", "rodillaD": "arriba", "pieAngI": 105, "pieAngD": 105, "manoI": [6, 36], "manoD": [6, 36], "codoI": -1, "codoD": -1 }
+            ]
+          }
+        },
+        {
+          "id": "press-hombros-mancuernas", "nombre": "Press de hombros sentado con mancuernas", "grupo": "torso",
+          "series": ["3×10", "4×8–10", "4×6–8"], "descanso": 120,
+          "pasos": [
+            "Sentado con la espalda apoyada, mancuernas a la altura de los hombros.",
+            "Empujá hacia arriba en 1 segundo, sin trabar los codos.",
+            "Bajá en 2 segundos hasta que las mancuernas queden a la altura de las orejas."
+          ],
+          "errores": ["Arquear la zona lumbar despegándote del respaldo.", "Bajar de más.", "Chocar las mancuernas arriba."],
+          "porque": "Hombros fuertes para el saque, el remate y la bandeja. Mirá que el brazo derecho llegue igual de alto que el izquierdo.",
+          "video": { "url": "https://www.youtube.com/watch?v=aTVwn3QgcVk", "canal": "Guillermo Fernández", "titulo": "Press de HOMBRO con MANCUERNAS sentado | GFit Coach" },
+          "anim": {
+            "vista": "frente",
+            "descripcion": "Press de hombros sentado de frente: empuja las mancuernas arriba en 1 segundo y baja en 2.",
+            "equipo": [
+              { "tipo": "poligono", "puntos": [[-18, 50], [18, 50], [18, 126], [-18, 126]], "oscuro": true },
+              { "tipo": "poligono", "puntos": [[-28, 44], [28, 44], [28, 50], [-28, 50]] },
+              { "tipo": "mancuerna" }
+            ],
+            "trabaja": ["hombroI", "hombroD"],
+            "poses": [
+              { "fase": "Empujá arriba en 1 s", "dur": 1, "pelvis": [0, 52], "pieI": [-26, 0], "pieD": [26, 0], "brazoI": [-95, -178], "brazoD": [95, 178] },
+              { "fase": "Bajá en 2 s", "pausa": 0.3, "dur": 2, "pelvis": [0, 52], "pieI": [-26, 0], "pieD": [26, 0], "brazoI": [-162, -174], "brazoD": [162, 174] }
+            ]
+          }
+        },
         {
           "id": "elevaciones-laterales", "nombre": "Elevaciones laterales", "grupo": "torso",
           "series": ["3×15", "4×12–15", "4×15"], "descanso": 60,
@@ -684,11 +828,7 @@
             "Pará a la altura de los hombros, con los codos un poco más altos que las manos.",
             "Bajá despacio, en 2 o 3 segundos."
           ],
-          "errores": [
-            "Hacer envión con el cuerpo.",
-            "Subir más arriba de los hombros o encoger el cuello.",
-            "Usar tanto peso que no podés bajar lento."
-          ],
+          "errores": ["Hacer envión con el cuerpo.", "Subir más arriba de los hombros o encoger el cuello.", "Usar tanto peso que no podés bajar lento."],
           "porque": "Hombros más anchos y fuertes para el remate y la bandeja. En tu evaluación el hombro derecho sube menos: mirá que los dos brazos lleguen a la misma altura y no compenses con el cuerpo.",
           "video": { "url": "https://www.youtube.com/watch?v=HldK_19NDEI", "canal": "Fit Generation", "titulo": "Cómo desarrollar HOMBROS más ANCHOS Y REDONDOS (Elevaciones Laterales)" },
           "anim": {
@@ -703,13 +843,166 @@
             ]
           }
         },
-        { "id": "press-inclinado-maquina-barra", "nombre": "Press inclinado en máquina o con barra", "grupo": "torso", "series": ["3×10", "4×8–10", "3×8"], "descanso": 120 },
-        { "id": "remo-polea-baja", "nombre": "Remo en polea baja", "grupo": "torso", "series": ["3×10", "4×10", "3×10–12"], "descanso": 90 },
-        { "id": "jalon-agarre-cerrado", "nombre": "Jalón con agarre cerrado", "grupo": "torso", "series": ["3×10–12", "3×10–12", "3×12"], "descanso": 75 },
-        { "id": "superserie-curl-inclinado-triceps-cabeza", "nombre": "Superserie: curl inclinado + tríceps sobre la cabeza en polea", "grupo": "torso", "series": ["3×12", "4×10–12", "3×12"], "por": "cada uno", "superserie": ["curl-inclinado", "triceps-sobre-cabeza-polea"], "descanso": 75 },
-        { "id": "equilibrio-pierna-izquierda", "nombre": "Equilibrio en la pierna izquierda", "grupo": "piernas", "series": ["3×30 s", "3×30 s", "3×30 s"], "nota": ["", "En colchoneta", "Pasándote una pelota"], "descanso": 30 },
-        { "id": "lanzamiento-rotacional-medicinal", "nombre": "Lanzamiento rotacional de pelota medicinal", "grupo": "core", "series": ["–", "3×6", "3×8"], "por": "por lado", "desdeSemana": 5, "descanso": 60 },
-        { "id": "pallof-press", "nombre": "Pallof press", "grupo": "core", "series": ["3×10", "3×10", "3×12"], "por": "por lado", "descanso": 45 }
+        {
+          "id": "press-inclinado-maquina-barra", "nombre": "Press inclinado en máquina o con barra", "grupo": "torso",
+          "series": ["3×10", "4×8–10", "3×8"], "descanso": 120,
+          "pasos": [
+            "Banco a 30°, espalda apoyada y omóplatos juntos.",
+            "Con barra: bajala al pecho alto, codos a unos 45°. En máquina: asiento a la altura que la manija quede en el pecho alto.",
+            "Bajá en 2 segundos y empujá sin despegar la cola."
+          ],
+          "errores": ["Banco muy parado.", "Rebotar en el pecho.", "Abrir los codos a 90°."],
+          "porque": "Segundo estímulo de pecho alto en la semana, con más peso que con mancuernas.",
+          "video": { "url": "https://www.youtube.com/watch?v=vUMtItXfO8Y", "canal": "Andres Vazquez Personal Trainer", "titulo": "PRESS BANCA INCLINADO: CÓMO HACERLO PARA CONSTRUIR MÚSCULO" },
+          "anim": {
+            "vista": "lado", "cerca": "I",
+            "descripcion": "Press inclinado con barra de costado: baja en 2 segundos al pecho alto y empuja.",
+            "equipo": [
+              { "tipo": "poligono", "puntos": [[22, 42], [-24, 74], [-30, 66], [16, 36]] },
+              { "tipo": "poligono", "puntos": [[18, 42], [52, 42], [52, 36], [16, 36]] },
+              { "tipo": "poligono", "puntos": [[28, 0], [38, 0], [38, 36], [28, 36]], "oscuro": true },
+              { "tipo": "barra" }
+            ],
+            "trabaja": ["pecho", { "seg": "brazoI", "lado": "atras" }],
+            "poses": [
+              { "fase": "Bajá en 2 s", "dur": 2, "pelvis": [20, 48], "tronco": -58, "pieI": [62, 0], "pieD": [58, 0], "rodillaI": "arriba", "rodillaD": "arriba", "manoI": [-18, 128], "manoD": [-18, 128], "codoI": "abajo", "codoD": "abajo" },
+              { "fase": "Empujá", "pausa": 0.3, "dur": 1, "pelvis": [20, 48], "tronco": -58, "pieI": [62, 0], "pieD": [58, 0], "rodillaI": "arriba", "rodillaD": "arriba", "manoI": [-10, 94], "manoD": [-10, 94], "codoI": "abajo", "codoD": "abajo" }
+            ]
+          }
+        },
+        {
+          "id": "remo-polea-baja", "nombre": "Remo en polea baja", "grupo": "torso",
+          "series": ["3×10", "4×10", "3×10–12"], "descanso": 90,
+          "pasos": [
+            "Sentado, pies en la plataforma, rodillas apenas flexionadas, espalda recta.",
+            "Tirá hacia el ombligo llevando los codos atrás y juntando los omóplatos.",
+            "Volvé en 2 segundos estirando los brazos, sin redondear la espalda."
+          ],
+          "errores": ["Balancear el torso para tirar.", "Redondear la espalda al volver.", "Encoger los hombros."],
+          "porque": "Espalda media y postura: equilibra el pecho y protege el hombro.",
+          "video": { "url": "https://www.youtube.com/watch?v=duJvtG1qIko", "canal": "Entrenador Personal - Malagaentrena", "titulo": "Cómo hacer REMO en polea baja correctamente (sin lesiones) Tutorial" },
+          "anim": {
+            "vista": "lado", "cerca": "I",
+            "descripcion": "Remo en polea baja de costado: tira hacia el ombligo y vuelve en 2 segundos.",
+            "equipo": [
+              { "tipo": "poligono", "puntos": [[-24, 22], [22, 22], [22, 28], [-24, 28]] },
+              { "tipo": "poligono", "puntos": [[60, 0], [66, 0], [66, 34], [60, 34]] },
+              { "tipo": "polea", "x": 78, "alto": 40, "mano": "manoI", "desde": [76, 36] }
+            ],
+            "trabaja": ["espalda", { "seg": "brazoI", "lado": "frente" }],
+            "guias": [{ "tipo": "segmento", "seg": "tronco", "texto": "espalda recta" }],
+            "poses": [
+              { "fase": "Tirá hacia el ombligo", "dur": 1, "pelvis": [0, 32], "tronco": 10, "pieI": [58, 24], "pieD": [56, 26], "rodillaI": "arriba", "rodillaD": "arriba", "pieAngI": 80, "pieAngD": 80, "manoI": [52, 62], "manoD": [52, 62], "codoI": -1, "codoD": -1 },
+              { "fase": "Volvé en 2 s", "pausa": 0.5, "dur": 2, "pelvis": [0, 32], "tronco": -4, "pieI": [58, 24], "pieD": [56, 26], "rodillaI": "arriba", "rodillaD": "arriba", "pieAngI": 80, "pieAngD": 80, "manoI": [12, 56], "manoD": [12, 56], "codoI": -1, "codoD": -1 }
+            ]
+          }
+        },
+        {
+          "id": "jalon-agarre-cerrado", "nombre": "Jalón con agarre cerrado", "grupo": "torso",
+          "series": ["3×10–12", "3×10–12", "3×12"], "descanso": 75,
+          "pasos": [
+            "Manija de agarre cerrado (palmas enfrentadas).",
+            "Sacá pecho e inclinate apenas hacia atrás.",
+            "Tirá hasta el pecho llevando los codos pegados al cuerpo, hacia abajo.",
+            "Subí en 2 segundos hasta estirar."
+          ],
+          "errores": ["Tirar con los brazos en vez de con la espalda.", "Hacer envión.", "No estirar arriba."],
+          "porque": "Trabaja el dorsal en toda su longitud: espalda más ancha y fuerte para el remate.",
+          "video": { "url": "https://www.youtube.com/watch?v=VUJYixXx5I8", "canal": "Zonapablo", "titulo": "Jalón al Pecho con Polea Alta Cerrado Agarre Neutro" },
+          "anim": {
+            "vista": "lado", "cerca": "I",
+            "descripcion": "Jalón con agarre cerrado de costado: tira al pecho con los codos pegados y sube en 2 segundos.",
+            "encuadre": "-110 -215 220 225",
+            "equipo": [
+              { "tipo": "poligono", "puntos": [[-20, 44], [22, 44], [22, 50], [-20, 50]] },
+              { "tipo": "poligono", "puntos": [[-6, 0], [6, 0], [6, 44], [-6, 44]], "oscuro": true },
+              { "tipo": "polea", "x": 8, "alto": 205, "mano": "manos", "desde": [8, 205] }
+            ],
+            "trabaja": ["espalda", { "seg": "brazoI", "lado": "frente" }],
+            "poses": [
+              { "fase": "Tirá al pecho, codos pegados", "dur": 1, "pelvis": [0, 52], "tronco": -10, "pieI": [42, 0], "pieD": [40, 0], "rodillaI": "arriba", "rodillaD": "arriba", "manoI": [6, 162], "manoD": [6, 162], "codoI": 1, "codoD": 1 },
+              { "fase": "Subí en 2 s", "pausa": 0.5, "dur": 2, "pelvis": [0, 52], "tronco": -18, "pieI": [42, 0], "pieD": [40, 0], "rodillaI": "arriba", "rodillaD": "arriba", "manoI": [2, 110], "manoD": [2, 110], "codoI": -1, "codoD": -1 }
+            ]
+          }
+        },
+        {
+          "id": "superserie-curl-inclinado-triceps-cabeza", "nombre": "Superserie: curl inclinado + tríceps sobre la cabeza en polea", "grupo": "torso",
+          "series": ["3×12", "4×10–12", "3×12"], "por": "cada uno", "superserie": ["curl-inclinado", "triceps-sobre-cabeza-polea"], "descanso": 75,
+          "pasos": [
+            "Hacé las repeticiones de curl inclinado y, sin descansar, las de tríceps sobre la cabeza.",
+            "Recién después de los dos, descansá.",
+            "Abajo de cada muñeco tenés cómo hacer cada ejercicio."
+          ],
+          "errores": ["Descansar entre los dos ejercicios.", "Perder la técnica por apurarte."],
+          "porque": "Bíceps y tríceps estirados, la posición que más hace crecer el brazo, en poco tiempo."
+        },
+        {
+          "id": "equilibrio-pierna-izquierda", "nombre": "Equilibrio en la pierna izquierda", "grupo": "piernas",
+          "series": ["3×30 s", "3×30 s", "3×30 s"], "nota": ["En el piso", "En colchoneta", "Pasándote una pelota"], "descanso": 30,
+          "pasos": [
+            "Parado en la pierna izquierda, rodilla apenas flexionada.",
+            "Cadera nivelada: que no baje el lado derecho.",
+            "Aguantá 30 segundos. Etapa 2: arriba de una colchoneta. Etapa 3: pasándote una pelota con alguien."
+          ],
+          "errores": ["Que caiga la cadera del lado de la pierna levantada.", "Rodilla trabada.", "Mirar el piso todo el tiempo."],
+          "porque": "Tu pelvis se inclina apoyado en el izquierdo y esa pierna frena menos. Este ejercicio entrena el control y el equilibrio de ese lado.",
+          "video": { "url": "https://www.youtube.com/watch?v=yWqMhDM_5VU", "canal": "Roots Health Center", "titulo": "Mejora la propiocepción a una pierna - Roots videotips" },
+          "anim": {
+            "vista": "frente",
+            "descripcion": "Equilibrio en la pierna izquierda de frente: aguanta 30 segundos con la cadera nivelada.",
+            "trabaja": ["musloI"],
+            "guias": [{ "tipo": "horizontal", "en": "pelvis", "largo": 40, "texto": "cadera nivelada" }],
+            "poses": [
+              { "fase": "Aguantá 30 s", "dur": 2, "pelvis": [-6, 86], "pieI": [-10, 0], "pieD": [16, 34], "brazoI": [-40, -40], "brazoD": [40, 40] },
+              { "fase": "Cadera nivelada", "dur": 2, "pelvis": [-7, 86], "pieI": [-10, 0], "pieD": [15, 36], "brazoI": [-30, -34], "brazoD": [48, 46] }
+            ]
+          }
+        },
+        {
+          "id": "lanzamiento-rotacional-medicinal", "nombre": "Lanzamiento rotacional de pelota medicinal", "grupo": "core",
+          "series": ["–", "3×6", "3×8"], "por": "por lado", "desdeSemana": 5, "descanso": 60,
+          "pasos": [
+            "De costado a una pared, pelota a la altura de la cadera del lado de atrás.",
+            "Girá desde los pies y la cadera, no solo con los brazos.",
+            "Lanzá fuerte contra la pared, como un drive.",
+            "Atrapala y repetí. Desde la semana 5."
+          ],
+          "errores": ["Lanzar solo con los brazos.", "Girar sin pivotear el pie de atrás.", "Usar una pelota muy pesada (tiene que ser rápida)."],
+          "porque": "Es el gesto del golpe de pádel con potencia: entrena el giro desde las piernas.",
+          "video": { "url": "https://www.youtube.com/watch?v=PxQ70ozmnOM", "canal": "Dynamic Evolution Train", "titulo": "Pelota medicinal: lanzamiento rotacional." },
+          "anim": {
+            "vista": "frente",
+            "descripcion": "Lanzamiento rotacional de frente: lleva la pelota a la cadera y la lanza girando hacia el otro lado.",
+            "equipo": [{ "tipo": "pelota", "en": "manos", "r": 11 }],
+            "trabaja": [{ "seg": "tronco" }],
+            "poses": [
+              { "fase": "Cargá a la cadera", "dur": 0.4, "pelvis": [4, 80], "pieI": [-24, 0], "pieD": [24, 0], "manoI": [26, 92], "manoD": [36, 96], "codoI": "abajo", "codoD": "abajo" },
+              { "fase": "Girá y lanzá", "pausa": 0.5, "dur": 0.35, "pelvis": [-4, 82], "pieI": [-24, 0], "pieD": [24, 0], "manoI": [-58, 122], "manoD": [-48, 126], "codoI": "abajo", "codoD": "abajo" }
+            ]
+          }
+        },
+        {
+          "id": "pallof-press", "nombre": "Pallof press", "grupo": "core",
+          "series": ["3×10", "3×10", "3×12"], "por": "por lado", "descanso": 45,
+          "pasos": [
+            "De costado a la polea (a la altura del pecho), manija con las dos manos contra el pecho.",
+            "Empujá las manos hacia adelante sin dejar que te gire.",
+            "Aguantá 2 segundos con los brazos estirados y volvé al pecho."
+          ],
+          "errores": ["Dejar que el cable te gire el torso.", "Arquear la zona lumbar.", "Pararte muy cerca de la polea."],
+          "porque": "Core anti-rotación: estabiliza el tronco y cuida tu zona lumbar en los golpes.",
+          "video": { "url": "https://www.youtube.com/watch?v=W8Yf1uyUnoM", "canal": "Vitar Club", "titulo": "Press PALLOF en polea: core ANTI-ROTACIÓN (técnica segura)" },
+          "anim": {
+            "vista": "lado", "cerca": "I",
+            "descripcion": "Pallof press: empuja la manija hacia adelante sin girar y aguanta 2 segundos.",
+            "equipo": [{ "tipo": "polea", "x": -72, "alto": 128, "mano": "manos", "desde": [-72, 124] }],
+            "trabaja": ["abdomen"],
+            "poses": [
+              { "fase": "Empujá adelante sin girar", "dur": 1, "pelvis": [0, 82], "tronco": 2, "pieI": [16, 0], "pieD": [-16, 0], "rodillaI": 1, "rodillaD": 1, "manoI": [10, 122], "manoD": [10, 122], "codoI": "abajo", "codoD": "abajo" },
+              { "fase": "Aguantá 2 s y volvé", "pausa": 2, "dur": 1, "pelvis": [0, 82], "tronco": 2, "pieI": [16, 0], "pieD": [-16, 0], "rodillaI": 1, "rodillaD": 1, "manoI": [52, 124], "manoD": [52, 124], "codoI": "abajo", "codoD": "abajo" }
+            ]
+          }
+        }
       ]
     }
   },
@@ -733,6 +1026,54 @@
         "poses": [
           { "fase": "Estirá en 1 s", "dur": 1, "pelvis": [0, 88], "tronco": 10, "pieI": [4, 0], "pieD": [-2, 0], "brazoI": [6, 125], "brazoD": [6, 125] },
           { "fase": "Volvé en 2 s", "pausa": 0.5, "dur": 2, "pelvis": [0, 88], "tronco": 10, "pieI": [4, 0], "pieD": [-2, 0], "brazoI": [6, 4], "brazoD": [6, 4] }
+        ]
+      }
+    },
+    {
+      "id": "curl-inclinado", "nombre": "Curl inclinado con mancuernas", "grupo": "torso",
+      "pasos": [
+        "Banco a unos 60°, espalda apoyada, brazos colgando atrás del cuerpo.",
+        "Subí en 1 segundo sin adelantar los codos.",
+        "Bajá en 3 segundos hasta estirar del todo."
+      ],
+      "errores": ["Adelantar los codos al subir.", "Despegar la espalda del banco.", "Hacer medio recorrido."],
+      "porque": "Con el brazo atrás el bíceps trabaja estirado: es de las variantes que más lo hacen crecer.",
+      "video": { "url": "https://www.youtube.com/watch?v=nw2Y9iHHzlU", "canal": "ATHLEAN-X Español", "titulo": "Curls Inclinados con Mancuernas ¡LA FORMA CORRECTA!" },
+      "anim": {
+        "vista": "lado", "cerca": "I",
+        "descripcion": "Curl inclinado de costado: brazos colgando atrás, sube en 1 segundo y baja en 3.",
+        "equipo": [
+          { "tipo": "poligono", "puntos": [[18, 42], [-18, 104], [-26, 100], [10, 38]] },
+          { "tipo": "poligono", "puntos": [[14, 42], [46, 42], [46, 36], [12, 36]] },
+          { "tipo": "mancuerna" }
+        ],
+        "trabaja": [{ "seg": "brazoI", "lado": "frente" }],
+        "poses": [
+          { "fase": "Subí en 1 s", "dur": 1, "pelvis": [16, 48], "tronco": -30, "pieI": [60, 0], "pieD": [56, 0], "rodillaI": "arriba", "rodillaD": "arriba", "brazoI": [-6, -4], "brazoD": [-6, -4] },
+          { "fase": "Bajá en 3 s", "pausa": 0.4, "dur": 3, "pelvis": [16, 48], "tronco": -30, "pieI": [60, 0], "pieD": [56, 0], "rodillaI": "arriba", "rodillaD": "arriba", "brazoI": [-6, 140], "brazoD": [-6, 140] }
+        ]
+      }
+    },
+    {
+      "id": "triceps-sobre-cabeza-polea", "nombre": "Tríceps sobre la cabeza en polea", "grupo": "torso",
+      "pasos": [
+        "De espaldas a la polea, la soga detrás de la cabeza, un pie adelante.",
+        "Codos apuntando arriba, al lado de la cabeza.",
+        "Estirá los brazos hacia arriba y adelante en 1 segundo.",
+        "Volvé en 2 segundos, sintiendo el estiramiento del tríceps."
+      ],
+      "errores": ["Abrir los codos hacia los costados.", "Arquear la zona lumbar.", "Mover los codos en vez de los antebrazos."],
+      "porque": "El tríceps estirado sobre la cabeza es la posición que más lo hace crecer. Si te molesta el codo, bajá el peso.",
+      "video": { "url": "https://www.youtube.com/watch?v=Z8Qmv4ByV14", "canal": "Vitar Club", "titulo": "Extensión de TRÍCEPS sobre la 쪾ZA en polea con cuerda" },
+      "anim": {
+        "vista": "lado", "cerca": "I",
+        "descripcion": "Tríceps sobre la cabeza en polea de costado: codos arriba, estira los brazos en 1 segundo y vuelve en 2.",
+        "encuadre": "-110 -225 220 235",
+        "equipo": [{ "tipo": "polea", "x": -70, "alto": 150, "mano": "manoI", "desde": [-70, 146] }],
+        "trabaja": [{ "seg": "brazoI", "lado": "atras" }],
+        "poses": [
+          { "fase": "Estirá en 1 s", "dur": 1, "pelvis": [0, 84], "tronco": 18, "pieI": [26, 0], "pieD": [-24, 0], "rodillaI": 1, "rodillaD": 1, "brazoI": [168, 20], "brazoD": [168, 20] },
+          { "fase": "Volvé en 2 s", "pausa": 0.4, "dur": 2, "pelvis": [0, 84], "tronco": 18, "pieI": [26, 0], "pieD": [-24, 0], "rodillaI": 1, "rodillaD": 1, "brazoI": [165, 165], "brazoD": [165, 165] }
         ]
       }
     }
