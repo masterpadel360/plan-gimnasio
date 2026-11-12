@@ -1,5 +1,5 @@
 {
-  "version": "2026-11-12a",
+  "version": "2026-11-12b",
   "nombre": "Plan Gabriel · Masa muscular + pádel",
   "semanas": 12,
   "diasPorSemana": 3,
@@ -20,13 +20,181 @@
   "calentamiento": {
     "minutos": 12,
     "items": [
-      { "id": "cal-bici", "nombre": "Bici o elíptico", "dosis": "5 min", "equipo": "Bici o elíptico, nivel suave" },
-      { "id": "cal-rotaciones-columna", "nombre": "Rotaciones de columna en cuatro patas", "dosis": "8 por lado", "equipo": "Peso corporal" },
-      { "id": "cal-wall-slides", "nombre": "Deslizamientos en la pared (wall slides)", "dosis": "10", "equipo": "Peso corporal" },
-      { "id": "cal-cadera-9090", "nombre": "Cadera 90/90", "dosis": "6 cambios por lado", "equipo": "Peso corporal" },
-      { "id": "cal-caminata-banda", "nombre": "Caminata lateral con banda", "dosis": "2×10 pasos por lado", "equipo": "Banda elástica liviana" },
-      { "id": "cal-puente-gluteo", "nombre": "Puente de glúteo", "dosis": "2×10", "equipo": "Peso corporal" },
-      { "id": "cal-dead-bug", "nombre": "Dead bug", "dosis": "2×8 por lado", "equipo": "Peso corporal" }
+      {
+        "id": "cal-bici", "nombre": "Bici o elíptico", "dosis": "5 min", "equipo": "Bici o elíptico, nivel suave",
+        "pasos": [
+          "Regulá el asiento: con el pedal abajo, la rodilla queda apenas flexionada.",
+          "Resistencia baja o media: tenés que poder hablar sin ahogarte.",
+          "5 minutos a ritmo suave; en el último minuto subí un poco."
+        ],
+        "errores": ["Ir a fondo: es para entrar en calor, no para cansarte.", "Asiento muy bajo (cargás las rodillas) o muy alto (la cadera se mueve de lado a lado)."],
+        "porque": "Sube la temperatura del cuerpo y las pulsaciones para que músculos y articulaciones lleguen listos a las pesas.",
+        "video": { "url": "https://www.youtube.com/watch?v=zaUWNvgelAU", "canal": "SportCityMexico", "titulo": "Cómo ajustar el asiento y manubrio de la bicicleta estática" },
+        "anim": {
+          "vista": "lado", "cerca": "I", "lineal": true,
+          "descripcion": "Bici fija de costado: pedaleo suave y continuo.",
+          "equipo": [
+            { "tipo": "poligono", "puntos": [[-34, 0], [50, 0], [50, 5], [-34, 5]] },
+            { "tipo": "poligono", "puntos": [[-14, 5], [-8, 5], [-8, 86], [-14, 86]] },
+            { "tipo": "poligono", "puntos": [[-26, 86], [4, 86], [4, 91], [-26, 91]], "oscuro": true },
+            { "tipo": "poligono", "puntos": [[34, 5], [40, 5], [44, 110], [38, 110]] },
+            { "tipo": "poligono", "puntos": [[32, 110], [50, 110], [50, 115], [32, 115]], "oscuro": true },
+            { "tipo": "poligono", "puntos": [[8, 22], [16, 22], [16, 30], [8, 30]], "oscuro": true },
+            { "tipo": "placa", "en": "pieI", "ang": 90, "largo": 12, "grosor": 4 }
+          ],
+          "trabaja": [{ "seg": "musloI", "lado": "frente" }],
+          "poses": [
+            { "fase": "Pedaleo suave · 5 min", "dur": 0.2, "pelvis": [-10, 92], "tronco": 22, "cabeza": -8, "manoI": [42, 114], "manoD": [40, 114], "codoI": "abajo", "codoD": "abajo", "rodillaI": 1, "rodillaD": 1, "pieI": [12, 41], "pieD": [12, 11] },
+            { "fase": "Pedaleo suave · 5 min", "dur": 0.2, "pelvis": [-10, 92], "tronco": 22, "cabeza": -8, "manoI": [42, 114], "manoD": [40, 114], "codoI": "abajo", "codoD": "abajo", "rodillaI": 1, "rodillaD": 1, "pieI": [22.6, 36.6], "pieD": [1.4, 15.4] },
+            { "fase": "Pedaleo suave · 5 min", "dur": 0.2, "pelvis": [-10, 92], "tronco": 22, "cabeza": -8, "manoI": [42, 114], "manoD": [40, 114], "codoI": "abajo", "codoD": "abajo", "rodillaI": 1, "rodillaD": 1, "pieI": [27, 26], "pieD": [-3, 26] },
+            { "fase": "Pedaleo suave · 5 min", "dur": 0.2, "pelvis": [-10, 92], "tronco": 22, "cabeza": -8, "manoI": [42, 114], "manoD": [40, 114], "codoI": "abajo", "codoD": "abajo", "rodillaI": 1, "rodillaD": 1, "pieI": [22.6, 15.4], "pieD": [1.4, 36.6] },
+            { "fase": "Pedaleo suave · 5 min", "dur": 0.2, "pelvis": [-10, 92], "tronco": 22, "cabeza": -8, "manoI": [42, 114], "manoD": [40, 114], "codoI": "abajo", "codoD": "abajo", "rodillaI": 1, "rodillaD": 1, "pieI": [12, 11], "pieD": [12, 41] },
+            { "fase": "Pedaleo suave · 5 min", "dur": 0.2, "pelvis": [-10, 92], "tronco": 22, "cabeza": -8, "manoI": [42, 114], "manoD": [40, 114], "codoI": "abajo", "codoD": "abajo", "rodillaI": 1, "rodillaD": 1, "pieI": [1.4, 15.4], "pieD": [22.6, 36.6] },
+            { "fase": "Pedaleo suave · 5 min", "dur": 0.2, "pelvis": [-10, 92], "tronco": 22, "cabeza": -8, "manoI": [42, 114], "manoD": [40, 114], "codoI": "abajo", "codoD": "abajo", "rodillaI": 1, "rodillaD": 1, "pieI": [-3, 26], "pieD": [27, 26] },
+            { "fase": "Pedaleo suave · 5 min", "dur": 0.2, "pelvis": [-10, 92], "tronco": 22, "cabeza": -8, "manoI": [42, 114], "manoD": [40, 114], "codoI": "abajo", "codoD": "abajo", "rodillaI": 1, "rodillaD": 1, "pieI": [1.4, 36.6], "pieD": [22.6, 15.4] }
+          ]
+        }
+      },
+      {
+        "id": "cal-rotaciones-columna", "nombre": "Rotaciones de columna en cuatro patas", "dosis": "8 por lado", "equipo": "Peso corporal",
+        "pasos": [
+          "En cuatro patas: manos debajo de los hombros y rodillas debajo de la cadera.",
+          "Una mano detrás de la cabeza.",
+          "Llevá el codo hacia abajo, hacia la mano apoyada, soltando el aire.",
+          "Abrí: llevá el codo hacia el techo y seguilo con la mirada. El giro sale de la espalda alta.",
+          "La cadera y la zona lumbar quedan quietas. Hacé las 8 de un lado y después las del otro."
+        ],
+        "errores": ["Mover la cadera o arquear la zona lumbar para llegar más alto.", "Girar solo el brazo, sin rotar la espalda alta.", "Hacerlo rápido o con rebote."],
+        "porque": "Para que cuando levantes el brazo izquierdo gire la espalda alta y la zona lumbar no compense. Más rotación arriba = menos carga abajo.",
+        "video": { "url": "https://www.youtube.com/watch?v=iWxGRsCGURM", "canal": "Proet Ejercicio Terapéutico", "titulo": "868. Rotación torácica en cuadrupedia" },
+        "anim": {
+          "vista": "lado", "cerca": "I", "encuadre": "-110 -140 220 150",
+          "descripcion": "Rotación de columna en cuatro patas de costado: el codo baja hacia la otra mano y después sube hacia el techo, con la cadera quieta.",
+          "trabaja": ["espalda"],
+          "guias": [{ "tipo": "horizontal", "en": "pelvis", "largo": 26, "texto": "cadera quieta" }],
+          "poses": [
+            { "fase": "Codo hacia la otra mano · soltá el aire", "dur": 1.6, "pausa": 0.3, "pelvis": [-26, 49], "tronco": 83, "cabeza": -5, "pieI": [-68, 3], "pieD": [-66, 4], "rodillaI": "abajo", "rodillaD": "abajo", "pieAngI": 180, "pieAngD": 180, "brazoI": [0, 160], "manoD": [24, 3], "codoD": -1 },
+            { "fase": "Abrí: codo al techo, seguilo con la mirada", "dur": 1.6, "pausa": 0.6, "pelvis": [-26, 49], "tronco": 83, "cabeza": -50, "pieI": [-68, 3], "pieD": [-66, 4], "rodillaI": "abajo", "rodillaD": "abajo", "pieAngI": 180, "pieAngD": 180, "brazoI": [-180, 30], "manoD": [24, 3], "codoD": -1 }
+          ]
+        }
+      },
+      {
+        "id": "cal-wall-slides", "nombre": "Deslizamientos en la pared (wall slides)", "dosis": "10", "equipo": "Peso corporal",
+        "pasos": [
+          "Espalda, cola y cabeza contra la pared; pies a un paso de la pared y rodillas apenas flexionadas.",
+          "Brazos en W: codos y dorso de las manos tocando la pared.",
+          "Deslizá los brazos hacia arriba hasta formar una Y, sin despegarlos de la pared (3 segundos).",
+          "Bajá a la W llevando las escápulas hacia abajo y atrás (2 segundos).",
+          "Subí solo hasta donde el hombro derecho llegue sin despegarse: ese es tu tope por ahora."
+        ],
+        "errores": ["Encoger los hombros hacia las orejas.", "Arquear la zona lumbar para poder subir más.", "Despegar codos o muñecas de la pared."],
+        "porque": "Tu hombro derecho sube menos. Esto entrena la escápula para que el brazo suba completo y con control, antes del press, el jalón y el smash.",
+        "video": { "url": "https://www.youtube.com/watch?v=eo0MhjA40hc", "canal": "César Training", "titulo": "WALL SLIDE - Ejercicio compensatorio de hombros y cintura escapular" },
+        "anim": {
+          "vista": "frente",
+          "descripcion": "Wall slides de frente, de espaldas a la pared: los brazos suben de W a Y y vuelven.",
+          "trabaja": ["hombroI", "hombroD"],
+          "poses": [
+            { "fase": "Subí deslizando por la pared · 3 s", "dur": 3, "manoI": [-40, 150], "manoD": [40, 150], "codoI": -1, "codoD": 1 },
+            { "fase": "Bajá a la W, escápulas abajo · 2 s", "dur": 2, "pausa": 0.4, "manoI": [-30, 188], "manoD": [30, 188], "codoI": -1, "codoD": 1 }
+          ]
+        }
+      },
+      {
+        "id": "cal-cadera-9090", "nombre": "Cadera 90/90", "dosis": "6 cambios por lado", "equipo": "Peso corporal",
+        "pasos": [
+          "Sentado en el piso con las dos rodillas dobladas a 90°: una pierna adelante y la otra al costado.",
+          "Manos apoyadas atrás y espalda alta.",
+          "Llevá las dos rodillas hacia el otro lado pasando por el medio, sin levantar la cola.",
+          "6 cambios por lado, lento."
+        ],
+        "errores": ["Encorvar la espalda.", "Empujar todo el movimiento con las manos.", "Forzar si molesta la rodilla: achicá el recorrido."],
+        "porque": "Mueve la cadera en rotación hacia adentro y hacia afuera, la que usás en cada giro y cada arranque en la cancha. Si la cadera rota bien, la zona lumbar y las rodillas cargan menos.",
+        "video": { "url": "https://www.youtube.com/watch?v=zLlVwq4rlBk", "canal": "Clínica de Fisioterapia Ángel Araque", "titulo": "Ejercicio de movilidad de cadera. 90/90" },
+        "anim": {
+          "vista": "frente", "encuadre": "-100 -120 200 130",
+          "descripcion": "Cadera 90/90 de frente: sentado, las dos rodillas pasan de un lado al otro por el medio.",
+          "trabaja": [{ "seg": "musloI" }, { "seg": "musloD" }],
+          "poses": [
+            { "fase": "Rodillas a la izquierda · espalda alta", "dur": 1.2, "pausa": 0.8, "pelvis": [0, 12], "tronco": -4, "manoI": [-30, 8], "manoD": [30, 8], "codoI": -1, "codoD": 1, "rodillaEnI": [-42, 5], "pieI": [0, 4], "rodillaEnD": [36, 5], "pieD": [46, 6] },
+            { "fase": "Pasá por el medio", "dur": 1.2, "pelvis": [0, 12], "tronco": 0, "manoI": [-30, 8], "manoD": [30, 8], "codoI": -1, "codoD": 1, "rodillaEnI": [-18, 46], "pieI": [-30, 2], "rodillaEnD": [18, 46], "pieD": [30, 2] },
+            { "fase": "Rodillas a la derecha · espalda alta", "dur": 1.2, "pausa": 0.8, "pelvis": [0, 12], "tronco": 4, "manoI": [-30, 8], "manoD": [30, 8], "codoI": -1, "codoD": 1, "rodillaEnI": [-36, 5], "pieI": [-46, 6], "rodillaEnD": [42, 5], "pieD": [0, 4] },
+            { "fase": "Pasá por el medio", "dur": 1.2, "pelvis": [0, 12], "tronco": 0, "manoI": [-30, 8], "manoD": [30, 8], "codoI": -1, "codoD": 1, "rodillaEnI": [-18, 46], "pieI": [-30, 2], "rodillaEnD": [18, 46], "pieD": [30, 2] }
+          ]
+        }
+      },
+      {
+        "id": "cal-caminata-banda", "nombre": "Caminata lateral con banda", "dosis": "2×10 pasos por lado", "equipo": "Banda elástica liviana",
+        "pasos": [
+          "Banda arriba de las rodillas (en los tobillos es más difícil).",
+          "Media sentadilla: pies al ancho de la cadera, pecho arriba.",
+          "Dá un paso al costado y juntá la otra pierna sin perder la tensión de la banda.",
+          "Las rodillas empujan siempre hacia afuera, alineadas con la punta de los pies.",
+          "10 pasos para un lado y 10 para el otro. 2 vueltas."
+        ],
+        "errores": ["Dejar que las rodillas se vayan hacia adentro.", "Juntar los pies del todo (se afloja la banda).", "Balancear el cuerpo de lado a lado en vez de dar el paso con la cadera."],
+        "porque": "Activa el glúteo medio, que mantiene la rodilla alineada y no la deja irse hacia adentro al frenar, saltar o cambiar de dirección.",
+        "video": { "url": "https://www.youtube.com/watch?v=HgUZkJs1qeM", "canal": "Vitar Club", "titulo": "Pasos laterales con BANDA elástica | Activa el glúteo medio" },
+        "anim": {
+          "vista": "frente",
+          "descripcion": "Caminata lateral con banda de frente: media sentadilla, pasos al costado con las rodillas sobre los pies.",
+          "equipo": [{ "tipo": "banda", "desde": "rodillaI", "a": "rodillaD", "delante": true }],
+          "trabaja": ["gluteoI", "gluteoD"],
+          "guias": [{ "tipo": "vertical", "desde": "pieI", "largo": 40 }, { "tipo": "vertical", "desde": "pieD", "largo": 40 }],
+          "poses": [
+            { "fase": "Paso a la derecha", "dur": 0.9, "pausa": 0.2, "pelvis": [-12, 80], "pieI": [-34, 0], "pieD": [10, 0], "rodillaEnI": [-33, 40], "rodillaEnD": [9, 40], "manoI": [-18, 115], "manoD": [-6, 115], "codoI": -1, "codoD": 1 },
+            { "fase": "Juntá la izquierda sin aflojar la banda", "dur": 0.9, "pausa": 0.2, "pelvis": [0, 80], "pieI": [-34, 0], "pieD": [34, 0], "rodillaEnI": [-33, 40], "rodillaEnD": [33, 40], "manoI": [-6, 115], "manoD": [6, 115], "codoI": -1, "codoD": 1 },
+            { "fase": "Paso a la izquierda", "dur": 0.9, "pausa": 0.2, "pelvis": [12, 80], "pieI": [-10, 0], "pieD": [34, 0], "rodillaEnI": [-9, 40], "rodillaEnD": [33, 40], "manoI": [6, 115], "manoD": [18, 115], "codoI": -1, "codoD": 1 },
+            { "fase": "Juntá la derecha sin aflojar la banda", "dur": 0.9, "pausa": 0.2, "pelvis": [0, 80], "pieI": [-34, 0], "pieD": [34, 0], "rodillaEnI": [-33, 40], "rodillaEnD": [33, 40], "manoI": [-6, 115], "manoD": [6, 115], "codoI": -1, "codoD": 1 }
+          ]
+        }
+      },
+      {
+        "id": "cal-puente-gluteo", "nombre": "Puente de glúteo", "dosis": "2×10", "equipo": "Peso corporal",
+        "pasos": [
+          "Boca arriba, rodillas dobladas y pies apoyados al ancho de la cadera, cerca de la cola.",
+          "Brazos al costado del cuerpo.",
+          "Apretá los glúteos y subí la cadera hasta formar una línea de rodillas a hombros.",
+          "Aguantá 2 segundos arriba y bajá en 2."
+        ],
+        "errores": ["Arquear la zona lumbar arriba en vez de apretar glúteos.", "Empujar con las puntas: apoyá bien los talones.", "Que las rodillas se abran o se cierren."],
+        "porque": "Despierta los glúteos antes de las piernas, para que en la sentadilla, el peso muerto y el hip thrust trabajen ellos y no la zona lumbar.",
+        "video": { "url": "https://www.youtube.com/watch?v=18LJ3J-TvJU", "canal": "Clasalut Servicios", "titulo": "Puente de glúteo" },
+        "anim": {
+          "vista": "lado", "cerca": "I", "encuadre": "-110 -130 220 140",
+          "descripcion": "Puente de glúteo de costado: acostado boca arriba, sube la cadera apretando glúteos, aguanta 2 segundos y baja.",
+          "trabaja": ["gluteoI", { "seg": "musloI", "lado": "atras" }],
+          "guias": [{ "tipo": "linea", "de": "rodillaI", "a": "cuello", "texto": "línea recta" }],
+          "poses": [
+            { "fase": "Subí apretando glúteos", "dur": 1, "pelvis": [6, 9], "tronco": -90, "cabeza": 0, "pieI": [30, 0], "pieD": [28, 0], "rodillaI": "arriba", "rodillaD": "arriba", "manoI": [8, 4], "manoD": [6, 4], "codoI": "abajo", "codoD": "abajo" },
+            { "fase": "Arriba 2 s · bajá en 2 s", "pausa": 2, "dur": 2, "pelvis": [-1.6, 35.5], "tronco": -122, "cabeza": 32, "pieI": [30, 0], "pieD": [28, 0], "rodillaI": "arriba", "rodillaD": "arriba", "manoI": [8, 4], "manoD": [6, 4], "codoI": "abajo", "codoD": "abajo" }
+          ]
+        }
+      },
+      {
+        "id": "cal-dead-bug", "nombre": "Dead bug", "dosis": "2×8 por lado", "equipo": "Peso corporal",
+        "pasos": [
+          "Boca arriba, brazos estirados hacia el techo, cadera y rodillas a 90°.",
+          "Pegá la zona lumbar al piso, como si aplastaras una mano.",
+          "Bajá un brazo hacia atrás y la pierna contraria hacia adelante, lento, soltando el aire.",
+          "Volvé al centro y cambiá de lado.",
+          "Si la zona lumbar se despega, achicá el recorrido."
+        ],
+        "errores": ["Despegar la zona lumbar del piso.", "Hacerlo rápido.", "Aguantar la respiración."],
+        "porque": "Para cuidar la zona lumbar: aprendés a dejarla quieta y firme mientras se mueven brazos y piernas, que es lo que necesitás en cada ejercicio pesado.",
+        "video": { "url": "https://www.youtube.com/watch?v=HN3wyEcYC2g", "canal": "Estudio Training", "titulo": "Cómo hacer el Dead Bug" },
+        "anim": {
+          "vista": "lado", "cerca": "I", "encuadre": "-110 -130 220 140",
+          "descripcion": "Dead bug de costado: boca arriba, baja un brazo atrás y la pierna contraria adelante, con la zona lumbar pegada al piso.",
+          "trabaja": ["abdomen"],
+          "poses": [
+            { "fase": "Brazo izq. atrás + pierna der. adelante · soltá el aire", "dur": 2.2, "pelvis": [0, 8], "tronco": -90, "cabeza": 0, "manoI": [-50, 60], "manoD": [-48, 60], "codoI": -1, "codoD": -1, "pieI": [42, 50], "pieD": [40, 50], "rodillaI": "arriba", "rodillaD": "arriba" },
+            { "fase": "Volvé al centro", "dur": 1.4, "pausa": 0.5, "pelvis": [0, 8], "tronco": -90, "cabeza": 0, "manoI": [-100, 16], "manoD": [-48, 60], "codoI": -1, "codoD": -1, "pieI": [42, 50], "pieD": [84, 12], "rodillaI": "arriba", "rodillaD": "arriba" },
+            { "fase": "Brazo der. atrás + pierna izq. adelante · soltá el aire", "dur": 2.2, "pelvis": [0, 8], "tronco": -90, "cabeza": 0, "manoI": [-50, 60], "manoD": [-48, 60], "codoI": -1, "codoD": -1, "pieI": [42, 50], "pieD": [40, 50], "rodillaI": "arriba", "rodillaD": "arriba" },
+            { "fase": "Volvé al centro", "dur": 1.4, "pausa": 0.5, "pelvis": [0, 8], "tronco": -90, "cabeza": 0, "manoI": [-50, 60], "manoD": [-100, 16], "codoI": -1, "codoD": -1, "pieI": [84, 12], "pieD": [40, 50], "rodillaI": "arriba", "rodillaD": "arriba" }
+          ]
+        }
+      }
     ]
   },
 

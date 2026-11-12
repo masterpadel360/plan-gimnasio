@@ -1,7 +1,7 @@
 // Plan de gimnasio — Hoy, entrada en calor y sesión completa del día.
 // El plan se lee de plan.json (siempre la última versión). Los registros se guardan por id de ejercicio.
-import { animar } from './muneco.js?v=202611121324';
-import { iniciarNube, entrar, salir, conectado, mailActual, marcarCambio, estado as nube } from './nube.js?v=202611121324';
+import { animar } from './muneco.js?v=202611121347';
+import { iniciarNube, entrar, salir, conectado, mailActual, marcarCambio, estado as nube } from './nube.js?v=202611121347';
 
 const $ = (s, r = document) => r.querySelector(s);
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -133,12 +133,38 @@ function armarPasos(dia) {
 function renderCalor() {
   pararMunecos();
   const items = plan.calentamiento.items;
+  const abierto = items.find((c) => c.id === st.calAbierto);
+  if (abierto) return renderCalorEj(abierto, items);
+  const hechos = items.filter((c) => st.cal[c.id]).length;
   $('#app').innerHTML = `
-  <header class="top"><div class="fila"><span class="eyebrow">Día ${st.dia} · Semana ${st.semana}</span><button class="chip" data-act="salir">Salir</button></div><h1>Entrada en calor</h1><div class="sub">${plan.calentamiento.minutos} minutos · tocá cada uno al terminarlo</div></header>
+  <header class="top"><div class="fila"><span class="eyebrow">Día ${st.dia} · Semana ${st.semana}</span><button class="chip" data-act="salir">Salir</button></div><h1>Entrada en calor</h1><div class="sub">${plan.calentamiento.minutos} minutos · ${hechos} de ${items.length} hechos · tocá uno para ver cómo se hace</div></header>
   <main class="wrap">${barraSesion()}
-    <section class="series">${items.map((c) => `<button class="serie calor ${st.cal[c.id] ? 'hecha' : ''}" data-act="calor" data-id="${c.id}"><span class="calor-txt"><b>${esc(c.nombre)}</b><small>${esc(c.dosis)}${c.equipo ? ' · ' + esc(c.equipo) : ''}</small></span><span class="check">${TILDE}</span></button>`).join('')}</section>
+    <section class="series">${items.map((c, k) => `<div class="serie calor ${st.cal[c.id] ? 'hecha' : ''}"><button class="calor-abrir" data-act="calAbrir" data-id="${esc(c.id)}"><span class="calor-n num">${k + 1}</span><span class="calor-txt"><b>${esc(c.nombre)}</b><small>${esc(c.dosis)}${c.equipo ? ' · ' + esc(c.equipo) : ''}</small></span><span class="calor-ver" aria-hidden="true">›</span></button><button class="check" data-act="calor" data-id="${esc(c.id)}" aria-label="Tachar ${esc(c.nombre)}" aria-pressed="${!!st.cal[c.id]}">${TILDE}</button></div>`).join('')}</section>
   </main>
   <nav class="nav"><div class="in"><button class="btn" data-act="salir">← Hoy</button><button class="btn prim" data-act="sig">Empezar ejercicios →</button></div></nav>`;
+}
+
+// Un ejercicio de la entrada en calor: muñeco arriba, explicación abajo y botón para tacharlo.
+function renderCalorEj(c, items) {
+  const k = items.indexOf(c), hecho = !!st.cal[c.id];
+  $('#app').innerHTML = `
+  <header class="top"><div class="fila"><span class="eyebrow">Entrada en calor · ${k + 1} de ${items.length}</span><button class="chip" data-act="calLista">Lista</button></div></header>
+  <main class="wrap">${barraSesion()}
+    ${bloqueDemo(c)}
+    <section class="card">
+      <div class="ej-n">ENTRADA EN CALOR ${k + 1} DE ${items.length}</div><h2 class="ej-tit">${esc(c.nombre)}</h2>
+      <div class="presc presc-2">
+        <div><b class="num">${esc(c.dosis)}</b><span>Cantidad</span></div>
+        <div><b class="calor-eq">${esc(c.equipo || 'Peso corporal')}</b><span>Con qué</span></div>
+      </div>
+      <button class="btn ${hecho ? '' : 'prim'} calor-hecho" data-act="calHecho" data-id="${esc(c.id)}" aria-pressed="${hecho}">${hecho ? '✓ Hecho · tocá para destachar' : 'Listo, lo hice ✓'}</button>
+    </section>
+    ${bloqueInfo(c)}
+  </main>
+  <nav class="nav"><div class="in"><button class="btn" data-act="calLista">← Lista</button><button class="btn prim" data-act="calSig">${k < items.length - 1 ? 'Siguiente →' : 'Ir a los ejercicios →'}</button></div></nav>`;
+  document.querySelectorAll('[data-anim]').forEach((nodo) => {
+    st.munecos.push(animar(nodo, c.anim, { alFase: (f) => { const x = document.querySelector(`[data-fase="${CSS.escape(c.id)}"]`); if (x) x.textContent = f; } }));
+  });
 }
 
 function barraSesion() { return `<div class="barra-sesion">${st.pasos.map((p, k) => `<i class="${k < st.i ? 'hecho' : k === st.i ? 'actual' : ''}"></i>`).join('')}</div>`; }
@@ -464,9 +490,19 @@ document.addEventListener('click', (e) => {
   if (b.dataset.sem) { st.semana = +b.dataset.sem; guardar('gym.semana', st.semana); render(); return; }
   if (b.dataset.dia) { st.dia = b.dataset.dia; render(); return; }
   const a = b.dataset.act;
-  if (a === 'empezar') { st.dia = b.dataset.d; st.pasos = armarPasos(st.dia); st.i = 0; st.sesion = {}; st.cal = {}; st.vista = 'sesion'; render(); scrollTo(0, 0); return; }
+  if (a === 'empezar') { st.dia = b.dataset.d; st.pasos = armarPasos(st.dia); st.i = 0; st.sesion = {}; st.cal = {}; st.calAbierto = null; st.vista = 'sesion'; render(); scrollTo(0, 0); return; }
   if (a === 'salir') { Object.keys(st.sesion).forEach(guardarEj); cerrarCrono(); st.vista = 'hoy'; render(); scrollTo(0, 0); return; }
   if (a === 'calor') { st.cal[b.dataset.id] = !st.cal[b.dataset.id]; render(); return; }
+  if (a === 'calAbrir') { st.calAbierto = b.dataset.id; render(); scrollTo(0, 0); return; }
+  if (a === 'calLista') { st.calAbierto = null; render(); scrollTo(0, 0); return; }
+  if (a === 'calHecho' || a === 'calSig') {
+    const items = plan.calentamiento.items, k = items.findIndex((c) => c.id === st.calAbierto);
+    if (a === 'calHecho') { const id = st.calAbierto; st.cal[id] = !st.cal[id]; if (!st.cal[id]) { render(); return; } }
+    // Al tachar: abre el siguiente que falte (o vuelve a la lista si están todos). «Siguiente»: el que sigue en orden.
+    const sig = a === 'calSig' ? items[k + 1] : [...items.slice(k + 1), ...items.slice(0, k)].find((c) => !st.cal[c.id]);
+    if (!sig && a === 'calSig') { st.calAbierto = null; st.i++; render(); scrollTo(0, 0); return; }
+    st.calAbierto = sig ? sig.id : null; render(); scrollTo(0, 0); return;
+  }
   if (a === 'mas15') { crono.fin += 15000; tick(); return; }
   if (a === 'saltar') { cerrarCrono(); return; }
   const paso = st.pasos[st.i];

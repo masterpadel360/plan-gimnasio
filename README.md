@@ -21,7 +21,7 @@ App para entrenar desde el iPhone: https://masterpadel360.github.io/plan-gimnasi
   "etapas": [ { "id": 1, "nombre": "Adaptación", "semanas": [1, 4], "tanque": "…", "saltos": "…" }, … ],
   "descarga": { "semanas": [4, 8, 12], "regla": "Una serie menos (mínimo 2)" },
   "progresion": { "piernas": [2.5, 5], "torso": [1, 2], "torsoPor": "mancuerna" },
-  "calentamiento": { "minutos": 12, "items": [ { "id": "cal-bici", "nombre": "…", "dosis": "5 min" } ] },
+  "calentamiento": { "minutos": 12, "items": [ { "id": "cal-bici", "nombre": "…", "dosis": "5 min", "equipo": "…", "pasos": […], "errores": […], "porque": "…", "video": {…}, "anim": {…} } ] },  // igual que un ejercicio: al tocarlo se abre con el muñeco y se tacha con «Listo, lo hice»
   "dias": { "A": { "nombre": "…", "ejercicios": [ … ] }, "B": { … }, "C": { … } },
   "orden": ["A", "B", "C"],            // opcional: orden de los días (si falta, el de "dias")
   "extras": [ … ],                     // ejercicios que solo se usan dentro de una superserie
@@ -81,7 +81,8 @@ Un solo muñeco para todo. Cada ejercicio es una lista de **posiciones clave** (
 
 **Coordenadas:** en «cm de muñeco». `x` hacia adelante (de frente: hacia la derecha), `y` hacia arriba, el piso es `y = 0`. Medidas: tronco 50, brazo 28, antebrazo 26, muslo 44, pierna 42. Parado, la pelvis está en `[0, 88]`.
 
-**Tiempo (el ritmo real):** cada pose tiene `dur` = segundos que tarda en ir a la siguiente, y `pausa` = segundos quieto antes de arrancar. Si la bajada es de 3 s, la pose de arriba lleva `"dur": 3`. `fase` es el texto grande que se ve mientras tanto.
+**Tiempo (el ritmo real):** cada pose tiene `dur` = segundos que tarda en ir a la siguiente, y `pausa` = segundos quieto antes de arrancar. Si la bajada es de 3 s, la pose de arriba lleva `"dur": 3`. `fase` es el texto grande que se ve mientras tanto. Con `"lineal": true` en el `anim` el movimiento es parejo, sin frenar en cada pose (bici).
+
 
 **Campos de una pose** (todos opcionales):
 
@@ -96,6 +97,7 @@ Un solo muñeco para todo. Cada ejercicio es una lista de **posiciones clave** (
 | `brazoI`, `brazoD` | `[hombro, codo]` en grados desde «colgando» (0); + hacia adelante (de frente: hacia la derecha); 180 = arriba |
 | `manoI`, `manoD` | `[x, y]` de la mano (en vez de `brazo`); el codo se calcula solo con `codoI` / `codoD` (`1`, `-1`, `"arriba"`, `"abajo"`) |
 | `munecaI`, `munecaD` | ángulo de la mano (para ejercicios de muñeca) |
+| `rodillaEnI`, `rodillaEnD` | `[x, y]` fijo de la rodilla (pisa el cálculo automático). Sirve de frente o sentado en el piso (90/90, caminata con banda) |
 
 **Equipo:**
 - `{ "tipo": "banco", "x": -64, "alto": 42, "ancho": 36 }` (también `"cajon"`)
@@ -105,6 +107,7 @@ Un solo muñeco para todo. Cada ejercicio es una lista de **posiciones clave** (
 - `{ "tipo": "poligono", "puntos": [[x, y], …], "oscuro": true }` (cualquier forma fija: máquina, banco inclinado, paralelas)
 - `{ "tipo": "placa", "en": "pieI", "ang": 45, "largo": 46 }` (pieza que sigue una articulación: plataforma, almohadilla)
 - `{ "tipo": "pelota", "en": "manos", "r": 11 }`
+- `{ "tipo": "banda", "desde": [-74, 64], "a": "cuello" }` (banda elástica de un punto fijo a una articulación; `"desde": "rodillaI", "a": "rodillaD"` = banda entre las rodillas)
 
 **Músculos (`trabaja`):** segmentos `musloI`, `piernaI`, `brazoI`, `antebrazoI`, `tronco` (y los D), con `"lado": "frente"` o `"atras"` para marcar cuádriceps/isquios o bíceps/tríceps; o especiales: `gluteoI`, `hombroI`, `pecho`, `espalda`, `abdomen`.
 

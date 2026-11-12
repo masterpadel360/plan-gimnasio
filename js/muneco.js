@@ -63,7 +63,8 @@ export function esqueleto(pose, vista) {
     const pie = pose['pie' + lado] || [cadera[0] + (frente ? sg * 3 : 0), 0];
     // De frente, la flexión de rodilla va "hacia la cámara": la rodilla queda arriba del pie (no se abre al costado).
     let rodilla;
-    if (frente) {
+    if (pose["rodillaEn" + lado]) rodilla = pose["rodillaEn" + lado]; // posición fija de la rodilla (ej. sentado en 90/90 visto de frente)
+    else if (frente) {
       const t = Math.min(1, Math.hypot(cadera[0] - pie[0], cadera[1] - pie[1]) / (L.muslo + L.pierna));
       rodilla = [pie[0] + (cadera[0] - pie[0]) * 0.5 * t * t, pie[1] + (cadera[1] - pie[1]) * 0.5];
     } else rodilla = ik(cadera, pie, L.muslo, L.pierna, pose['rodilla' + lado] ?? 1);
@@ -123,10 +124,10 @@ function dibujarEquipo(g, eq, J, vista, delante) {
       const p1 = [c[0] + dx - l * Math.sin(a), c[1] + dy + l * Math.cos(a)], p2 = [c[0] + dx + l * Math.sin(a), c[1] + dy - l * Math.cos(a)];
       linea(g, p1, p2, 'eq-placa', e.grosor ?? 6);
     }
-    if (e.tipo === 'banda') { // banda elástica: de un punto fijo a una articulación
-      const a = e.desde || [-70, 60], b = J[e.a || 'cuello']; if (!b) continue;
+    if (e.tipo === 'banda') { // banda elástica: de un punto fijo [x,y] (o de otra articulación, ej. entre las rodillas) a una articulación
+      const fija = typeof e.desde !== 'string', a = fija ? (e.desde || [-70, 60]) : J[e.desde], b = J[e.a || 'cuello']; if (!a || !b) continue;
       linea(g, a, b, 'eq-banda', 3);
-      const [x, y] = P(a); g.appendChild(el('circle', { cx: x, cy: y, r: 3.5, class: 'eq-peso' }));
+      if (fija) { const [x, y] = P(a); g.appendChild(el('circle', { cx: x, cy: y, r: 3.5, class: 'eq-peso' })); }
     }
     if (e.tipo === 'pelota') { const c = J[e.en || 'manos']; const [x, y] = P([c[0] + (e.dx ?? 0), c[1] + (e.dy ?? 0)]); g.appendChild(el('circle', { cx: x, cy: y, r: e.r ?? 10, class: 'eq-pelota' })); }
     if (e.tipo === 'polea') {
@@ -221,7 +222,7 @@ export function animar(contenedor, anim, { alFase } = {}) {
     let i = 0; while (t > durs[i] && i < poses.length - 1) { t -= durs[i]; i++; }
     const a = poses[i], b = poses[(i + 1) % poses.length];
     const espera = a.pausa ?? 0;
-    const k = t <= espera ? 0 : ease(Math.min(1, (t - espera) / (a.dur ?? 1)));
+    const k = t <= espera ? 0 : (anim.lineal ? (x) => x : ease)(Math.min(1, (t - espera) / (a.dur ?? 1)));
     const pose = mezclar(a, b, k);
     const J = esqueleto(pose, vista);
     capa.replaceChildren();
